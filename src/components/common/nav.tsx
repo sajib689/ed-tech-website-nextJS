@@ -1,6 +1,5 @@
 "use client";
-
-import React, { useState, useEffect } from "react";
+import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -18,19 +17,9 @@ import AdbIcon from "@mui/icons-material/Adb";
 const pages = ["Products", "Pricing", "Blog", "Contact Us", "About Us"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
-const Navbar = () => {
-  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
-  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50); // Change threshold as needed
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+function Navbar() {
+  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -38,22 +27,21 @@ const Navbar = () => {
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
   };
+
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
+
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
 
   return (
-    <AppBar
-      position="fixed"
-      sx={{
-        backgroundColor: scrolled ? "#fff" : "transparent", // White when scrolled
-        boxShadow: scrolled ? "0px 2px 4px rgba(0, 0, 0, 0.1)" : "none", // Add shadow when scrolled
-        transition: "background-color 0.3s ease, box-shadow 0.3s ease", // Smooth transition
-      }}
-    >
+    <AppBar position="sticky"
+    sx={{
+      backgroundColor: "transparent", // Transparent background
+      boxShadow: "none", // Remove shadow for seamless integration
+    }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
@@ -61,7 +49,7 @@ const Navbar = () => {
             variant="h6"
             noWrap
             component="a"
-            href="/"
+            href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -77,6 +65,7 @@ const Navbar = () => {
           >
             Learn Code
           </Typography>
+
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -102,10 +91,13 @@ const Navbar = () => {
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
+              sx={{ display: { xs: "block", md: "none" } }}
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography sx={{ textAlign: "center", color: "rgba(0, 0, 0, 0.55)" }}>
+                    {page}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -123,16 +115,26 @@ const Navbar = () => {
               fontFamily: "monospace",
               fontWeight: 600,
               letterSpacing: ".3rem",
-              color: "rgba(0, 0, 0, 0.7)", // Text color based on scroll
+              color: "rgba(0, 0, 0, 0.55)",
               textDecoration: "none",
+              "&:hover": {
+                color: "#21BF73",
+              },
             }}
           >
             LOGO
           </Typography>
-          <Box sx={{ flexGrow: 1, justifyContent: "center", display: { xs: "none", md: "flex" } }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", md: "flex" },
+              justifyContent: "center",
+            }}
+          >
             {pages.map((page) => (
               <Button
                 key={page}
+                onClick={handleCloseNavMenu}
                 sx={{
                   my: 2,
                   color: "rgba(0, 0, 0, 0.55)",
@@ -172,7 +174,9 @@ const Navbar = () => {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                  <Typography sx={{ textAlign: "center", color: "rgba(0, 0, 0, 0.55)" }}>
+                    {setting}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -181,6 +185,6 @@ const Navbar = () => {
       </Container>
     </AppBar>
   );
-};
+}
 
 export default Navbar;

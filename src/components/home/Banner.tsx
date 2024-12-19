@@ -1,13 +1,14 @@
 const Banner = () => {
     return (
-      <div
+        <div
         style={{
           backgroundImage: `url('/assets/images/bg-banner.png')`,
-          backgroundSize: "cover", 
-          backgroundPosition: "center", 
+          backgroundSize: "cover",
+          backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          height: "85vh", 
-          width: "100%", 
+          height: "calc(100vh - 64px)", // Subtract Navbar height if necessary
+          width: "100%",
+          position: "relative",
         }}
       ></div>
     );
