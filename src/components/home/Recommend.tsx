@@ -37,52 +37,33 @@ const Recommend = () => {
               borderRadius: 2,
               overflow: "hidden",
               transition: "transform 0.3s, box-shadow 0.3s",
-              height: 220, 
               "&:hover": {
                 transform: "scale(1.05)",
                 boxShadow: 6,
               },
             }}
           >
-            {/* Image Section with Text Overlay */}
-            <Box sx={{ position: "relative", height: 160 }}>
-              <Image
-                src={card.image}
-                alt={card.title}
-                layout="fill"
-                objectFit="cover"
-              />
-              {/* Text Overlay Box */}
-              <Box
-                sx={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  backgroundColor: "rgba(0, 0, 0, 0.5)", // Semi-transparent overlay
-                  color: "white",
-                  padding: 2,
-                }}
-              >
-                <Typography variant="h6" sx={{ textAlign: "center" }}>
+            {/* Flex Layout for Image and Text */}
+            <Box sx={{ display: "flex", height: 150 }}>
+              {/* Image Section */}
+              <Box sx={{ position: "relative", width: 120 }}>
+                <Image
+                  src={card.image}
+                  alt={card.title}
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </Box>
+              {/* Text Section */}
+              <CardContent sx={{ padding: 2, display: 'flex', flexDirection: 'column', justifyContent: 'center', flex: 1 }}>
+                <Typography variant="h6" sx={{ marginBottom: 1 }}>
                   {card.title}
                 </Typography>
-              </Box>
+                <Typography variant="body2" color="text.secondary">
+                  {card.description}
+                </Typography>
+              </CardContent>
             </Box>
-            {/* Text Section */}
-            <CardContent sx={{ padding: 2, height: '120px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <Typography
-                variant="body2"
-                color="text.secondary"
-                sx={{ textAlign: "center", flex: 1 }}
-              >
-                {card.description}
-              </Typography>
-            </CardContent>
           </Card>
         </Grid>
       ))}
