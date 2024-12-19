@@ -18,12 +18,8 @@ const pages = ["Products", "Pricing", "Blog", "Contact Us", "About Us"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function Navbar() {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null
-  );
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
-    null
-  );
+  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -41,7 +37,7 @@ function Navbar() {
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: "#fff" }}>
+    <AppBar position="static" sx={{ backgroundColor: "#fff", boxShadow: "none" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
@@ -54,10 +50,13 @@ function Navbar() {
               mr: 2,
               display: { xs: "none", md: "flex" },
               fontFamily: "monospace",
-              fontWeight: 700,
+              fontWeight: 800,
               letterSpacing: ".3rem",
-              color: "inherit",
+              color: "rgba(0, 0, 0, 0.55)",
               textDecoration: "none",
+              "&:hover": {
+                color: "#21BF73",
+              },
             }}
           >
             Learn Code
@@ -92,7 +91,9 @@ function Navbar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography sx={{ textAlign: "center" }}>{page}</Typography>
+                  <Typography sx={{ textAlign: "center", color: "rgba(0, 0, 0, 0.55)" }}>
+                    {page}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -108,10 +109,13 @@ function Navbar() {
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
               fontFamily: "monospace",
-              fontWeight: 700,
+              fontWeight: 600,
               letterSpacing: ".3rem",
-              color: "inherit",
+              color: "rgba(0, 0, 0, 0.55)",
               textDecoration: "none",
+              "&:hover": {
+                color: "#21BF73",
+              },
             }}
           >
             LOGO
@@ -120,14 +124,22 @@ function Navbar() {
             sx={{
               flexGrow: 1,
               display: { xs: "none", md: "flex" },
-              justifyContent: "center", // Centers the content horizontally
+              justifyContent: "center",
             }}
           >
             {pages.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{
+                  my: 2,
+                  color: "rgba(0, 0, 0, 0.55)",
+                  display: "block",
+                  fontWeight: 700, 
+                  "&:hover": {
+                    color: "#21BF73",
+                  },
+                }}
               >
                 {page}
               </Button>
@@ -137,7 +149,7 @@ function Navbar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Remy Sharp" src="/assets/images/avater.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
@@ -158,7 +170,7 @@ function Navbar() {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography sx={{ textAlign: "center" }}>
+                  <Typography sx={{ textAlign: "center", color: "rgba(0, 0, 0, 0.55)" }}>
                     {setting}
                   </Typography>
                 </MenuItem>
@@ -170,4 +182,5 @@ function Navbar() {
     </AppBar>
   );
 }
+
 export default Navbar;
