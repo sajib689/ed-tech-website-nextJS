@@ -1,5 +1,6 @@
 import Navbar from "@/components/common/Navbar";
 import Banner from "@/components/home/Banner";
+import Recommend from "@/components/home/Recommend";
 
 
 export default function Home() {
@@ -7,6 +8,7 @@ export default function Home() {
     <div className="font-[family-name:var(--font-geist-sans)]">
      <Navbar/>
      <Banner/>
+     <Recommend/>
     </div>
   );
 }
