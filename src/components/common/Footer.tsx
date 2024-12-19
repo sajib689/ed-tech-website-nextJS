@@ -71,30 +71,39 @@ const Footer = () => {
           </Grid>
         </Grid>
 
-        {/* Footer Bottom Section */}
-        <Grid container spacing={4} sx={{ marginTop: 4, textAlign: 'center' }}>
-          <Grid item xs={12} md={6}>
-            <Typography variant="body1">
-              2025. Learn Code - All rights reserved.
-            </Typography>
-          </Grid>
-        </Grid>
+       
 
-        {/* Payment Methods Section */}
-        <Grid container spacing={4} sx={{ marginTop: 4, justifyContent: 'center' }}>
-          <Grid item xs={3} textAlign="center">
-            <Image src="/path-to-bkash-icon.png" alt="bKash" width={40} height={40} />
-          </Grid>
-          <Grid item xs={3} textAlign="center">
-            <Image src="/path-to-rocket-icon.png" alt="Rocket" width={40} height={40} />
-          </Grid>
-          <Grid item xs={3} textAlign="center">
-            <Image src="/path-to-nagad-icon.png" alt="Nagad" width={40} height={40} />
-          </Grid>
-          <Grid item xs={3} textAlign="center">
-            <Image src="/path-to-dbbl-icon.png" alt="DBBL" width={40} height={40} />
-          </Grid>
-        </Grid>
+        <Grid container spacing={4} sx={{ marginTop: 4, justifyContent: "center" }}>
+      {/* Footer Bottom Section */}
+      <Grid item xs={12} sx={{ textAlign: "center", marginBottom: 2 }}>
+        <Typography variant="body1">
+          2025. Learn Code - All rights reserved.
+        </Typography>
+      </Grid>
+
+      {/* Payment Methods Section */}
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: 4, // Space between items
+        }}
+      >
+        <Box sx={{ textAlign: "center" }}>
+          <Image src="/assets/images/bkash.jpg" alt="bKash" width={40} height={40} />
+        </Box>
+        <Box sx={{ textAlign: "center" }}>
+          <Image src="/assets/images/rocket.webp" alt="Rocket" width={40} height={40} />
+        </Box>
+        <Box sx={{ textAlign: "center" }}>
+          <Image src="/assets/images/nagod.png" alt="Nagad" width={40} height={40} />
+        </Box>
+        <Box sx={{ textAlign: "center" }}>
+          <Image src="/assets/images/dbbl.jpeg" alt="DBBL" width={40} height={40} />
+        </Box>
+      </Box>
+    </Grid>
       </Container>
     </Box>
   );
