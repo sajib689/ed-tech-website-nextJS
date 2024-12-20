@@ -1,4 +1,5 @@
 import Navbar from "@/components/common/Navbar";
+import { AllCourse } from "@/components/home/AllCourse";
 import Banner from "@/components/home/Banner";
 import ContactForm from "@/components/home/ContactForm";
 import { CourseList } from "@/components/home/CourseList";
@@ -15,6 +16,7 @@ export default function Home() {
      <Recommend/>
      <WhyLearnProgramming/>
      <CourseList/>
+     <AllCourse/>
      <ReviewSlider/>
      <ContactForm/>
     </div>
