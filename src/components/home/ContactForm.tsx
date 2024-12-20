@@ -23,7 +23,12 @@ const ContactForm = () => {
     <Grid
       container
       spacing={4}
-      sx={{ padding: 4, marginTop: "40px", alignItems: "stretch", marginBottom: "40px" }}
+      sx={{
+        padding: 4,
+        marginTop: "40px",
+        alignItems: "stretch",
+        marginBottom: "40px",
+      }}
     >
       {/* Contact Form Section */}
       <Grid item xs={12} md={8}>
@@ -38,10 +43,19 @@ const ContactForm = () => {
         >
           <Typography
             variant="h4"
-            sx={{ fontWeight: '600', color: 'rgba(0, 0, 0, 0.55)', marginBottom: 4 }}
+            sx={{
+              fontWeight: "600",
+              color: "black",
+              marginBottom: 4,
+              padding: "10px",
+              backgroundImage: `url('/assets/images/section-title-bg.svg')`,
+
+              backgroundRepeat: "no-repeat",
+            }}
           >
             Contact Us
           </Typography>
+
           <Box
             component="form"
             noValidate
