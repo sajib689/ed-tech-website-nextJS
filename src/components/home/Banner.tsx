@@ -6,12 +6,13 @@ import "aos/dist/aos.css";
 const Banner = () => {
   useEffect(() => {
     AOS.init({
-      duration: 1000, 
+      duration: 500, 
       once: true, 
     });
   }, []);
   return (
     <Box
+    data-aos="fade-right"
       sx={{
         position: "relative",
         backgroundImage: `url('/assets/images/bg-banner.png')`,
@@ -35,7 +36,7 @@ const Banner = () => {
       }}
     >
       <Box
-      data-aos="fade-down-right"
+      data-aos="fade-right"
         sx={{
           zIndex: 1,
           textAlign: "right",
