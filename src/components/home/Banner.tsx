@@ -1,3 +1,4 @@
+'use client'
 import { Typography, Box } from "@mui/material";
 import React, { useEffect } from "react";
 import AOS from "aos";
