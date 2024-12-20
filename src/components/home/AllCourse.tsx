@@ -111,12 +111,12 @@ const AllCourse: React.FC = () => {
       <Typography
         variant="h4"
         sx={{
-          fontWeight: "bold",
+            fontWeight: '600', color: 'rgba(0, 0, 0, 0.55)',
           textAlign: "center",
           marginBottom: "24px",
         }}
       >
-        Suggested Courses
+        All Courses List
       </Typography>
 
       {/* Course List */}
