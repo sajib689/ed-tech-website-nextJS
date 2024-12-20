@@ -1,5 +1,6 @@
 import Navbar from "@/components/common/Navbar";
 import Banner from "@/components/home/Banner";
+import ContactForm from "@/components/home/ContactForm";
 import Recommend from "@/components/home/Recommend";
 
 
@@ -9,6 +10,7 @@ export default function Home() {
      <Navbar/>
      <Banner/>
      <Recommend/>
+     <ContactForm/>
     </div>
   );
 }
