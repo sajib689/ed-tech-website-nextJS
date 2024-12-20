@@ -16,23 +16,47 @@ const Banner = () => {
         alignItems: "center",
         justifyContent: "flex-end",
         paddingRight: "20px", 
-        overflow: "hidden", // Prevent overflow
-        boxSizing: "border-box", // Ensures that padding doesn't cause overflow
+        overflow: "hidden",
+        boxSizing: "border-box",
+       
+        "@media (max-width: 768px)": {
+          backgroundPosition: "center", 
+          height: "auto", 
+          paddingRight: "15px",
+        },
       }}
     >
-      <Box 
-        sx={{ 
-          zIndex: 1, 
-          textAlign: "right", 
-          maxWidth: "100%", // Ensure text container doesn't exceed the width
-          paddingRight: "20px", // Add some space between the edge and text
-          boxSizing: "border-box", // To account for padding within width
+      <Box
+        sx={{
+          zIndex: 1,
+          textAlign: "right",
+          maxWidth: "100%",
+          paddingRight: "20px",
+          boxSizing: "border-box",
+          "@media (max-width: 768px)": {
+            textAlign: "center", 
+            paddingRight: "15px", 
+          },
         }}
       >
-        <Typography variant="h1" sx={{ fontWeight: 700, color: '#21BF73' }}>
+        <Typography
+          variant="h1"
+          sx={{
+            fontWeight: 700,
+            color: "#21BF73",
+            fontSize: { xs: "2.5rem", sm: "4rem" },
+          }}
+        >
           Learn Code
         </Typography>
-        <Typography variant="h4" sx={{ mt: 2 }}>
+        <Typography
+          variant="h4"
+          sx={{
+            mt: 2,
+            fontSize: { xs: "1rem", sm: "1.25rem" }, 
+            textAlign: { xs: "center", sm: "right" },
+          }}
+        >
           If you don&apos;t want to do it, &quot;loss&quot;?
           Hold <br /> onto the to-do list and become the <br />
           &quot;boss.&quot; Learn with confidence, <br /> success is in your search.
