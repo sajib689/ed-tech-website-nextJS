@@ -1,7 +1,14 @@
-import React from "react";
 import { Typography, Box } from "@mui/material";
-
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 const Banner = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, 
+      once: true, 
+    });
+  }, []);
   return (
     <Box
       sx={{
@@ -27,6 +34,7 @@ const Banner = () => {
       }}
     >
       <Box
+      data-aos="fade-down-right"
         sx={{
           zIndex: 1,
           textAlign: "right",
