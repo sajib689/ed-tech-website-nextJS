@@ -8,6 +8,7 @@ type Course = {
   providerTitle: string;
   price: string;
   totalEnrolls?: string;
+  providerImage: string; // Add provider image field
 };
 
 const CourseCard: React.FC<{ course: Course }> = ({ course }) => {
@@ -37,7 +38,7 @@ const CourseCard: React.FC<{ course: Course }> = ({ course }) => {
       <CardMedia
         component="img"
         height="140"
-        image={imageUrls[course.id]}  // Dynamically changing the image based on course id
+        image={imageUrls[course.id]}  
         alt={course.courseName}
         sx={{ borderRadius: "8px 8px 0 0" }}
       />
@@ -48,7 +49,7 @@ const CourseCard: React.FC<{ course: Course }> = ({ course }) => {
           {course.courseName}
         </Typography>
         <Box sx={{ display: "flex", alignItems: "center", marginTop: "8px" }}>
-          <Avatar alt={course.providerName} sx={{ marginRight: "8px" }} />
+          <Avatar alt={course.providerName} src={course.providerImage} sx={{ marginRight: "8px" }} />
           <Box>
             <Typography variant="body1">{course.providerName}</Typography>
             <Typography variant="body2" color="text.secondary">
@@ -85,21 +86,24 @@ const AllCourse: React.FC = () => {
       providerTitle: "Software Engineering Manager",
       price: "500",
       totalEnrolls: "41",
+      providerImage: "https://randomuser.me/api/portraits/men/1.jpg" // Example provider image
     },
     {
       id: 2,
       courseName: "Master on Python Programming",
-      providerName: "Rabbil Hasan",
+      providerName: "Rokon Hasan",
       providerTitle: "Software Engineering Manager",
       price: "500",
       totalEnrolls: "888",
+      providerImage: "https://randomuser.me/api/portraits/men/2.jpg" // Example provider image
     },
     {
       id: 3,
       courseName: "Software Engineering Techniques",
-      providerName: "Rabbil Hasan",
+      providerName: "Sumon Hasan",
       providerTitle: "Software Engineering Manager",
       price: "500",
+      providerImage: "https://randomuser.me/api/portraits/men/3.jpg" // Example provider image
     },
     {
       id: 4,
@@ -108,6 +112,7 @@ const AllCourse: React.FC = () => {
       providerTitle: "Frontend Developer",
       price: "299",
       totalEnrolls: "1,200",
+      providerImage: "https://randomuser.me/api/portraits/women/1.jpg" // Example provider image
     },
   ];
 
