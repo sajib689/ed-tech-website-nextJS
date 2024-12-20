@@ -38,7 +38,7 @@ const ContactForm = () => {
         >
           <Typography
             variant="h4"
-            sx={{ fontWeight: "bold", marginBottom: 4, color: "#21BF73" }}
+            sx={{ fontWeight: '600', color: 'rgba(0, 0, 0, 0.55)', marginBottom: 4 }}
           >
             Contact Us
           </Typography>
