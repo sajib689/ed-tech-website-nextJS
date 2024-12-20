@@ -2,6 +2,7 @@ import Navbar from "@/components/common/Navbar";
 import Banner from "@/components/home/Banner";
 import ContactForm from "@/components/home/ContactForm";
 import Recommend from "@/components/home/Recommend";
+import WhyLearnProgramming from "@/components/home/WhyLearnProgramming";
 
 
 export default function Home() {
@@ -10,6 +11,7 @@ export default function Home() {
      <Navbar/>
      <Banner/>
      <Recommend/>
+     <WhyLearnProgramming/>
      <ContactForm/>
     </div>
   );
