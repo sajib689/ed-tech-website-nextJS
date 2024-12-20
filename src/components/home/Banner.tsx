@@ -44,7 +44,7 @@ const Banner = () => {
           sx={{
             fontWeight: 700,
             color: "#21BF73",
-            fontSize: { xs: "2.5rem", sm: "4rem" },
+            fontSize: { xs: "2.5rem", sm: "6rem" },
           }}
         >
           Learn Code
