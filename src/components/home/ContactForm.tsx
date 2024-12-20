@@ -44,8 +44,7 @@ const ContactForm = () => {
           <Typography
             variant="h4"
             sx={{
-              fontWeight: "600",
-              color: "black",
+              fontWeight: '600', color: 'rgba(0, 0, 0, 0.55)',
               marginBottom: 4,
               padding: "10px",
               backgroundImage: `url('/assets/images/section-title-bg.svg')`,
@@ -180,7 +179,7 @@ const ContactForm = () => {
           <CardContent>
             <Typography
               variant="h5"
-              sx={{ fontWeight: "bold", marginBottom: 2 }}
+              sx={{ fontWeight: "600", marginBottom: 2 }}
             >
               Contact Information
             </Typography>
@@ -188,19 +187,19 @@ const ContactForm = () => {
               <Box display="flex" alignItems="center" gap={2} mb={2}>
                 <LocationOn fontSize="small" />
                 <Typography>
-                  <strong>Location:</strong> Sadullapur, Rangpur, Bangladesh
+                  <strong>Location:</strong> Jashore, Bangladesh
                 </Typography>
               </Box>
               <Box display="flex" alignItems="center" gap={2} mb={2}>
                 <Email fontSize="small" />
                 <Typography>
-                  <strong>Email:</strong> info@rabbil.com
+                  <strong>Email:</strong> info@learncode.com
                 </Typography>
               </Box>
               <Box display="flex" alignItems="center" gap={2} mb={2}>
                 <Phone fontSize="small" />
                 <Typography>
-                  <strong>Phone:</strong> +8801774688159
+                  <strong>Phone:</strong> +8801611-970979
                 </Typography>
               </Box>
             </Box>
