@@ -48,7 +48,6 @@ const ContactForm = () => {
               marginBottom: 4,
               padding: "10px",
               backgroundImage: `url('/assets/images/section-title-bg.svg')`,
-
               backgroundRepeat: "no-repeat",
             }}
           >
@@ -178,10 +177,11 @@ const ContactForm = () => {
         >
           <CardContent>
             <Typography
-              variant="h5"
-              sx={{ fontWeight: "600", marginBottom: 2 }}
+              variant="h4"
+              sx={{ fontWeight: "600", marginBottom: 2, backgroundImage: `url('/assets/images/section-title-bg.svg')`,
+                backgroundRepeat: "no-repeat",  }}
             >
-              Contact Information
+              Information
             </Typography>
             <Box sx={{ marginBottom: 3 }}>
               <Box display="flex" alignItems="center" gap={2} mb={2}>
