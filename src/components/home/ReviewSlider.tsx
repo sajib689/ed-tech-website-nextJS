@@ -64,10 +64,23 @@ const ReviewSlider = () => {
   };
 
   return (
-    <Box sx={{ backgroundColor: "#21BF73", padding: "40px", color: "white", marginTop: '40px' }}>
+    <Box
+      sx={{
+        backgroundColor: "#21BF73",
+        padding: "40px",
+        color: "white",
+        marginTop: "40px",
+      }}
+    >
       <Typography
         variant="h4"
-        sx={{ textAlign: "center", marginBottom: "40px",marginTop: '25px' }}
+        sx={{
+          textAlign: "center",
+          marginBottom: "55px",
+          marginTop: "15px",
+          backgroundImage: `url('/assets/images/section-title-bg.svg')`,
+          backgroundRepeat: "no-repeat",
+        }}
       >
         What Does the Learner Community Think?
       </Typography>
