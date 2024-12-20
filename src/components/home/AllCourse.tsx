@@ -11,6 +11,13 @@ type Course = {
 };
 
 const CourseCard: React.FC<{ course: Course }> = ({ course }) => {
+  const imageUrls: { [key: number]: string } = {
+    1: "https://www.split.io/wp-content/uploads/Blog-2160x1080_GitandGitHubatWork-1-1920x960.jpg", // Master on Git and GitHub
+    2: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUzle1fDjtlTu2cpeOCzGeJOyq5XCubwJo9Q&s", // Master on Python Programming
+    3: "https://upload.wikimedia.org/wikipedia/commons/6/6a/Software_engineering_approaches.png", // Software Engineering Techniques
+    4: "https://miro.medium.com/v2/resize:fit:1500/format:webp/1*lkUQW_UKqd9_sgHX2uFvhw.png", // Advanced JavaScript Techniques
+  };
+
   return (
     <Card
       sx={{
@@ -26,11 +33,11 @@ const CourseCard: React.FC<{ course: Course }> = ({ course }) => {
         },
       }}
     >
-      {/* Placeholder for Course Image */}
+      {/* Course Image */}
       <CardMedia
         component="img"
         height="140"
-        image="https://via.placeholder.com/300x140"
+        image={imageUrls[course.id]}  // Dynamically changing the image based on course id
         alt={course.courseName}
         sx={{ borderRadius: "8px 8px 0 0" }}
       />
@@ -74,7 +81,7 @@ const AllCourse: React.FC = () => {
     {
       id: 1,
       courseName: "Master on Git and GitHub",
-      providerName: "Rabbil Hasan",
+      providerName: "Sajib Hasan",
       providerTitle: "Software Engineering Manager",
       price: "500",
       totalEnrolls: "41",
@@ -95,14 +102,13 @@ const AllCourse: React.FC = () => {
       price: "500",
     },
     {
-        id: 4,
-        courseName: "Advanced JavaScript Techniques",
-        providerName: "Sarah Williams",
-        providerTitle: "Frontend Developer",
-        price: "299",
-        totalEnrolls: "1,200",
-      }
-      
+      id: 4,
+      courseName: "Advanced JavaScript Techniques",
+      providerName: "Sarah Williams",
+      providerTitle: "Frontend Developer",
+      price: "299",
+      totalEnrolls: "1,200",
+    },
   ];
 
   return (
@@ -111,7 +117,7 @@ const AllCourse: React.FC = () => {
       <Typography
         variant="h4"
         sx={{
-            fontWeight: '600', color: 'rgba(0, 0, 0, 0.55)',
+          fontWeight: "600", color: "rgba(0, 0, 0, 0.55)",
           textAlign: "center",
           marginBottom: "24px",
         }}
