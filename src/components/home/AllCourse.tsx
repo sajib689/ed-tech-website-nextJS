@@ -14,7 +14,7 @@ const CourseCard: React.FC<{ course: Course }> = ({ course }) => {
   const imageUrls: { [key: number]: string } = {
     1: "https://www.split.io/wp-content/uploads/Blog-2160x1080_GitandGitHubatWork-1-1920x960.jpg", // Master on Git and GitHub
     2: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUzle1fDjtlTu2cpeOCzGeJOyq5XCubwJo9Q&s", // Master on Python Programming
-    3: "https://upload.wikimedia.org/wikipedia/commons/6/6a/Software_engineering_approaches.png", // Software Engineering Techniques
+    3: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHX2CLEmQaEY7AT4tmzaxQc8QiyY_euS10_A&s", // Software Engineering Techniques
     4: "https://miro.medium.com/v2/resize:fit:1500/format:webp/1*lkUQW_UKqd9_sgHX2uFvhw.png", // Advanced JavaScript Techniques
   };
 
