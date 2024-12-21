@@ -14,7 +14,8 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-
+import Image from "next/image";
+import logo from '../../../public/assets/images/logo (3).png'
 const pages = ["Home", "Pricing", "Blog", "Contact Us", "About Us"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -25,7 +26,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50); 
+      setScrolled(window.scrollY > 50); // Change threshold as needed
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -49,9 +50,9 @@ const Navbar = () => {
     <AppBar
       position="fixed"
       sx={{
-        backgroundColor: scrolled ? "#fff" : "transparent", 
-        boxShadow: scrolled ? "0px 2px 4px rgba(0, 0, 0, 0.1)" : "none", 
-        transition: "background-color 0.3s ease, box-shadow 0.3s ease", 
+        backgroundColor: scrolled ? "#fff" : "transparent", // White when scrolled
+        boxShadow: scrolled ? "0px 2px 4px rgba(0, 0, 0, 0.1)" : "none", // Add shadow when scrolled
+        transition: "background-color 0.3s ease, box-shadow 0.3s ease", // Smooth transition
       }}
     >
       <Container maxWidth="xl">
@@ -75,7 +76,12 @@ const Navbar = () => {
               },
             }}
           >
-            Learn Code
+             <Image
+             src={logo}
+              alt='logo'
+              width={120}
+              height={90}
+            />
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
