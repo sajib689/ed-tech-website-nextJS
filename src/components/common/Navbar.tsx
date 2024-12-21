@@ -25,7 +25,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50); // Change threshold as needed
+      setScrolled(window.scrollY > 50); 
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -49,9 +49,9 @@ const Navbar = () => {
     <AppBar
       position="fixed"
       sx={{
-        backgroundColor: scrolled ? "#fff" : "transparent", // White when scrolled
-        boxShadow: scrolled ? "0px 2px 4px rgba(0, 0, 0, 0.1)" : "none", // Add shadow when scrolled
-        transition: "background-color 0.3s ease, box-shadow 0.3s ease", // Smooth transition
+        backgroundColor: scrolled ? "#fff" : "transparent", 
+        boxShadow: scrolled ? "0px 2px 4px rgba(0, 0, 0, 0.1)" : "none", 
+        transition: "background-color 0.3s ease, box-shadow 0.3s ease", 
       }}
     >
       <Container maxWidth="xl">
