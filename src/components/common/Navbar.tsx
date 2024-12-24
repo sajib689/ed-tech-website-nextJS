@@ -133,7 +133,12 @@ const Navbar = () => {
               textDecoration: "none",
             }}
           >
-            LOGO
+             <Image
+             src={logo}
+              alt='logo'
+              width={120}
+              height={90}
+            />
           </Typography>
           <Box sx={{ flexGrow: 1, justifyContent: "center", display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
