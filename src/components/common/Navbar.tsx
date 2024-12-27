@@ -18,7 +18,7 @@ import Image from "next/image";
 import logo from '../../../public/assets/images/logo (3).png'
 const pages = [
   { name: "Home", link: "/" },
-  { name: "Course Details", link: "/course-details" },
+  { name: "Course Details", link: "/course_details" },
   { name: "Blog", link: "/blog" },
   { name: "My Classes", link: "/my-classes" },
   { name: "About Us", link: "/about-us" },
