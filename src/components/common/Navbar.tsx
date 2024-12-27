@@ -16,8 +16,19 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import Image from "next/image";
 import logo from '../../../public/assets/images/logo (3).png'
-const pages = ["Home", "Course Details", "Blog", "My Classes", "About Us"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const pages = [
+  { name: "Home", link: "/" },
+  { name: "Course Details", link: "/course-details" },
+  { name: "Blog", link: "/blog" },
+  { name: "My Classes", link: "/my-classes" },
+  { name: "About Us", link: "/about-us" },
+];
+const settings = [
+  { name: "Profile", link: "/profile" },
+  { name: "Account", link: "/account" },
+  { name: "Dashboard", link: "/dashboard" },
+  { name: "Logout", link: "/logout" },
+];
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
