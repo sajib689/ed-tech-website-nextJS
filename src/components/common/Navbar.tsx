@@ -16,7 +16,7 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import Image from "next/image";
 import logo from '../../../public/assets/images/logo (3).png'
-const pages = ["Home", "Pricing", "Blog", "Contact Us", "About Us"];
+const pages = ["Home", "Course Details", "Blog", "My Classes", "About Us"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const Navbar = () => {
