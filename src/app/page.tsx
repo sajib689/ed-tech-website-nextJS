@@ -1,4 +1,4 @@
-import Navbar from "@/components/common/Navbar";
+
 import { AllCourse } from "@/components/home/AllCourse";
 import Banner from "@/components/home/Banner";
 import ContactForm from "@/components/home/ContactForm";
@@ -11,7 +11,7 @@ import WhyLearnProgramming from "@/components/home/WhyLearnProgramming";
 export default function Home() {
   return (
     <div className="font-[family-name:var(--font-geist-sans)]">
-     <Navbar/>
+     
      <Banner/>
      <Recommend/>
      <WhyLearnProgramming/>
