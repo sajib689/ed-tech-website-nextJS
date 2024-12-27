@@ -121,8 +121,12 @@ const Navbar = () => {
               onClose={handleCloseNavMenu}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key={page.name} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">
+                    <a href={page.link} style={{ textDecoration: "none", color: "inherit" }}>
+                      {page.name}
+                    </a>
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -152,20 +156,19 @@ const Navbar = () => {
             />
           </Typography>
           <Box sx={{ flexGrow: 1, justifyContent: "center", display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
+          {pages.map((page) => (
               <Button
-                key={page}
+                key={page.name}
+                href={page.link}
                 sx={{
                   my: 2,
                   color: "rgba(0, 0, 0, 0.55)",
                   display: "block",
-                  fontWeight: 700, 
-                  "&:hover": {
-                    color: "#21BF73",
-                  },
+                  fontWeight: 700,
+                  "&:hover": { color: "#21BF73" },
                 }}
               >
-                {page}
+                {page.name}
               </Button>
             ))}
           </Box>
@@ -192,9 +195,13 @@ const Navbar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+             {settings.map((setting) => (
+                <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">
+                    <a href={setting.link} style={{ textDecoration: "none", color: "inherit" }}>
+                      {setting.name}
+                    </a>
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
