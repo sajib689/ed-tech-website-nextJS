@@ -104,13 +104,15 @@ const NextBatchEnrollment = () => {
         }}
       >
         If You Are Interested To{" "}
-        <span style={{ color: "#ff7043", fontWeight: 600 }}>Enroll In 12th Batch</span>, Register On
-        The Website
+        <span style={{ color: "#ff7043", fontWeight: 600 }}>
+          Enroll In 12th Batch
+        </span>
+        , Register On The Website
       </Typography>
       <Button
         variant="contained"
         sx={{
-          background: "linear-gradient(to right, #7b1fa2, #ab47bc)",
+          background: "#21BF73", 
           color: "#ffffff",
           px: 4,
           py: 1,
@@ -118,7 +120,7 @@ const NextBatchEnrollment = () => {
           fontWeight: 600,
           textTransform: "none",
           "&:hover": {
-            background: "linear-gradient(to right, #6a1b9a, #9c27b0)",
+            background: "#1eaa66",
           },
         }}
       >
