@@ -1,5 +1,6 @@
 import CourseBanner from "@/components/courseDetailsPages/CourseBanner";
 import NextBatchEnrollment from "@/components/courseDetailsPages/NextBatchEnrollment";
+import WhatYouLearn from "@/components/courseDetailsPages/WhatYouLearn";
 
 
 export default function page() {
@@ -7,6 +8,7 @@ export default function page() {
     <div>
         <CourseBanner/>
         <NextBatchEnrollment/>
+        <WhatYouLearn/>
     </div>
   )
 }
