@@ -33,7 +33,7 @@ const CourseIncluded = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "#B0EACD", // Light background
+        backgroundColor: "#B0EACD", 
         py: 6,
         px: 4,
         color: "black",
