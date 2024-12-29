@@ -5,35 +5,35 @@ import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import LightbulbIcon from "@mui/icons-material/Lightbulb";
 import CodeIcon from "@mui/icons-material/Code";
 
-const CourseInclued = () => {
-    const highlights = [
-        {
-          icon: <PlayCircleIcon fontSize="large" sx={{ color: "#A259FF" }} />,
-          title: "950+ Videos",
-          description:
-            "The Programming Hero web development course includes 950 videos, providing extensive coverage of MERN stack...",
-          color: "#A259FF",
-        },
-        {
-          icon: <LightbulbIcon fontSize="large" sx={{ color: "#FFA500" }} />,
-          title: "45+ Project",
-          description:
-            "The course includes 45 projects that give students many chances to practice what they learn. These projects...",
-          color: "#FFA500",
-        },
-        {
-          icon: <CodeIcon fontSize="large" sx={{ color: "#22C55E" }} />,
-          title: "10+ Assignment",
-          description:
-            "The course has 12 assignments that help check how well students understand and use what they’ve learned. Th...",
-          color: "#22C55E",
-        },
-      ];
-    
-    return (
-        <Box
+const CourseIncluded = () => {
+  const highlights = [
+    {
+      icon: <PlayCircleIcon fontSize="large" sx={{ color: "#A259FF" }} />,
+      title: "950+ Videos",
+      description:
+        "The Programming Hero web development course includes 950 videos, providing extensive coverage of MERN stack...",
+      color: "#A259FF",
+    },
+    {
+      icon: <LightbulbIcon fontSize="large" sx={{ color: "#FFA500" }} />,
+      title: "45+ Project",
+      description:
+        "The course includes 45 projects that give students many chances to practice what they learn. These projects...",
+      color: "#FFA500",
+    },
+    {
+      icon: <CodeIcon fontSize="large" sx={{ color: "#22C55E" }} />,
+      title: "10+ Assignment",
+      description:
+        "The course has 12 assignments that help check how well students understand and use what they’ve learned. Th...",
+      color: "#22C55E",
+    },
+  ];
+
+  return (
+    <Box
       sx={{
-        backgroundColor: "#B0EACD", // Dark background
+        backgroundColor: "#B0EACD", // Light background
         py: 6,
         px: 4,
         color: "black",
@@ -48,10 +48,11 @@ const CourseInclued = () => {
                 borderRadius: "12px",
                 padding: "24px",
                 textAlign: "center",
-                backgroundColor: "#1A152E",
+                backgroundColor: "#B0EACD", 
+                transition: "transform 0.3s, background-color 0.3s",
                 "&:hover": {
                   transform: "scale(1.05)",
-                  transition: "transform 0.3s",
+                  backgroundColor: "#1A152E",
                 },
               }}
             >
@@ -68,7 +69,11 @@ const CourseInclued = () => {
               </Typography>
               <Typography
                 variant="body2"
-                sx={{ color: "#D1D5DB", lineHeight: "1.6" }}
+                sx={{
+                  color: "#4B5563",
+                  lineHeight: "1.6",
+                  "&:hover": { color: "#FFFFFF" },
+                }}
               >
                 {item.description}{" "}
                 <span
@@ -86,7 +91,7 @@ const CourseInclued = () => {
         ))}
       </Grid>
     </Box>
-    );
+  );
 };
 
-export default CourseInclued;
+export default CourseIncluded;
