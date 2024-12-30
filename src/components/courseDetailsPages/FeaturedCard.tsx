@@ -37,6 +37,7 @@ const features = [
 
 const FeatureCard = () => {
   return (
+   
     <Box
       sx={{
         backgroundColor: "#B0EACD",
