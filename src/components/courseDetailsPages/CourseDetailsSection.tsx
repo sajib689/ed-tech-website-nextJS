@@ -55,8 +55,8 @@ const CourseDetailsSection = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "#0A1929",
-        color: "white",
+        backgroundColor: "#B0EACD",
+        color: "#000",
         padding: "40px",
         borderRadius: "12px",
       }}
