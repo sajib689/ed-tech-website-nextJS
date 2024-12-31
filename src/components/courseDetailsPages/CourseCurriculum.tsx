@@ -101,7 +101,7 @@ const modules = [
 
 const CourseCurriculum = () => {
   return (
-    <Box sx={{ backgroundColor: "#B0EACD", paddingTop: "40px" }}>
+    <Box sx={{ backgroundColor: "#fff", paddingTop: "40px" }}>
       <Box
         sx={{
           width: "100%",
