@@ -5,7 +5,7 @@ const CourseBanner = () => {
   return (
     <Box
       sx={{
-        background: "#B0EACD",
+        background: "#fff",
         color: "black",
         textAlign: "center",
         py: 8,
