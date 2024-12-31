@@ -47,7 +47,7 @@ const SpecialtySection = () => {
       sx={{
         backgroundColor: "#fff",
         py: 8,
-        px: { xs: 2, sm: 4 }, // Add padding for mobile and larger screens
+        px: { xs: 2, sm: 4 }, 
       }}
     >
       <Box sx={{ textAlign: "center", mb: 6 }}>
