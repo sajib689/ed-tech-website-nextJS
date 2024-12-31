@@ -1,4 +1,5 @@
 import CourseBanner from "@/components/courseDetailsPages/CourseBanner";
+import CourseCurriculum from "@/components/courseDetailsPages/CourseCurriculum";
 import CourseInclued from "@/components/courseDetailsPages/CourseInclued";
 import FeatureCard from "@/components/courseDetailsPages/FeaturedCard";
 import NextBatchEnrollment from "@/components/courseDetailsPages/NextBatchEnrollment";
@@ -13,6 +14,7 @@ export default function page() {
         <WhatYouLearn/>
         <CourseInclued/>
         <FeatureCard/>
+        <CourseCurriculum/>
     </div>
   )
 }
