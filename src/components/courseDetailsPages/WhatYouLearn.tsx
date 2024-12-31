@@ -18,7 +18,7 @@ const WhatYouLearn = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "#B0EACD", 
+        background: "#fff",
         color: "black",
         textAlign: "center",
         py: 4,
@@ -47,7 +47,7 @@ const WhatYouLearn = () => {
           flexWrap: "wrap", 
           justifyContent: "center",
           padding: 2,
-          backgroundColor: "#B0EACD", 
+          background: "#fff",
         }}
       >
         {skills.map((skill, index) => (
