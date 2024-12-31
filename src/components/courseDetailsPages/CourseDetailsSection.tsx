@@ -58,7 +58,6 @@ const CourseDetailsSection = () => {
         backgroundColor: "#B0EACD",
         color: "#000",
         padding: "40px",
-        borderRadius: "12px",
       }}
     >
       <Grid container spacing={4}>
