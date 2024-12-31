@@ -74,7 +74,7 @@ const CourseDetailsSection = () => {
         >
           <Box sx={{ textAlign: "start" }}>
             <Typography variant="h4" sx={{ mb: 3, fontWeight: "bold" }}>
-              How Will This Course Work?
+            How Will This Course <br/> Work_?
             </Typography>
             <Typography variant="body1" sx={{ mb: 4 }}>
               This course guides you from basics to mastering the MERN stack
