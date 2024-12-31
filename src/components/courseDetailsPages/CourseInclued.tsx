@@ -48,7 +48,7 @@ const CourseIncluded = () => {
                 borderRadius: "12px",
                 padding: "24px",
                 textAlign: "center",
-                backgroundColor: "#B0EACD",
+                backgroundColor: "#1A152E",
                 transition: "transform 0.3s, background-color 0.3s",
                 "&:hover": {
                   transform: "scale(1.05)",
