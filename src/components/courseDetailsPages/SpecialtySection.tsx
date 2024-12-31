@@ -45,7 +45,7 @@ const SpecialtySection = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "#B0EACD",
+        backgroundColor: "#fff",
         py: 8,
         px: { xs: 2, sm: 4 }, // Add padding for mobile and larger screens
       }}
