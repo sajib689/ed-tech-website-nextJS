@@ -128,7 +128,7 @@ const Footer = () => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              gap: 4, // Space between items
+              gap: 4, 
             }}
           >
             <Box sx={{ textAlign: "center" }}>
