@@ -68,6 +68,8 @@ const SpecialtySection = () => {
                 "&:hover": {
                   transform: "scale(1.05)",
                 },
+                height: 'auto',
+                minHeight: 180, 
               }}
             >
               <Box
