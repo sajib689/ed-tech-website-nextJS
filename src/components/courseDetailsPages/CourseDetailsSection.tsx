@@ -1,5 +1,12 @@
 import React from "react";
-import { Box, Grid, Typography, Card, CardContent, Button } from "@mui/material";
+import {
+  Box,
+  Grid,
+  Typography,
+  Card,
+  CardContent,
+  Button,
+} from "@mui/material";
 
 const courseDetails = [
   {
@@ -46,16 +53,33 @@ const courseDetails = [
 
 const CourseDetailsSection = () => {
   return (
-    <Box sx={{ backgroundColor: "#0A1929", color: "white", padding: "40px", borderRadius: "12px" }}>
+    <Box
+      sx={{
+        backgroundColor: "#0A1929",
+        color: "white",
+        padding: "40px",
+        borderRadius: "12px",
+      }}
+    >
       <Grid container spacing={4}>
         {/* Details Section */}
-        <Grid item xs={12} md={5}>
-          <Box sx={{ padding: "20px", textAlign: "center" }}>
+        <Grid
+          item
+          xs={12}
+          md={5}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Box sx={{ textAlign: "center" }}>
             <Typography variant="h4" sx={{ mb: 3, fontWeight: "bold" }}>
               How Will This Course Work?
             </Typography>
             <Typography variant="body1" sx={{ mb: 4 }}>
-              This course guides you from basics to mastering the MERN stack with step-by-step lessons, hands-on projects, and assessments.
+              This course guides you from basics to mastering the MERN stack
+              with step-by-step lessons, hands-on projects, and assessments.
             </Typography>
             <Button
               variant="contained"
