@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, Card, CardContent, Button } from "@mui/material";
+import { Box, Grid, Typography, Card, CardContent, Button } from "@mui/material";
 
 const courseDetails = [
   {
@@ -46,77 +46,87 @@ const courseDetails = [
 
 const CourseDetailsSection = () => {
   return (
-    <Box
-      sx={{
-        backgroundColor: "#0A1929",
-        color: "white",
-        padding: "40px",
-        maxHeight: "600px",
-        overflowY: "auto",
-        borderRadius: "12px",
-        boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.3)",
-        scrollbarWidth: "thin",
-        scrollbarColor: "#8E2DE2 transparent",
-        "&::-webkit-scrollbar": {
-          width: "8px",
-        },
-        "&::-webkit-scrollbar-thumb": {
-          backgroundColor: "#8E2DE2",
-          borderRadius: "4px",
-        },
-        "&::-webkit-scrollbar-track": {
-          backgroundColor: "transparent",
-        },
-      }}
-    >
-      <Typography variant="h4" sx={{ mb: 3, textAlign: "center", fontWeight: "bold" }}>
-        How Will This Course Work?
-      </Typography>
-      <Typography variant="body1" sx={{ mb: 4, textAlign: "center", maxWidth: "600px", mx: "auto" }}>
-        This course guides you from basics to mastering the MERN stack with step-by-step lessons, hands-on projects, and assessments.
-      </Typography>
-      <Button
-        variant="contained"
-        sx={{
-          backgroundImage: "linear-gradient(90deg, #8E2DE2, #4A00E0)",
-          mb: 4,
-          px: 4,
-          py: 1.5,
-          fontSize: "16px",
-          fontWeight: "bold",
-          borderRadius: "8px",
-        }}
-      >
-        Enroll Now
-      </Button>
-      <Box sx={{ display: "grid", gap: "16px", gridTemplateColumns: "1fr" }}>
-        {courseDetails.map((detail, index) => (
-          <Card
-            key={index}
+    <Box sx={{ backgroundColor: "#0A1929", color: "white", padding: "40px", borderRadius: "12px" }}>
+      <Grid container spacing={4}>
+        {/* Details Section */}
+        <Grid item xs={12} md={5}>
+          <Box sx={{ padding: "20px", textAlign: "center" }}>
+            <Typography variant="h4" sx={{ mb: 3, fontWeight: "bold" }}>
+              How Will This Course Work?
+            </Typography>
+            <Typography variant="body1" sx={{ mb: 4 }}>
+              This course guides you from basics to mastering the MERN stack with step-by-step lessons, hands-on projects, and assessments.
+            </Typography>
+            <Button
+              variant="contained"
+              sx={{
+                backgroundImage: "linear-gradient(90deg, #8E2DE2, #4A00E0)",
+                px: 4,
+                py: 1.5,
+                fontSize: "16px",
+                fontWeight: "bold",
+                borderRadius: "8px",
+              }}
+            >
+              Enroll Now
+            </Button>
+          </Box>
+        </Grid>
+
+        {/* Card Scrolling Section */}
+        <Grid item xs={12} md={7}>
+          <Box
             sx={{
-              backgroundColor: "#111927",
-              color: "white",
+              maxHeight: "500px",
+              overflowY: "auto",
               padding: "20px",
-              borderRadius: "8px",
-              boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)",
-              "&:hover": {
-                boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.3)",
-                transform: "scale(1.02)",
-                transition: "0.3s ease-in-out",
+              backgroundColor: "#111927",
+              borderRadius: "12px",
+              boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.3)",
+              scrollbarWidth: "thin",
+              scrollbarColor: "#8E2DE2 transparent",
+              "&::-webkit-scrollbar": {
+                width: "8px",
+              },
+              "&::-webkit-scrollbar-thumb": {
+                backgroundColor: "#8E2DE2",
+                borderRadius: "4px",
+              },
+              "&::-webkit-scrollbar-track": {
+                backgroundColor: "transparent",
               },
             }}
           >
-            <CardContent>
-              <Typography variant="h6" sx={{ mb: 1.5, fontWeight: "bold" }}>
-                {detail.title}
-              </Typography>
-              <Typography variant="body2" sx={{ lineHeight: 1.6 }}>
-                {detail.description}
-              </Typography>
-            </CardContent>
-          </Card>
-        ))}
-      </Box>
+            {courseDetails.map((detail, index) => (
+              <Card
+                key={index}
+                sx={{
+                  backgroundColor: "#1A202C",
+                  color: "white",
+                  marginBottom: "16px",
+                  padding: "20px",
+                  borderRadius: "8px",
+                  boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)",
+                  "&:hover": {
+                    boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.3)",
+                    transform: "scale(1.02)",
+                    transition: "0.3s ease-in-out",
+                  },
+                }}
+              >
+                <CardContent>
+                  <Typography variant="h6" sx={{ mb: 1.5, fontWeight: "bold" }}>
+                    {detail.title}
+                  </Typography>
+                  <Typography variant="body2" sx={{ lineHeight: 1.6 }}>
+                    {detail.description}
+                  </Typography>
+                </CardContent>
+              </Card>
+            ))}
+          </Box>
+        </Grid>
+      </Grid>
     </Box>
   );
 };
