@@ -106,11 +106,11 @@ const CourseDetailsSection = () => {
               maxHeight: "500px",
               overflowY: "auto",
               padding: "20px",
-              backgroundColor: "#111927",
+              backgroundColor: "#B0EACD",
               borderRadius: "12px",
               boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.3)",
               scrollbarWidth: "thin",
-              scrollbarColor: "#8E2DE2 transparent",
+              scrollbarColor: "#1E9E5F transparent",
               "&::-webkit-scrollbar": {
                 width: "8px",
               },
