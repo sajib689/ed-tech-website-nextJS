@@ -7,7 +7,7 @@ const NextBatchEnrollment = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "#B0EACD", 
+        background: "#fff",
         color: "black",
         textAlign: "center",
         py: 4,
