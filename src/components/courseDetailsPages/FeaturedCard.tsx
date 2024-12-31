@@ -40,7 +40,7 @@ const FeatureCard = () => {
    
     <Box
       sx={{
-        backgroundColor: "#B0EACD",
+        backgroundColor: "#fff",
         padding: "32px",
         color: "white",
       }}
