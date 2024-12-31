@@ -73,7 +73,7 @@ const CourseDetailsSection = () => {
             justifyContent: "center",
           }}
         >
-          <Box sx={{ textAlign: "center" }}>
+          <Box sx={{ textAlign: "start" }}>
             <Typography variant="h4" sx={{ mb: 3, fontWeight: "bold" }}>
               How Will This Course Work?
             </Typography>
@@ -84,12 +84,15 @@ const CourseDetailsSection = () => {
             <Button
               variant="contained"
               sx={{
-                backgroundImage: "linear-gradient(90deg, #8E2DE2, #4A00E0)",
+                backgroundColor: "#21BF73",
                 px: 4,
                 py: 1.5,
                 fontSize: "16px",
                 fontWeight: "bold",
                 borderRadius: "8px",
+                "$:hover": {
+                  backgroundColor: "#1E9E5F"
+                }
               }}
             >
               Enroll Now
