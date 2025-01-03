@@ -1,7 +1,8 @@
 'use client'
 
-import { GoogleAuthProvider,GithubAuthProvider } from "firebase/auth";
+import { GoogleAuthProvider,GithubAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { createContext, ReactNode } from "react";
+import auth from './../Firebase/Firebase.init';
 
 interface AuthContextType {
     user?: string; 
@@ -17,10 +18,17 @@ interface AuthProviderProps {
 const googleProvider = new GoogleAuthProvider()
 const githubProvider = new GithubAuthProvider()
 const AuthProvider = ({ children }: AuthProviderProps) => {
-    const authInfo: AuthContextType = {
-        user: "Guest",
-        login: () => console.log("Logged in"),
-        logout: () => console.log("Logged out"),
+
+    const signWithForm = (email,password) => {
+        return signInWithEmailAndPassword(auth, email, password)
+    }
+    const signWithGoogle = () => {
+        return signInWithPopup(auth, googleProvider)
+    }
+    
+    const authInfo = {
+        signWithForm,
+        signWithGoogle
     };
 
     return (
