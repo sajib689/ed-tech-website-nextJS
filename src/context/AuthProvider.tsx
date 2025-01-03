@@ -1,11 +1,24 @@
-import { createContext } from "react";
+import { createContext, ReactNode } from "react";
 
-export const AuthContext = createContext(null)
-const AuthProvider = ({children}) => {
+interface AuthContextType {
+    user?: string; 
+    login?: () => void;
+    logout?: () => void;
+}
 
-    const authInfo = {
-       
-    }
+export const AuthContext = createContext<AuthContextType | null>(null);
+
+interface AuthProviderProps {
+    children: ReactNode; 
+}
+
+const AuthProvider = ({ children }: AuthProviderProps) => {
+    const authInfo: AuthContextType = {
+        user: "Guest",
+        login: () => console.log("Logged in"),
+        logout: () => console.log("Logged out"),
+    };
+
     return (
         <AuthContext.Provider value={authInfo}>
             {children}
