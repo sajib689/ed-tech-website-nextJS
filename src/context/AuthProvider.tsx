@@ -1,3 +1,5 @@
+'use client'
+
 import { GoogleAuthProvider,GithubAuthProvider } from "firebase/auth";
 import { createContext, ReactNode } from "react";
 
