@@ -1,3 +1,4 @@
+import { GoogleAuthProvider } from "firebase/auth";
 import { createContext, ReactNode } from "react";
 
 interface AuthContextType {
@@ -11,7 +12,7 @@ export const AuthContext = createContext<AuthContextType | null>(null);
 interface AuthProviderProps {
     children: ReactNode; 
 }
-
+const googleProvider = new GoogleAuthProvider()
 const AuthProvider = ({ children }: AuthProviderProps) => {
     const authInfo: AuthContextType = {
         user: "Guest",
