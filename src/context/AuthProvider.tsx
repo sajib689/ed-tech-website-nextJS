@@ -1,34 +1,47 @@
-'use client'
+'use client';
 
-import { GoogleAuthProvider,GithubAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { 
+    GoogleAuthProvider, 
+    GithubAuthProvider, 
+    signInWithEmailAndPassword, 
+    signInWithPopup, 
+    UserCredential 
+} from "firebase/auth";
 import { createContext, ReactNode } from "react";
 import auth from './../Firebase/Firebase.init';
 
+// Define the context type
 interface AuthContextType {
-    user?: string; 
-    login?: () => void;
-    logout?: () => void;
+    signWithForm: (email: string, password: string) => Promise<UserCredential>;
+    signWithGoogle: () => Promise<UserCredential>;
 }
 
+// Create the context with the defined type
 export const AuthContext = createContext<AuthContextType | null>(null);
 
 interface AuthProviderProps {
-    children: ReactNode; 
+    children: ReactNode;
 }
-const googleProvider = new GoogleAuthProvider()
-const githubProvider = new GithubAuthProvider()
-const AuthProvider = ({ children }: AuthProviderProps) => {
 
-    const signWithForm = (email,password) => {
-        return signInWithEmailAndPassword(auth, email, password)
-    }
-    const signWithGoogle = () => {
-        return signInWithPopup(auth, googleProvider)
-    }
-    
-    const authInfo = {
+// Initialize providers
+const googleProvider = new GoogleAuthProvider();
+const githubProvider = new GithubAuthProvider();
+
+const AuthProvider = ({ children }: AuthProviderProps) => {
+    // Sign in with email and password
+    const signWithForm = (email: string, password: string): Promise<UserCredential> => {
+        return signInWithEmailAndPassword(auth, email, password);
+    };
+
+    // Sign in with Google
+    const signWithGoogle = (): Promise<UserCredential> => {
+        return signInWithPopup(auth, googleProvider);
+    };
+
+    // Auth context value
+    const authInfo: AuthContextType = {
         signWithForm,
-        signWithGoogle
+        signWithGoogle,
     };
 
     return (
