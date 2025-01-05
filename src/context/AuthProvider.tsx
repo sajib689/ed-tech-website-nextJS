@@ -9,7 +9,7 @@ import {
     createUserWithEmailAndPassword,
     UserCredential
 } from "firebase/auth";
-import { createContext, ReactNode } from "react";
+import { createContext, ReactNode, useState } from "react";
 import auth from './../Firebase/Firebase.init';
 
 // Define the context type
@@ -33,6 +33,10 @@ const googleProvider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+
     // Create user with email and password
     const createUserWithForm = (email: string, password: string): Promise<UserCredential> => {
         return createUserWithEmailAndPassword(auth, email, password);
