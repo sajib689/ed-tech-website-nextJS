@@ -1,18 +1,26 @@
 'use client';
 
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Box, TextField, Button, Typography, Divider, Stack } from '@mui/material';
 import GoogleIcon from '@mui/icons-material/Google';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import { AuthContext } from '@/context/AuthProvider';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const authContext = useContext(AuthContext);
+
+  // Handle case where context might be null
+  if (!authContext) {
+    return <Typography>Loading...</Typography>; // Or handle error case
+  }
+
+  const { signWithForm } = authContext;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Email:', email);
-    console.log('Password:', password);
+    signWithForm(email, password);
   };
 
   return (
@@ -25,7 +33,7 @@ const Login = () => {
         minHeight: '100vh',
         backgroundColor: '#ffffff',
         px: 2,
-        marginTop: '60px'
+        marginTop: '60px',
       }}
     >
       <Box
@@ -131,7 +139,7 @@ const Login = () => {
           textAlign="center"
           mt={2}
         >
-           Don&apos;t have an account? <span style={{ color: '#21BF73', cursor: 'pointer' }}>Sign Up</span>
+          Don&apos;t have an account? <span style={{ color: '#21BF73', cursor: 'pointer' }}>Sign Up</span>
         </Typography>
       </Box>
     </Box>
