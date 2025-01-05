@@ -7,18 +7,21 @@ import {
     signInWithPopup,
     signOut,
     createUserWithEmailAndPassword,
-    UserCredential
+    UserCredential,
+    onAuthStateChanged,
+    User
 } from "firebase/auth";
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 import auth from './../Firebase/Firebase.init';
 
 // Define the context type
 interface AuthContextType {
+    user: User | null;  // Include user in context
     createUserWithForm: (email: string, password: string) => Promise<UserCredential>;
     signWithForm: (email: string, password: string) => Promise<UserCredential>;
     signWithGoogle: () => Promise<UserCredential>;
     signWithGithub: () => Promise<UserCredential>;
-    logout: () => Promise<void>;  // Updated the return type
+    logout: () => Promise<void>;
 }
 
 // Create the context with the defined type
@@ -33,9 +36,9 @@ const googleProvider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
-    const [user, setUser] = useState(null);
+    // State for the user and loading status
+    const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(true);
-
 
     // Create user with email and password
     const createUserWithForm = (email: string, password: string): Promise<UserCredential> => {
@@ -62,8 +65,19 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         return signOut(auth);
     };
 
+    // Track the authenticated user
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+            setLoading(false);
+        });
+
+        return () => unsubscribe();
+    }, []);
+
     // Auth context value
     const authInfo: AuthContextType = {
+        user,
         createUserWithForm,
         signWithForm,
         signWithGoogle,
@@ -73,7 +87,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
     return (
         <AuthContext.Provider value={authInfo}>
-            {children}
+            {!loading && children}
         </AuthContext.Provider>
     );
 };
