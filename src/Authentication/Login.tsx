@@ -1,9 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { Box, TextField, Button, Typography } from '@mui/material';
+import { Box, TextField, Button, Typography, Divider, Stack } from '@mui/material';
+import GoogleIcon from '@mui/icons-material/Google';
+import GitHubIcon from '@mui/icons-material/GitHub';
 
-const LoginForm = () => {
+const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -20,9 +22,10 @@ const LoginForm = () => {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        height: '100vh',
-        backgroundColor: '#f4f6f8',
-        p: 3,
+        minHeight: '100vh',
+        backgroundColor: '#ffffff',
+        px: 2,
+        marginTop: '60px'
       }}
     >
       <Box
@@ -32,13 +35,16 @@ const LoginForm = () => {
           width: '100%',
           maxWidth: 400,
           p: 4,
-          borderRadius: 2,
+          borderRadius: 3,
           boxShadow: 3,
-          backgroundColor: '#ffffff',
+          backgroundColor: '#f0f4f8',
         }}
       >
-        <Typography variant="h5" textAlign="center" mb={3} fontWeight="bold">
-          Login
+        <Typography variant="h5" textAlign="center" fontWeight="bold" mb={2}>
+          Welcome Back!
+        </Typography>
+        <Typography variant="body2" color="textSecondary" textAlign="center" mb={3}>
+          Please login to continue
         </Typography>
 
         <TextField
@@ -71,7 +77,8 @@ const LoginForm = () => {
             backgroundColor: '#21BF73',
             color: '#ffffff',
             fontWeight: 'bold',
-            py: 1.5,
+            py: 1.3,
+            mb: 2,
             '&:hover': {
               backgroundColor: '#1eaa66',
             },
@@ -79,9 +86,56 @@ const LoginForm = () => {
         >
           Login
         </Button>
+
+        <Divider sx={{ my: 2 }}>OR</Divider>
+
+        <Stack spacing={2}>
+          <Button
+            variant="outlined"
+            startIcon={<GoogleIcon />}
+            fullWidth
+            sx={{
+              borderColor: '#4285F4',
+              color: '#4285F4',
+              fontWeight: 'bold',
+              textTransform: 'none',
+              '&:hover': {
+                backgroundColor: '#e8f0fe',
+              },
+            }}
+          >
+            Sign in with Google
+          </Button>
+
+          <Button
+            variant="outlined"
+            startIcon={<GitHubIcon />}
+            fullWidth
+            sx={{
+              borderColor: '#333',
+              color: '#333',
+              fontWeight: 'bold',
+              textTransform: 'none',
+              '&:hover': {
+                backgroundColor: '#f6f6f6',
+              },
+            }}
+          >
+            Sign in with GitHub
+          </Button>
+        </Stack>
+
+        <Typography
+          variant="body2"
+          color="textSecondary"
+          textAlign="center"
+          mt={2}
+        >
+           Don&apos;t have an account? <span style={{ color: '#21BF73', cursor: 'pointer' }}>Sign Up</span>
+        </Typography>
       </Box>
     </Box>
   );
 };
 
-export default LoginForm;
+export default Login;
