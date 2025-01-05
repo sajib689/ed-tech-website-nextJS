@@ -16,7 +16,7 @@ import auth from './../Firebase/Firebase.init';
 
 // Define the context type
 interface AuthContextType {
-    user: User | null;  // Include user in context
+    user: User | null;  
     createUserWithForm: (email: string, password: string) => Promise<UserCredential>;
     signWithForm: (email: string, password: string) => Promise<UserCredential>;
     signWithGoogle: () => Promise<UserCredential>;
