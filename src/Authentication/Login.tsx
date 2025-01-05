@@ -20,8 +20,21 @@ const Login = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    signWithForm(email, password);
+  
+    signWithForm(email, password)
+      .then(() => {
+        alert('Success');
+      })
+      .catch((err) => {
+        if (err instanceof Error) {
+          alert(err.message); 
+        } else {
+          alert('An unknown error occurred');
+        }
+      });
   };
+  
+  
 
   return (
     <Box
