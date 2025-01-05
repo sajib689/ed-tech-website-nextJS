@@ -174,7 +174,9 @@ const Navbar = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
+            {/* login button */}
           <Button
+            href="/login"
         variant="contained"
         sx={{
           background: "#21BF73", 
@@ -191,6 +193,7 @@ const Navbar = () => {
       >
         Login
       </Button>
+      {/* user settings */}
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/assets/images/avater.jpg" />
