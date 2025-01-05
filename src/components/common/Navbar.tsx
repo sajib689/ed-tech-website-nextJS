@@ -174,6 +174,23 @@ const Navbar = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
+          <Button
+        variant="contained"
+        sx={{
+          background: "#21BF73", 
+          color: "#ffffff",
+          px: 2,
+          py: 1,
+          fontSize: "1rem",
+          fontWeight: 600,
+          textTransform: "none",
+          "&:hover": {
+            background: "#1eaa66",
+          },
+        }}
+      >
+        Login
+      </Button>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/assets/images/avater.jpg" />
