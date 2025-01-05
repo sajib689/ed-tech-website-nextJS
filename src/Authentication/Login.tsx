@@ -19,9 +19,18 @@ const Login = () => {
   const { signWithForm } = authContext;
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    signWithForm(email, password);
+    try {
+      e.preventDefault();
+      signWithForm(email, password);
+    } catch (err) {
+      if (err instanceof Error) {
+        alert(err.message); 
+      } else {
+        alert('An unknown error occurred'); 
+      }
+    }
   };
+  
 
   return (
     <Box
