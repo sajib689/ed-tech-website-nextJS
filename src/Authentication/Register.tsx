@@ -5,6 +5,7 @@ import { Box, TextField, Button, Typography, Divider, Stack } from '@mui/materia
 import GoogleIcon from '@mui/icons-material/Google';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { AuthContext } from '@/context/AuthProvider';
+import Link from 'next/link';
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -161,7 +162,10 @@ const Register = () => {
           textAlign="center"
           mt={2}
         >
-          Don&apos;t have an account? <span style={{ color: '#21BF73', cursor: 'pointer' }}>Sign Up</span>
+          Don&apos;t have an account?{" "}
+          <Link href="/login" passHref>
+            <span style={{ color: "#21BF73", cursor: "pointer" }}>Sign Up</span>
+          </Link>
         </Typography>
       </Box>
     </Box>
