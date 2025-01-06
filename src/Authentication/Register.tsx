@@ -114,7 +114,7 @@ const Register = () => {
             },
           }}
         >
-          Login
+          Register
         </Button>
 
         <Divider sx={{ my: 2 }}>OR</Divider>
