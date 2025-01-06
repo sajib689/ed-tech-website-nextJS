@@ -44,7 +44,8 @@ const Register = () => {
         minHeight: '100vh',
         backgroundColor: '#ffffff',
         px: 2,
-        marginTop: '60px',
+        marginTop: '100px',
+        marginBottom: '80px',
       }}
     >
       <Box
