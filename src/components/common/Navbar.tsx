@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -16,6 +16,7 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import Image from "next/image";
 import logo from '../../../public/assets/images/logo (3).png'
+import { AuthContext } from "@/context/AuthProvider";
 const pages = [
   { name: "Home", link: "/" },
   { name: "Course Details", link: "/course_details" },
@@ -34,7 +35,7 @@ const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
   const [scrolled, setScrolled] = useState(false);
-
+  const {user} = useContext(AuthContext);
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50); 
