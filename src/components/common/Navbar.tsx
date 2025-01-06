@@ -17,6 +17,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 import Image from "next/image";
 import logo from "../../../public/assets/images/logo (3).png";
 import { AuthContext } from "@/context/AuthProvider";
+import { useRouter } from "next/router";
 const pages = [
   { name: "Home", link: "/" },
   { name: "Course Details", link: "/course_details" },
@@ -28,7 +29,7 @@ const settings = [
   { name: "Profile", link: "/profile" },
   { name: "Account", link: "/account" },
   { name: "Dashboard", link: "/dashboard" },
-  { name: "Logout", link: "/logout" },
+  { name: "Logout" },
 ];
 
 const Navbar = () => {
@@ -45,13 +46,18 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   const authContext = useContext(AuthContext);
-
+  const router = useRouter();
   // Handle case where context might be null
   if (!authContext) {
-    return <Typography>Loading...</Typography>; // Or handle error case
+    return <Typography>Loading...</Typography>; 
   }
 
   const { user,logout } = authContext;
+  const handleLogOut = async () => {
+    await logout();
+    router.push("/"); 
+  };
+
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
