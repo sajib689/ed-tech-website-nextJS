@@ -51,7 +51,7 @@ const Navbar = () => {
     return <Typography>Loading...</Typography>; // Or handle error case
   }
 
-  const { user } = authContext;
+  const { user,logout } = authContext;
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
