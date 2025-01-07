@@ -24,7 +24,7 @@ const Login = () => {
     return <Typography>Loading...</Typography>; // Or handle error case
   }
 
-  const { signWithForm } = authContext;
+  const { signWithForm , signWithGoogle, signWithGithub} = authContext;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,7 +41,10 @@ const Login = () => {
         }
       });
   };
-
+  const handleGoogle = async () => {
+    signWithGoogle()
+  }
+  
   return (
     <Box
       sx={{
@@ -123,6 +126,7 @@ const Login = () => {
 
         <Stack spacing={2}>
           <Button
+          onClick={handleGoogle}
             variant="outlined"
             startIcon={<GoogleIcon />}
             fullWidth
