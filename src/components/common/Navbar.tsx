@@ -17,7 +17,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 import Image from "next/image";
 import logo from "../../../public/assets/images/logo (3).png";
 import { AuthContext } from "@/context/AuthProvider";
-import { useRouter } from "next/navigation"; // Import router for redirection
+import { useRouter } from "next/navigation"; 
 
 const pages = [
   { name: "Home", link: "/" },
