@@ -23,7 +23,7 @@ const pages = [
   { name: "Home", link: "/" },
   { name: "Course Details", link: "/course_details" },
   { name: "Blog", link: "/blog" },
-  { name: "My Classes", link: "/my-classes" },
+  { name: "My Classes", link: "/my_classes" },
   { name: "About Us", link: "/about-us" },
 ];
 
