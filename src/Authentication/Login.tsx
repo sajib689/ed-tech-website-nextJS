@@ -21,7 +21,7 @@ const Login = () => {
 
   // Handle case where context might be null
   if (!authContext) {
-    return <Typography>Loading...</Typography>; // Or handle error case
+    return <Typography>Loading...</Typography>; 
   }
 
   const { signWithForm , signWithGoogle, signWithGithub} = authContext;
