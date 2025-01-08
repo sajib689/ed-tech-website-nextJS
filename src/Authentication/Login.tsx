@@ -42,9 +42,11 @@ const Login = () => {
       });
   };
   const handleGoogle = async () => {
-    signWithGoogle()
+    await signWithGoogle()
   }
-  
+  const handleGitHub = async () => {
+    await signWithGithub()
+  }
   return (
     <Box
       sx={{
@@ -144,6 +146,7 @@ const Login = () => {
           </Button>
 
           <Button
+          onClick={handleGitHub}
             variant="outlined"
             startIcon={<GitHubIcon />}
             fullWidth
