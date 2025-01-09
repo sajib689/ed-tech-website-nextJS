@@ -13,13 +13,17 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
 import Image from "next/image";
 import logo from "../../../public/assets/images/logo (3).png";
 import { AuthContext } from "@/context/AuthProvider";
-import { useRouter } from "next/navigation"; 
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
-const pages = [
+// Define types for pages and settings
+type Page = { name: string; link: string };
+type Setting = { name: string; link?: string };
+
+const pages: Page[] = [
   { name: "Home", link: "/" },
   { name: "Course Details", link: "/course_details" },
   { name: "Blog", link: "/blog" },
@@ -27,18 +31,18 @@ const pages = [
   { name: "About Us", link: "/about-us" },
 ];
 
-const settings = [
+const settings: Setting[] = [
   { name: "Profile", link: "/profile" },
   { name: "Account", link: "/account" },
   { name: "Dashboard", link: "/dashboard" },
-  { name: "Logout" }, // Logout now handled via handleLogOut
+  { name: "Logout" }, // Logout handled via handleLogOut
 ];
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
   const [scrolled, setScrolled] = useState(false);
-  
+
   const router = useRouter(); // Use router for navigation
 
   useEffect(() => {
@@ -48,14 +52,15 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   const authContext = useContext(AuthContext);
 
-  // Handle case where context might be null
   if (!authContext) {
-    return <Typography>Loading...</Typography>; // Or handle error case
+    return <Typography>Loading...</Typography>; // Handle missing context
   }
 
   const { user, logout } = authContext;
+
   const handleLogOut = async () => {
     await logout();
     router.push("/login"); // Redirect to login after logout
@@ -88,6 +93,7 @@ const Navbar = () => {
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
+          {/* Logo */}
           <Typography
             variant="h6"
             noWrap
@@ -106,10 +112,12 @@ const Navbar = () => {
           >
             <Image src={logo} alt="logo" width={120} height={90} />
           </Typography>
+
+          {/* Mobile Menu */}
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
-              aria-label="account of current user"
+              aria-label="menu"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
@@ -129,15 +137,16 @@ const Navbar = () => {
               {pages.map((page) => (
                 <MenuItem key={page.name} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
-                    <a href={page.link} style={{ textDecoration: "none", color: "inherit" }}>
+                    <Link href={page.link} style={{ textDecoration: "none", color: "inherit" }}>
                       {page.name}
-                    </a>
+                    </Link>
                   </Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+
+          {/* Desktop Menu */}
           <Box
             sx={{
               flexGrow: 1,
@@ -162,12 +171,13 @@ const Navbar = () => {
             ))}
           </Box>
 
+          {/* User Menu */}
           <Box sx={{ flexGrow: 0 }}>
             {user ? (
               <Box>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar alt={user.displayName || "User"} src={user.photoURL || "/assets/images/avater.jpg"} />
+                    <Avatar alt={user.displayName || "User"} src={user.photoURL || "/assets/images/avatar.jpg"} />
                   </IconButton>
                 </Tooltip>
                 <Menu
@@ -186,13 +196,15 @@ const Navbar = () => {
                         <Typography textAlign="center">{setting.name}</Typography>
                       </MenuItem>
                     ) : (
-                      <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
-                        <Typography textAlign="center">
-                          <a href={setting.link} style={{ textDecoration: "none", color: "inherit" }}>
-                            {setting.name}
-                          </a>
-                        </Typography>
-                      </MenuItem>
+                      setting.link && (
+                        <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
+                          <Typography textAlign="center">
+                            <Link href={setting.link} style={{ textDecoration: "none", color: "inherit" }}>
+                              {setting.name}
+                            </Link>
+                          </Typography>
+                        </MenuItem>
+                      )
                     )
                   )}
                 </Menu>
