@@ -20,21 +20,44 @@ const Register = () => {
 
   const { createUserWithForm } = authContext;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
   
-    createUserWithForm(email, password)
-      .then(() => {
-        alert('Success');
-      })
-      .catch((err) => {
-        if (err instanceof Error) {
-          alert(err.message); 
-        } else {
-          alert('An unknown error occurred');
-        }
+    try {
+      // Create the user using the AuthContext function
+      await createUserWithForm(email, password);
+  
+      // Send the user data to the backend
+      const response = await fetch(`http://localhost:5000/api/v1/users/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          number,
+          password,
+        }),
       });
+  
+      if (!response.ok) {
+        throw new Error(`Failed to register user: ${response.statusText}`);
+      }
+  
+      const data = await response.json();
+      console.log('User successfully created:', data);
+      alert('User registered successfully!');
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error('Error during registration:', error.message);
+        alert(error.message);
+      } else {
+        console.error('Unknown error occurred');
+        alert('An unknown error occurred during registration.');
+      }
+    }
   };
+  
     return (
         <Box
       sx={{
