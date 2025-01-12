@@ -11,6 +11,7 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [number, setNumber] = useState('');
   const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
   const authContext = useContext(AuthContext);
 
   // Handle case where context might be null
@@ -90,7 +91,16 @@ const Register = () => {
         <Typography variant="body2" color="textSecondary" textAlign="center" mb={3}>
           Please Register to continue
         </Typography>
-
+        <TextField
+          label="Name"
+          type="name"
+          variant="outlined"
+          fullWidth
+          required
+          sx={{ mb: 2 }}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
         <TextField
           label="Email"
           type="email"
