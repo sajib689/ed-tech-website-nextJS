@@ -13,7 +13,7 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const authContext = useContext(AuthContext);
-
+  const role = 'student'
   // Handle case where context might be null
   if (!authContext) {
     return <Typography>Loading...</Typography>; // Or handle error case
@@ -35,6 +35,7 @@ const Register = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          
           email,
           number,
           password,
