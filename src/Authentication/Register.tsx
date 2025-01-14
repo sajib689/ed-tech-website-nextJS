@@ -12,9 +12,10 @@ const Register = () => {
   const [number, setNumber] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
+  const [loading, setLoading] = useState(false);
   const authContext = useContext(AuthContext);
-  const role = 'student'
-  // Handle case where context might be null
+  const role = 'student';
+
   if (!authContext) {
     return <Typography>Loading...</Typography>; // Or handle error case
   }
@@ -23,11 +24,21 @@ const Register = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-  
+    setLoading(true);
+
     try {
-      // Create the user using the AuthContext function
+      // Validate inputs
+      if (!email || !number || !password || !name) {
+        throw new Error("All fields are required.");
+      }
+
+      if (number.length !== 11) {
+        throw new Error("Phone number must be 10 digits.");
+      }
+
+      // Create the user in the auth system
       await createUserWithForm(email, password);
-  
+
       // Send the user data to the backend
       const response = await fetch(`http://localhost:5000/api/v1/users/`, {
         method: 'POST',
@@ -42,27 +53,30 @@ const Register = () => {
           password,
         }),
       });
-  
+
       if (!response.ok) {
         throw new Error(`Failed to register user: ${response.statusText}`);
       }
-  
+
       const data = await response.json();
       console.log('User successfully created:', data);
       alert('User registered successfully!');
+
+      // Reset the form
+      setEmail('');
+      setNumber('');
+      setPassword('');
+      setName('');
     } catch (error) {
-      if (error instanceof Error) {
-        console.error('Error during registration:', error.message);
-        alert(error.message);
-      } else {
-        console.error('Unknown error occurred');
-        alert('An unknown error occurred during registration.');
-      }
+      console.error('Error during registration:', error);
+      alert(error instanceof Error ? error.message : 'An unknown error occurred.');
+    } finally {
+      setLoading(false);
     }
   };
-  
-    return (
-        <Box
+
+  return (
+    <Box
       sx={{
         display: 'flex',
         flexDirection: 'column',
@@ -95,7 +109,7 @@ const Register = () => {
         </Typography>
         <TextField
           label="Name"
-          type="name"
+          type="text"
           variant="outlined"
           fullWidth
           required
@@ -114,8 +128,8 @@ const Register = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
         <TextField
-          label="Number"
-          type="number"
+          label="Phone Number"
+          type="tel"
           variant="outlined"
           fullWidth
           required
@@ -123,7 +137,6 @@ const Register = () => {
           value={number}
           onChange={(e) => setNumber(e.target.value)}
         />
-
         <TextField
           label="Password"
           type="password"
@@ -134,11 +147,11 @@ const Register = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-
         <Button
           type="submit"
           variant="contained"
           fullWidth
+          disabled={loading}
           sx={{
             backgroundColor: '#21BF73',
             color: '#ffffff',
@@ -150,7 +163,7 @@ const Register = () => {
             },
           }}
         >
-          Register
+          {loading ? 'Registering...' : 'Register'}
         </Button>
 
         <Divider sx={{ my: 2 }}>OR</Divider>
@@ -197,14 +210,14 @@ const Register = () => {
           textAlign="center"
           mt={2}
         >
-          Don&apos;t have an account?{" "}
+          Already have an account?{' '}
           <Link href="/login" passHref>
-            <span style={{ color: "#21BF73", cursor: "pointer" }}>Sign Up</span>
+            <span style={{ color: '#21BF73', cursor: 'pointer' }}>Sign In</span>
           </Link>
         </Typography>
       </Box>
     </Box>
-    );
+  );
 };
 
 export default Register;
