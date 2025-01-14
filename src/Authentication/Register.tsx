@@ -6,6 +6,7 @@ import GoogleIcon from '@mui/icons-material/Google';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { AuthContext } from '@/context/AuthProvider';
 import Link from 'next/link';
+import Loader from '@/utlis/Loader';
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -17,7 +18,7 @@ const Register = () => {
   const role = 'student';
 
   if (!authContext) {
-    return <Typography>Loading...</Typography>; // Or handle error case
+    return <Loader/>; // Or handle error case
   }
 
   const { createUserWithForm } = authContext;
