@@ -8,7 +8,7 @@ type Course = {
   providerTitle: string;
   price: string;
   totalEnrolls?: string;
-  providerImage: string; // Add provider image field
+  providerImage: string; 
 };
 
 const CourseCard: React.FC<{ course: Course }> = ({ course }) => {
