@@ -18,7 +18,7 @@ const Register = () => {
   const role = 'student';
 
   if (!authContext) {
-    return <Loader/>; // Or handle error case
+    return <Loader/>; 
   }
 
   const { createUserWithForm } = authContext;
