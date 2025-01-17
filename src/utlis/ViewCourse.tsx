@@ -2,7 +2,7 @@
 
 const ViewCourse = ({ id }: { id: string }) => {
   return (
-    <div className="container">
+    <div className="container text-4xl font-bold text-center">
       Page ID: {id}
     </div>
   );
