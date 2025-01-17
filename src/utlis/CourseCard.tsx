@@ -3,6 +3,7 @@ import React from "react";
 import { Card, CardContent, CardMedia, Typography, Avatar, Box, Button } from "@mui/material";
 
 type Course = {
+    _id: string;
   id: number;
   courseName: string;
   providerName: string;
@@ -63,9 +64,15 @@ const CourseCard: React.FC<{ course: Course }> = ({ course }) => {
         <Typography variant="h6" sx={{ fontWeight: "bold", color: "#21BF73" }}>
           ${course.price}
         </Typography>
-        <Button variant="contained" sx={{ backgroundColor: "#21BF73", color: "white" }} size="small">
-          Enroll Now
-        </Button>
+        <Button
+  href={course._id ? `/view_course/${course._id}` : "#"}
+  variant="contained"
+  sx={{ backgroundColor: "#21BF73", color: "white" }}
+  size="small"
+>
+  Enroll Now
+</Button>
+
       </Box>
     </Card>
   );

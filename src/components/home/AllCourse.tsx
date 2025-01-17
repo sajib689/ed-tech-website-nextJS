@@ -7,6 +7,7 @@ import CourseCard from "@/utlis/CourseCard";
 import Loader from "@/utlis/Loader";
 
 type Course = {
+  _id: string;
   id: number;
   courseName: string;
   providerName: string;
@@ -41,7 +42,6 @@ const AllCourse: React.FC = () => {
 
     fetchCourses();
   }, []);
-
   return (
     <Box sx={{ padding: "16px", marginTop: "40px", marginBottom: "40px" }}>
       {/* Title */}
