@@ -68,7 +68,7 @@ const ViewCourse = ({ id }: { id: string }) => {
   }
 
   return (
-    <Box sx={{ padding: '20px',paddingTop: '120px', backgroundColor: '#f9f9f9', minHeight: '100vh' }}>
+    <Box sx={{ padding: '20px',paddingTop: '120px',paddingLeft: '100px', backgroundColor: '#f9f9f9', minHeight: '100vh' }}>
           {/* Breadcrumb Navigation */}
           <Breadcrumbs aria-label="breadcrumb" sx={{ marginBottom: '0px' }}>
             <Link underline="hover" color="inherit" href="/">
