@@ -1,21 +1,78 @@
 'use client';
 
-import React from 'react';
-import { Box, Typography, Button, Avatar, CardMedia } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { Box, Typography, Button, Avatar, CardMedia, CircularProgress, Alert } from '@mui/material';
+import axios from 'axios';
 
 const ViewCourse = ({ id }: { id: string }) => {
-  const course = {
-    title: 'React Mastery',
-    description:
-      'Learn React from scratch and build scalable, performant applications with hands-on projects.',
-    price: '49.99',
-    instructor: {
-      name: 'John Doe',
-      image: 'https://via.placeholder.com/150',
-      title: 'Senior Frontend Developer',
-    },
-    image: 'https://via.placeholder.com/600x300',
-  };
+  const [course, setCourse] = useState<any>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchCourse = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5000/api/v1/getcourse/${id}`);
+        setCourse(response.data.data); // Assuming the course data is in `response.data.data`
+        console.log(response.data.data);
+      } catch (err: unknown) {
+        if (axios.isAxiosError(err)) {
+          setError(err.response?.data?.message || 'Failed to fetch the course');
+        } else {
+          setError('An unknown error occurred');
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCourse();
+  }, [id]);
+
+  if (loading) {
+    return (
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100vh',
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    );
+  }
+
+  if (error) {
+    return (
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100vh',
+        }}
+      >
+        <Alert severity="error">{error}</Alert>
+      </Box>
+    );
+  }
+
+  if (!course) {
+    return (
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100vh',
+        }}
+      >
+        <Typography variant="h6">No course found.</Typography>
+      </Box>
+    );
+  }
 
   return (
     <Box
@@ -43,8 +100,8 @@ const ViewCourse = ({ id }: { id: string }) => {
       >
         <CardMedia
           component="img"
-          image={course.image}
-          alt={course.title}
+          image={course.courseImage}
+          alt={course.courseName}
           sx={{
             borderRadius: '12px',
             width: '100%',
@@ -75,14 +132,14 @@ const ViewCourse = ({ id }: { id: string }) => {
               color: '#333',
             }}
           >
-            {course.title}
+            {course.courseName}
           </Typography>
           <Typography
             variant="body1"
             color="text.secondary"
             sx={{ marginBottom: '24px', lineHeight: 1.6 }}
           >
-            {course.description}
+            Category: {course.courseCategory} | Type: {course.courseType}
           </Typography>
           <Box
             sx={{
@@ -93,8 +150,8 @@ const ViewCourse = ({ id }: { id: string }) => {
             }}
           >
             <Avatar
-              src={course.instructor.image}
-              alt={course.instructor.name}
+              src={course.providerImage}
+              alt={course.providerName}
               sx={{
                 width: '70px',
                 height: '70px',
@@ -106,10 +163,10 @@ const ViewCourse = ({ id }: { id: string }) => {
                 variant="h6"
                 sx={{ fontWeight: '500', color: '#444' }}
               >
-                {course.instructor.name}
+                {course.providerName}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                {course.instructor.title}
+                {course.providerTitle}
               </Typography>
             </Box>
           </Box>
