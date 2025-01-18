@@ -77,7 +77,7 @@ const ViewCourse = ({ id }: { id: string }) => {
             <Link underline="hover" color="inherit" href="/courses">
               Courses
             </Link>
-            <Typography color="text.primary">Course Detail</Typography>
+            <Typography color="text.primary" bgcolor='yellow'>Course Detail</Typography>
           </Breadcrumbs>
     
           <Grid container spacing={4} alignItems="center">
