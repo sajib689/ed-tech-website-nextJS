@@ -70,7 +70,7 @@ const ViewCourse = ({ id }: { id: string }) => {
   return (
     <Box sx={{ padding: '20px',paddingTop: '120px', backgroundColor: '#f9f9f9', minHeight: '100vh' }}>
           {/* Breadcrumb Navigation */}
-          <Breadcrumbs aria-label="breadcrumb" sx={{ marginBottom: '20px' }}>
+          <Breadcrumbs aria-label="breadcrumb" sx={{ marginBottom: '0px' }}>
             <Link underline="hover" color="inherit" href="/">
               Home
             </Link>
@@ -94,10 +94,10 @@ const ViewCourse = ({ id }: { id: string }) => {
                   <Schedule fontSize="small" /> 120 Hours
                 </Typography>
                 <Typography variant="h3" sx={{ fontWeight: 'bold', marginBottom: '16px' }}>
-                  Introduction to User Experience Design
+                 {course.courseName}
                 </Typography>
                 <Typography variant="h4" sx={{ color: '#333', fontWeight: 'bold', marginBottom: '16px' }}>
-                  $18.99
+                  ${course.price}
                 </Typography>
                 <Button
                   variant="contained"
