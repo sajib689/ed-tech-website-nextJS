@@ -5,7 +5,18 @@ import { Box, Typography, Button, Avatar, CardMedia, CircularProgress, Alert } f
 import axios from 'axios';
 
 const ViewCourse = ({ id }: { id: string }) => {
-  const [course, setCourse] = useState<any>(null);
+  interface Course {
+    courseName: string;
+    courseCategory: string;
+    courseType: string;
+    courseImage: string;
+    price: number;
+    providerName: string;
+    providerImage: string;
+    providerTitle: string;
+  }
+  
+  const [course, setCourse] = useState<Course | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
