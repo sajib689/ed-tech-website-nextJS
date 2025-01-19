@@ -313,7 +313,7 @@ const ViewCourse = ({ id }: { id: string }) => {
             <CardMedia
               component="img"
               alt="Instructor"
-              image="https://via.placeholder.com/300" // Replace with your instructor's image URL
+              image={course?.providerImage} 
               sx={{ height: '100%' }}
             />
           </Card>
@@ -322,7 +322,7 @@ const ViewCourse = ({ id }: { id: string }) => {
         {/* Content Section */}
         <Grid item xs={12} md={8}>
           <Typography variant="h5" sx={{ fontWeight: 'bold' }}>
-            Alex Edwards
+            {course?.providerName}
           </Typography>
           <Typography variant="subtitle1" sx={{ color: 'gray', marginBottom: '16px' }}>
             Fullstack Developer / Mentor
