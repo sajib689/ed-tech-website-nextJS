@@ -17,9 +17,16 @@ import {
   List,
   CardContent,
   Card,
-  CardMedia
+  CardMedia,
 } from "@mui/material";
-import { Star, Schedule, BarChart, ArrowRight, Computer, CalendarToday } from "@mui/icons-material";
+import {
+  Star,
+  Schedule,
+  BarChart,
+  ArrowRight,
+  Computer,
+  CalendarToday,
+} from "@mui/icons-material";
 
 const ViewCourse = ({ id }: { id: string }) => {
   interface Course {
@@ -34,12 +41,12 @@ const ViewCourse = ({ id }: { id: string }) => {
     rating: number;
     duration: string;
     level: string;
-  statistics: {
+    statistics: {
       coursesCreated: number;
       workshopsAttended: number;
       personsMentored: number;
       webinarHosted: number;
-    }
+    };
   }
 
   const [course, setCourse] = useState<Course | null>(null);
@@ -82,7 +89,6 @@ const ViewCourse = ({ id }: { id: string }) => {
     );
   }
 
-
   if (error) {
     return (
       <Box
@@ -116,38 +122,258 @@ const ViewCourse = ({ id }: { id: string }) => {
   }
 
   return (
-   <>
-    <Box
-      sx={{
-        padding: "20px",
-        paddingTop: "120px",
-        paddingLeft: "100px",
-        backgroundColor: "#f9f9f9",
-        minHeight: "100vh",
-      }}
-    >
-      {/* Breadcrumb Navigation */}
-      <Breadcrumbs aria-label="breadcrumb" sx={{ marginBottom: "0px" }}>
-        <Link underline="hover" color="inherit" href="/">
-          Home
-        </Link>
-        <Link underline="hover" color="inherit" href="/courses">
-          Courses
-        </Link>
-        <Typography color="text.primary" bgcolor="yellow">
-          Course Detail
-        </Typography>
-      </Breadcrumbs>
+    <>
+      <Box
+        sx={{
+          padding: "20px",
+          paddingTop: "120px",
+          paddingLeft: "100px",
+          minHeight: "100vh",
+        }}
+      >
+        {/* Breadcrumb Navigation */}
+        <Breadcrumbs aria-label="breadcrumb" sx={{ marginBottom: "0px" }}>
+          <Link underline="hover" color="inherit" href="/">
+            Home
+          </Link>
+          <Link underline="hover" color="inherit" href="/courses">
+            Courses
+          </Link>
+          <Typography color="text.primary" bgcolor="yellow">
+            Course Detail
+          </Typography>
+        </Breadcrumbs>
 
-      <Grid container spacing={4} alignItems="center">
-        {/* Text Section */}
-        <Grid item xs={12} md={6}>
-          <Box>
+        <Grid container spacing={4} alignItems="center">
+          {/* Text Section */}
+          <Grid item xs={12} md={6}>
+            <Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  gap: "8px",
+                  marginBottom: "16px",
+                }}
+              >
+                <Typography
+                  variant="body1"
+                  sx={{ display: "flex", alignItems: "center", gap: "8px" }}
+                >
+                  <BarChart fontSize="small" /> Beginner
+                </Typography>
+                <Typography
+                  variant="body1"
+                  sx={{ display: "flex", alignItems: "center", gap: "8px" }}
+                >
+                  <Star fontSize="small" sx={{ color: "#fdd835" }} /> 4.7
+                </Typography>
+                <Typography
+                  variant="body1"
+                  sx={{ display: "flex", alignItems: "center", gap: "8px" }}
+                >
+                  <Schedule fontSize="small" /> 120 Hours
+                </Typography>
+              </Box>
+
+              <Typography
+                variant="h3"
+                sx={{ fontWeight: "bold", marginBottom: "16px" }}
+              >
+                {course.courseName}
+              </Typography>
+              <Typography
+                variant="h4"
+                sx={{ color: "#333", fontWeight: "bold", marginBottom: "16px" }}
+              >
+                ${course.price}
+              </Typography>
+              <Button
+                variant="contained"
+                sx={{
+                  backgroundColor: "#333",
+                  color: "#fff",
+                  textTransform: "none",
+                  padding: "10px 20px",
+                  "&:hover": { backgroundColor: "#555" },
+                }}
+              >
+                Get Course
+              </Button>
+            </Box>
+          </Grid>
+
+          {/* Image Section */}
+          <Grid item xs={12} md={6}>
+            <Box
+              component="img"
+              src={course.courseImage}
+              alt="Course"
+              sx={{
+                width: "100%",
+                borderRadius: "8px",
+                border: "8px solid #fdd835",
+                objectFit: "cover",
+              }}
+            />
+          </Grid>
+        </Grid>
+      </Box>
+
+      {/* What you Learn Section */}
+      <Box sx={{ padding: "40px" }}>
+        <Typography
+          variant="h4"
+          sx={{ fontWeight: "bold", marginBottom: "24px" }}
+        >
+          What You Will Learn
+        </Typography>
+
+        <Grid container spacing={4}>
+          {/* Left Section */}
+          <Grid item xs={12} md={6}>
+            <List>
+              {[
+                "Fermentum iaculis eu non diam phasellus vestibulum.",
+                "Porta non pulvinar neque laoreet suspendisse. Justo nec ultrices dui sapien proin sed libero.",
+                "At consectetur lorem donec massa sapien. Pulvinar sapien et ligula ullamcorper malesuada proin.",
+                "Quisque id diam vel quam elementum pulvinar. Eget felis eget nunc lobortis mattis aliquam faucibus purus.",
+              ].map((text, index) => (
+                <ListItem key={index} disableGutters>
+                  <ListItemIcon sx={{ color: "#fdd835", minWidth: "32px" }}>
+                    <ArrowRight />
+                  </ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItem>
+              ))}
+            </List>
+          </Grid>
+
+          {/* Right Section */}
+          <Grid item xs={12} md={6} container spacing={4}>
+            {/* Course Format Card */}
+            <Grid item xs={12} md={6}>
+              <Card sx={{ boxShadow: 3, borderRadius: "8px" }}>
+                <CardContent>
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "8px",
+                      marginBottom: "16px",
+                    }}
+                  >
+                    <Computer fontSize="large" /> Course Format
+                  </Typography>
+                  <List>
+                    {[
+                      "Video Tutorials",
+                      "Checking the Task",
+                      "Pulvinar sapien",
+                      "Software",
+                    ].map((item, index) => (
+                      <ListItem key={index} disableGutters>
+                        <ListItemIcon
+                          sx={{ color: "#fdd835", minWidth: "32px" }}
+                        >
+                          <ArrowRight />
+                        </ListItemIcon>
+                        <ListItemText primary={item} />
+                      </ListItem>
+                    ))}
+                  </List>
+                </CardContent>
+              </Card>
+            </Grid>
+
+            {/* Duration Course Card */}
+            <Grid item xs={12} md={6}>
+              <Card sx={{ boxShadow: 3, borderRadius: "8px" }}>
+                <CardContent>
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "8px",
+                      marginBottom: "16px",
+                    }}
+                  >
+                    <CalendarToday fontSize="large" /> Duration Course
+                  </Typography>
+                  <List>
+                    {[
+                      `Courses Created: ${
+                        course?.statistics?.coursesCreated || "N/A"
+                      } Weeks`,
+                      `Workshops Attended: ${
+                        course?.statistics?.workshopsAttended || "N/A"
+                      }`,
+                      `Persons Mentored: ${
+                        course?.statistics?.personsMentored || "N/A"
+                      }`,
+                      `Webinar: ${course?.statistics?.webinarHosted || "N/A"}`,
+                    ].map((stat, index) => (
+                      <ListItem key={index} disableGutters>
+                        <ListItemIcon
+                          sx={{ color: "#fdd835", minWidth: "32px" }}
+                        >
+                          <ArrowRight />
+                        </ListItemIcon>
+                        <ListItemText primary={stat} />
+                      </ListItem>
+                    ))}
+                  </List>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Box>
+
+      {/* Instrctor section */}
+      <Box sx={{ padding: "40px", backgroundColor: "#fff" }}>
+        <Typography
+          variant="h4"
+          sx={{ fontWeight: "bold", marginBottom: "24px" }}
+        >
+          Course Instructors
+        </Typography>
+
+        <Grid container spacing={4}>
+          {/* Image Section */}
+          <Grid item xs={12} md={4}>
+            <Card
+              sx={{ borderRadius: "8px", overflow: "hidden", boxShadow: 3 }}
+            >
+              <CardMedia
+                component="img"
+                alt="Instructor"
+                image={course?.providerImage}
+                sx={{ height: "100%" }}
+              />
+            </Card>
+          </Grid>
+
+          {/* Content Section */}
+          <Grid item xs={12} md={8}>
+            <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+              {course?.providerName}
+            </Typography>
+            <Typography
+              variant="subtitle1"
+              sx={{ color: "gray", marginBottom: "16px" }}
+            >
+              Fullstack Developer / Mentor
+            </Typography>
+
+            {/* Info Row */}
             <Box
               sx={{
                 display: "flex",
-                flexDirection: "row",
-                gap: "8px",
+                alignItems: "center",
+                gap: "16px",
                 marginBottom: "16px",
               }}
             >
@@ -155,229 +381,69 @@ const ViewCourse = ({ id }: { id: string }) => {
                 variant="body1"
                 sx={{ display: "flex", alignItems: "center", gap: "8px" }}
               >
-                <BarChart fontSize="small" /> Beginner
-              </Typography>
-              <Typography
-                variant="body1"
-                sx={{ display: "flex", alignItems: "center", gap: "8px" }}
-              >
-                <Star fontSize="small" sx={{ color: "#fdd835" }} /> 4.7
-              </Typography>
-              <Typography
-                variant="body1"
-                sx={{ display: "flex", alignItems: "center", gap: "8px" }}
-              >
                 <Schedule fontSize="small" /> 120 Hours
+              </Typography>
+              <Typography
+                variant="body1"
+                sx={{ display: "flex", alignItems: "center", gap: "8px" }}
+              >
+                <Star fontSize="small" sx={{ color: "#fdd835" }} /> 4.9
               </Typography>
             </Box>
 
+            {/* Description */}
             <Typography
-              variant="h3"
-              sx={{ fontWeight: "bold", marginBottom: "16px" }}
+              variant="body2"
+              sx={{ color: "gray", marginBottom: "24px" }}
             >
-              {course.courseName}
+              Scelerisque viverra mauris in aliquam. Mauris pharetra et ultrices
+              neque ornare aenean. Diam quis enim lobortis scelerisque fermentum
+              dui faucibus in. Venenatis lectus magna fringilla urna porttitor
+              rhoncus dolor. Sem fringilla ut morbi tincidunt augue interdum
+              velit euismod in. Blandit volutpat maecenas volutpat blandit
+              aliquam etiam erat velit.
             </Typography>
-            <Typography
-              variant="h4"
-              sx={{ color: "#333", fontWeight: "bold", marginBottom: "16px" }}
-            >
-              ${course.price}
-            </Typography>
-            <Button
-              variant="contained"
-              sx={{
-                backgroundColor: "#333",
-                color: "#fff",
-                textTransform: "none",
-                padding: "10px 20px",
-                "&:hover": { backgroundColor: "#555" },
-              }}
-            >
-              Get Course
-            </Button>
-          </Box>
-        </Grid>
 
-        {/* Image Section */}
-        <Grid item xs={12} md={6}>
-          <Box
-            component="img"
-            src={course.courseImage}
-            alt="Course"
-            sx={{
-              width: "100%",
-              borderRadius: "8px",
-              border: "8px solid #fdd835",
-              objectFit: "cover",
-            }}
-          />
-        </Grid>
-      </Grid>
-      
-    </Box>
-    
-    {/* What you Learn Section */}
-    <Box sx={{ padding: '40px', backgroundColor: '#f9f9f9' }}>
-  <Typography variant="h4" sx={{ fontWeight: 'bold', marginBottom: '24px' }}>
-    What You Will Learn
-  </Typography>
-
-  <Grid container spacing={4}>
-    {/* Left Section */}
-    <Grid item xs={12} md={6}>
-      <List>
-        {[
-          'Fermentum iaculis eu non diam phasellus vestibulum.',
-          'Porta non pulvinar neque laoreet suspendisse. Justo nec ultrices dui sapien proin sed libero.',
-          'At consectetur lorem donec massa sapien. Pulvinar sapien et ligula ullamcorper malesuada proin.',
-          'Quisque id diam vel quam elementum pulvinar. Eget felis eget nunc lobortis mattis aliquam faucibus purus.',
-        ].map((text, index) => (
-          <ListItem key={index} disableGutters>
-            <ListItemIcon sx={{ color: '#fdd835', minWidth: '32px' }}>
-              <ArrowRight />
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-    </Grid>
-
-    {/* Right Section */}
-    <Grid item xs={12} md={6} container spacing={4}>
-      {/* Course Format Card */}
-      <Grid item xs={12} md={6}>
-        <Card sx={{ boxShadow: 3, borderRadius: '8px' }}>
-          <CardContent>
-            <Typography
-              variant="h6"
-              sx={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}
-            >
-              <Computer fontSize="large" /> Course Format
-            </Typography>
-            <List>
-              {['Video Tutorials', 'Checking the Task', 'Pulvinar sapien', 'Software'].map((item, index) => (
-                <ListItem key={index} disableGutters>
-                  <ListItemIcon sx={{ color: '#fdd835', minWidth: '32px' }}>
-                    <ArrowRight />
-                  </ListItemIcon>
-                  <ListItemText primary={item} />
-                </ListItem>
-              ))}
-            </List>
-          </CardContent>
-        </Card>
-      </Grid>
-
-      {/* Duration Course Card */}
-      <Grid item xs={12} md={6}>
-        <Card sx={{ boxShadow: 3, borderRadius: '8px' }}>
-          <CardContent>
-            <Typography
-              variant="h6"
-              sx={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}
-            >
-              <CalendarToday fontSize="large" /> Duration Course
-            </Typography>
-            <List>
-              {[
-                `Courses Created: ${course?.statistics?.coursesCreated || 'N/A'} Weeks`,
-                `Workshops Attended: ${course?.statistics?.workshopsAttended || 'N/A'}`,
-                `Persons Mentored: ${course?.statistics?.personsMentored || 'N/A'}`,
-                `Webinar: ${course?.statistics?.webinarHosted || 'N/A'}`,
-              ].map((stat, index) => (
-                <ListItem key={index} disableGutters>
-                  <ListItemIcon sx={{ color: '#fdd835', minWidth: '32px' }}>
-                    <ArrowRight />
-                  </ListItemIcon>
-                  <ListItemText primary={stat} />
-                </ListItem>
-              ))}
-            </List>
-          </CardContent>
-        </Card>
-      </Grid>
-    </Grid>
-  </Grid>
-</Box>
-
-    {/* Instrctor section */}
-    <Box sx={{ padding: '40px', backgroundColor: '#fff' }}>
-      <Typography variant="h4" sx={{ fontWeight: 'bold', marginBottom: '24px' }}>
-        Course Instructors
-      </Typography>
-
-      <Grid container spacing={4}>
-        {/* Image Section */}
-        <Grid item xs={12} md={4}>
-          <Card sx={{ borderRadius: '8px', overflow: 'hidden', boxShadow: 3 }}>
-            <CardMedia
-              component="img"
-              alt="Instructor"
-              image={course?.providerImage} 
-              sx={{ height: '100%' }}
-            />
-          </Card>
-        </Grid>
-
-        {/* Content Section */}
-        <Grid item xs={12} md={8}>
-          <Typography variant="h5" sx={{ fontWeight: 'bold' }}>
-            {course?.providerName}
-          </Typography>
-          <Typography variant="subtitle1" sx={{ color: 'gray', marginBottom: '16px' }}>
-            Fullstack Developer / Mentor
-          </Typography>
-
-          {/* Info Row */}
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '16px' }}>
-            <Typography variant="body1" sx={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Schedule fontSize="small" /> 120 Hours
-            </Typography>
-            <Typography variant="body1" sx={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Star fontSize="small" sx={{ color: '#fdd835' }} /> 4.9
-            </Typography>
-          </Box>
-
-          {/* Description */}
-          <Typography variant="body2" sx={{ color: 'gray', marginBottom: '24px' }}>
-            Scelerisque viverra mauris in aliquam. Mauris pharetra et ultrices neque ornare aenean. Diam quis enim
-            lobortis scelerisque fermentum dui faucibus in. Venenatis lectus magna fringilla urna porttitor rhoncus
-            dolor. Sem fringilla ut morbi tincidunt augue interdum velit euismod in. Blandit volutpat maecenas volutpat
-            blandit aliquam etiam erat velit.
-          </Typography>
-
-          {/* Statistics Row */}
-          <Grid container spacing={4}>
-            <Grid item xs={6} sm={3}>
-              <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#212121' }}>
-                45+
-              </Typography>
-              <Typography variant="body2" sx={{ color: 'gray' }}>
-                Persons Mentored
-              </Typography>
-            </Grid>
-            <Grid item xs={6} sm={3}>
-              <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#212121' }}>
-                10+
-              </Typography>
-              <Typography variant="body2" sx={{ color: 'gray' }}>
-                Workshops Attended
-              </Typography>
-            </Grid>
-            <Grid item xs={6} sm={3}>
-              <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#212121' }}>
-                10+
-              </Typography>
-              <Typography variant="body2" sx={{ color: 'gray' }}>
-                Courses Created
-              </Typography>
+            {/* Statistics Row */}
+            <Grid container spacing={4}>
+              <Grid item xs={6} sm={3}>
+                <Typography
+                  variant="h4"
+                  sx={{ fontWeight: "bold", color: "#212121" }}
+                >
+                  45+
+                </Typography>
+                <Typography variant="body2" sx={{ color: "gray" }}>
+                  Persons Mentored
+                </Typography>
+              </Grid>
+              <Grid item xs={6} sm={3}>
+                <Typography
+                  variant="h4"
+                  sx={{ fontWeight: "bold", color: "#212121" }}
+                >
+                  10+
+                </Typography>
+                <Typography variant="body2" sx={{ color: "gray" }}>
+                  Workshops Attended
+                </Typography>
+              </Grid>
+              <Grid item xs={6} sm={3}>
+                <Typography
+                  variant="h4"
+                  sx={{ fontWeight: "bold", color: "#212121" }}
+                >
+                  10+
+                </Typography>
+                <Typography variant="body2" sx={{ color: "gray" }}>
+                  Courses Created
+                </Typography>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
-      </Grid>
-    </Box>
-   </>
-    
+      </Box>
+    </>
   );
 };
 
