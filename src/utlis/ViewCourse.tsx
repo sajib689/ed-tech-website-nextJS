@@ -38,7 +38,6 @@ const ViewCourse = ({ id }: { id: string }) => {
     providerName: string;
     providerImage: string;
     providerTitle: string;
-    rating: number;
     duration: string;
     level: string;
     statistics: {
@@ -47,6 +46,9 @@ const ViewCourse = ({ id }: { id: string }) => {
       personsMentored: number;
       webinarHosted: number;
     };
+    courseDuration: number;
+    rating: number;
+    whatYouWillLearn: string;
   }
 
   const [course, setCourse] = useState<Course | null>(null);
