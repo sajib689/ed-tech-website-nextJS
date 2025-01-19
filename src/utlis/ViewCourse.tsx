@@ -381,13 +381,13 @@ const ViewCourse = ({ id }: { id: string }) => {
                 variant="body1"
                 sx={{ display: "flex", alignItems: "center", gap: "8px" }}
               >
-                <Schedule fontSize="small" /> 120 Hours
+                <Schedule fontSize="small" /> {course?.courseDuration}
               </Typography>
               <Typography
                 variant="body1"
                 sx={{ display: "flex", alignItems: "center", gap: "8px" }}
               >
-                <Star fontSize="small" sx={{ color: "#fdd835" }} /> 4.9
+                <Star fontSize="small" sx={{ color: "#fdd835" }} /> {course?.rating}
               </Typography>
             </Box>
 
@@ -396,12 +396,7 @@ const ViewCourse = ({ id }: { id: string }) => {
               variant="body2"
               sx={{ color: "gray", marginBottom: "24px" }}
             >
-              Scelerisque viverra mauris in aliquam. Mauris pharetra et ultrices
-              neque ornare aenean. Diam quis enim lobortis scelerisque fermentum
-              dui faucibus in. Venenatis lectus magna fringilla urna porttitor
-              rhoncus dolor. Sem fringilla ut morbi tincidunt augue interdum
-              velit euismod in. Blandit volutpat maecenas volutpat blandit
-              aliquam etiam erat velit.
+             {course?.whatYouWillLearn}
             </Typography>
 
             {/* Statistics Row */}
