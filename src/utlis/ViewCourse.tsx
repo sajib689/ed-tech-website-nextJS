@@ -365,7 +365,7 @@ const ViewCourse = ({ id }: { id: string }) => {
               variant="subtitle1"
               sx={{ color: "gray", marginBottom: "16px" }}
             >
-              Fullstack Developer / Mentor
+              {course?.providerTitle} / Mentor
             </Typography>
 
             {/* Info Row */}
