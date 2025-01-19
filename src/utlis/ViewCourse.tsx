@@ -168,13 +168,13 @@ const ViewCourse = ({ id }: { id: string }) => {
                   variant="body1"
                   sx={{ display: "flex", alignItems: "center", gap: "8px" }}
                 >
-                  <Star fontSize="small" sx={{ color: "#fdd835" }} /> 4.7
+                  <Star fontSize="small" sx={{ color: "#fdd835" }} /> {course?.rating}
                 </Typography>
                 <Typography
                   variant="body1"
                   sx={{ display: "flex", alignItems: "center", gap: "8px" }}
                 >
-                  <Schedule fontSize="small" /> 120 Hours
+                  <Schedule fontSize="small" /> {course?.courseDuration}
                 </Typography>
               </Box>
 
