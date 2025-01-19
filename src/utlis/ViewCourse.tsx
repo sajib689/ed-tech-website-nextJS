@@ -16,7 +16,8 @@ import {
   ListItemIcon,
   List,
   CardContent,
-  Card
+  Card,
+  CardMedia
 } from "@mui/material";
 import { Star, Schedule, BarChart, ArrowRight, Computer, CalendarToday } from "@mui/icons-material";
 
@@ -281,6 +282,82 @@ const ViewCourse = ({ id }: { id: string }) => {
                 </List>
               </CardContent>
             </Card>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Box>
+    {/* Instrctor section */}
+    <Box sx={{ padding: '40px', backgroundColor: '#fff' }}>
+      <Typography variant="h4" sx={{ fontWeight: 'bold', marginBottom: '24px' }}>
+        Course Instructors
+      </Typography>
+
+      <Grid container spacing={4}>
+        {/* Image Section */}
+        <Grid item xs={12} md={4}>
+          <Card sx={{ borderRadius: '8px', overflow: 'hidden', boxShadow: 3 }}>
+            <CardMedia
+              component="img"
+              alt="Instructor"
+              image="https://via.placeholder.com/300" // Replace with your instructor's image URL
+              sx={{ height: '100%' }}
+            />
+          </Card>
+        </Grid>
+
+        {/* Content Section */}
+        <Grid item xs={12} md={8}>
+          <Typography variant="h5" sx={{ fontWeight: 'bold' }}>
+            Alex Edwards
+          </Typography>
+          <Typography variant="subtitle1" sx={{ color: 'gray', marginBottom: '16px' }}>
+            Fullstack Developer / Mentor
+          </Typography>
+
+          {/* Info Row */}
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '16px' }}>
+            <Typography variant="body1" sx={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Schedule fontSize="small" /> 120 Hours
+            </Typography>
+            <Typography variant="body1" sx={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Star fontSize="small" sx={{ color: '#fdd835' }} /> 4.9
+            </Typography>
+          </Box>
+
+          {/* Description */}
+          <Typography variant="body2" sx={{ color: 'gray', marginBottom: '24px' }}>
+            Scelerisque viverra mauris in aliquam. Mauris pharetra et ultrices neque ornare aenean. Diam quis enim
+            lobortis scelerisque fermentum dui faucibus in. Venenatis lectus magna fringilla urna porttitor rhoncus
+            dolor. Sem fringilla ut morbi tincidunt augue interdum velit euismod in. Blandit volutpat maecenas volutpat
+            blandit aliquam etiam erat velit.
+          </Typography>
+
+          {/* Statistics Row */}
+          <Grid container spacing={4}>
+            <Grid item xs={6} sm={3}>
+              <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#212121' }}>
+                45+
+              </Typography>
+              <Typography variant="body2" sx={{ color: 'gray' }}>
+                Persons Mentored
+              </Typography>
+            </Grid>
+            <Grid item xs={6} sm={3}>
+              <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#212121' }}>
+                10+
+              </Typography>
+              <Typography variant="body2" sx={{ color: 'gray' }}>
+                Workshops Attended
+              </Typography>
+            </Grid>
+            <Grid item xs={6} sm={3}>
+              <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#212121' }}>
+                10+
+              </Typography>
+              <Typography variant="body2" sx={{ color: 'gray' }}>
+                Courses Created
+              </Typography>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
