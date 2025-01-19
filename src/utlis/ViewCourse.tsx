@@ -11,8 +11,14 @@ import {
   Link,
   CircularProgress,
   Alert,
+  ListItemText,
+  ListItem,
+  ListItemIcon,
+  List,
+  CardContent,
+  Card
 } from "@mui/material";
-import { Star, Schedule, BarChart } from "@mui/icons-material";
+import { Star, Schedule, BarChart, ArrowRight, Computer, CalendarToday } from "@mui/icons-material";
 
 const ViewCourse = ({ id }: { id: string }) => {
   interface Course {
@@ -103,6 +109,7 @@ const ViewCourse = ({ id }: { id: string }) => {
   }
 
   return (
+   <>
     <Box
       sx={{
         padding: "20px",
@@ -199,7 +206,87 @@ const ViewCourse = ({ id }: { id: string }) => {
           />
         </Grid>
       </Grid>
+      
     </Box>
+    {/* What you Learn Section */}
+    <Box sx={{ padding: '40px', backgroundColor: '#f9f9f9' }}>
+      <Typography variant="h4" sx={{ fontWeight: 'bold', marginBottom: '24px' }}>
+        What You Will Learn
+      </Typography>
+
+      <Grid container spacing={4}>
+        {/* Left Section */}
+        <Grid item xs={12} md={6}>
+          <List>
+            {[
+              'Fermentum iaculis eu non diam phasellus vestibulum.',
+              'Porta non pulvinar neque laoreet suspendisse. Justo nec ultrices dui sapien proin sed libero.',
+              'At consectetur lorem donec massa sapien. Pulvinar sapien et ligula ullamcorper malesuada proin.',
+              'Quisque id diam vel quam elementum pulvinar. Eget felis eget nunc lobortis mattis aliquam faucibus purus.',
+            ].map((text, index) => (
+              <ListItem key={index} disableGutters>
+                <ListItemIcon sx={{ color: '#fdd835', minWidth: '32px' }}>
+                  <ArrowRight />
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItem>
+            ))}
+          </List>
+        </Grid>
+
+        {/* Right Section */}
+        <Grid item xs={12} md={6} container spacing={4}>
+          {/* Course Format Card */}
+          <Grid item xs={12} md={6}>
+            <Card sx={{ boxShadow: 3, borderRadius: '8px' }}>
+              <CardContent>
+                <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
+                  <Computer fontSize="large" /> Course Format
+                </Typography>
+                <List>
+                  {['Video Tutorials', 'Checking the Task', 'Pulvinar sapien', 'Software'].map((item, index) => (
+                    <ListItem key={index} disableGutters>
+                      <ListItemIcon sx={{ color: '#fdd835', minWidth: '32px' }}>
+                        <ArrowRight />
+                      </ListItemIcon>
+                      <ListItemText primary={item} />
+                    </ListItem>
+                  ))}
+                </List>
+              </CardContent>
+            </Card>
+          </Grid>
+
+          {/* Duration Course Card */}
+          <Grid item xs={12} md={6}>
+            <Card sx={{ boxShadow: 3, borderRadius: '8px' }}>
+              <CardContent>
+                <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
+                  <CalendarToday fontSize="large" /> Duration Course
+                </Typography>
+                <List>
+                  {[
+                    '3 Weeks',
+                    '5 Video Tutorials',
+                    '3 Hours of Consultations',
+                    '1.5 Hours Webinar',
+                  ].map((item, index) => (
+                    <ListItem key={index} disableGutters>
+                      <ListItemIcon sx={{ color: '#fdd835', minWidth: '32px' }}>
+                        <ArrowRight />
+                      </ListItemIcon>
+                      <ListItemText primary={item} />
+                    </ListItem>
+                  ))}
+                </List>
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Box>
+   </>
+    
   );
 };
 
