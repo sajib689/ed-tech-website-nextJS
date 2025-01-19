@@ -34,17 +34,17 @@ const ViewCourse = ({ id }: { id: string }) => {
     rating: number;
     duration: string;
     level: string;
-    statistics: {
+  statistics: {
       coursesCreated: number;
       workshopsAttended: number;
       personsMentored: number;
-    };
+      webinarHosted: number;
+    }
   }
 
   const [course, setCourse] = useState<Course | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-
   useEffect(() => {
     const fetchCourse = async () => {
       try {
@@ -81,12 +81,8 @@ const ViewCourse = ({ id }: { id: string }) => {
       </Box>
     );
   }
-  if (course !== null) {
-    const statistic = course.statistics;
-  } else {
-    console.log('Course is null');
-  }
-  
+
+
   if (error) {
     return (
       <Box
@@ -219,6 +215,7 @@ const ViewCourse = ({ id }: { id: string }) => {
       </Grid>
       
     </Box>
+    
     {/* What you Learn Section */}
     <Box sx={{ padding: '40px', backgroundColor: '#f9f9f9' }}>
   <Typography variant="h4" sx={{ fontWeight: 'bold', marginBottom: '24px' }}>
@@ -283,9 +280,10 @@ const ViewCourse = ({ id }: { id: string }) => {
             </Typography>
             <List>
               {[
-                `Courses Created: ${course.statistics?.coursesCreated || 'N/A'}`,
-                `Workshops Attended: ${course.statistics?.workshopsAttended || 'N/A'}`,
-                `Persons Mentored: ${course.statistics?.personsMentored || 'N/A'}`,
+                `Courses Created: ${course?.statistics?.coursesCreated || 'N/A'} Weeks`,
+                `Workshops Attended: ${course?.statistics?.workshopsAttended || 'N/A'}`,
+                `Persons Mentored: ${course?.statistics?.personsMentored || 'N/A'}`,
+                `Webinar: ${course?.statistics?.webinarHosted || 'N/A'}`,
               ].map((stat, index) => (
                 <ListItem key={index} disableGutters>
                   <ListItemIcon sx={{ color: '#fdd835', minWidth: '32px' }}>
