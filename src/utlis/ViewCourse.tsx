@@ -34,6 +34,11 @@ const ViewCourse = ({ id }: { id: string }) => {
     rating: number;
     duration: string;
     level: string;
+    statistics: {
+      coursesCreated: number;
+      workshopsAttended: number;
+      personsMentored: number;
+    };
   }
 
   const [course, setCourse] = useState<Course | null>(null);
@@ -76,7 +81,12 @@ const ViewCourse = ({ id }: { id: string }) => {
       </Box>
     );
   }
-
+  if (course !== null) {
+    const statistic = course.statistics;
+  } else {
+    console.log('Course is null');
+  }
+  
   if (error) {
     return (
       <Box
@@ -211,81 +221,87 @@ const ViewCourse = ({ id }: { id: string }) => {
     </Box>
     {/* What you Learn Section */}
     <Box sx={{ padding: '40px', backgroundColor: '#f9f9f9' }}>
-      <Typography variant="h4" sx={{ fontWeight: 'bold', marginBottom: '24px' }}>
-        What You Will Learn
-      </Typography>
+  <Typography variant="h4" sx={{ fontWeight: 'bold', marginBottom: '24px' }}>
+    What You Will Learn
+  </Typography>
 
-      <Grid container spacing={4}>
-        {/* Left Section */}
-        <Grid item xs={12} md={6}>
-          <List>
-            {[
-              'Fermentum iaculis eu non diam phasellus vestibulum.',
-              'Porta non pulvinar neque laoreet suspendisse. Justo nec ultrices dui sapien proin sed libero.',
-              'At consectetur lorem donec massa sapien. Pulvinar sapien et ligula ullamcorper malesuada proin.',
-              'Quisque id diam vel quam elementum pulvinar. Eget felis eget nunc lobortis mattis aliquam faucibus purus.',
-            ].map((text, index) => (
-              <ListItem key={index} disableGutters>
-                <ListItemIcon sx={{ color: '#fdd835', minWidth: '32px' }}>
-                  <ArrowRight />
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
-          </List>
-        </Grid>
+  <Grid container spacing={4}>
+    {/* Left Section */}
+    <Grid item xs={12} md={6}>
+      <List>
+        {[
+          'Fermentum iaculis eu non diam phasellus vestibulum.',
+          'Porta non pulvinar neque laoreet suspendisse. Justo nec ultrices dui sapien proin sed libero.',
+          'At consectetur lorem donec massa sapien. Pulvinar sapien et ligula ullamcorper malesuada proin.',
+          'Quisque id diam vel quam elementum pulvinar. Eget felis eget nunc lobortis mattis aliquam faucibus purus.',
+        ].map((text, index) => (
+          <ListItem key={index} disableGutters>
+            <ListItemIcon sx={{ color: '#fdd835', minWidth: '32px' }}>
+              <ArrowRight />
+            </ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+    </Grid>
 
-        {/* Right Section */}
-        <Grid item xs={12} md={6} container spacing={4}>
-          {/* Course Format Card */}
-          <Grid item xs={12} md={6}>
-            <Card sx={{ boxShadow: 3, borderRadius: '8px' }}>
-              <CardContent>
-                <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
-                  <Computer fontSize="large" /> Course Format
-                </Typography>
-                <List>
-                  {['Video Tutorials', 'Checking the Task', 'Pulvinar sapien', 'Software'].map((item, index) => (
-                    <ListItem key={index} disableGutters>
-                      <ListItemIcon sx={{ color: '#fdd835', minWidth: '32px' }}>
-                        <ArrowRight />
-                      </ListItemIcon>
-                      <ListItemText primary={item} />
-                    </ListItem>
-                  ))}
-                </List>
-              </CardContent>
-            </Card>
-          </Grid>
-
-          {/* Duration Course Card */}
-          <Grid item xs={12} md={6}>
-            <Card sx={{ boxShadow: 3, borderRadius: '8px' }}>
-              <CardContent>
-                <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
-                  <CalendarToday fontSize="large" /> Duration Course
-                </Typography>
-                <List>
-                  {[
-                    '3 Weeks',
-                    '5 Video Tutorials',
-                    '3 Hours of Consultations',
-                    '1.5 Hours Webinar',
-                  ].map((item, index) => (
-                    <ListItem key={index} disableGutters>
-                      <ListItemIcon sx={{ color: '#fdd835', minWidth: '32px' }}>
-                        <ArrowRight />
-                      </ListItemIcon>
-                      <ListItemText primary={item} />
-                    </ListItem>
-                  ))}
-                </List>
-              </CardContent>
-            </Card>
-          </Grid>
-        </Grid>
+    {/* Right Section */}
+    <Grid item xs={12} md={6} container spacing={4}>
+      {/* Course Format Card */}
+      <Grid item xs={12} md={6}>
+        <Card sx={{ boxShadow: 3, borderRadius: '8px' }}>
+          <CardContent>
+            <Typography
+              variant="h6"
+              sx={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}
+            >
+              <Computer fontSize="large" /> Course Format
+            </Typography>
+            <List>
+              {['Video Tutorials', 'Checking the Task', 'Pulvinar sapien', 'Software'].map((item, index) => (
+                <ListItem key={index} disableGutters>
+                  <ListItemIcon sx={{ color: '#fdd835', minWidth: '32px' }}>
+                    <ArrowRight />
+                  </ListItemIcon>
+                  <ListItemText primary={item} />
+                </ListItem>
+              ))}
+            </List>
+          </CardContent>
+        </Card>
       </Grid>
-    </Box>
+
+      {/* Duration Course Card */}
+      <Grid item xs={12} md={6}>
+        <Card sx={{ boxShadow: 3, borderRadius: '8px' }}>
+          <CardContent>
+            <Typography
+              variant="h6"
+              sx={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}
+            >
+              <CalendarToday fontSize="large" /> Duration Course
+            </Typography>
+            <List>
+              {[
+                `Courses Created: ${course.statistics?.coursesCreated || 'N/A'}`,
+                `Workshops Attended: ${course.statistics?.workshopsAttended || 'N/A'}`,
+                `Persons Mentored: ${course.statistics?.personsMentored || 'N/A'}`,
+              ].map((stat, index) => (
+                <ListItem key={index} disableGutters>
+                  <ListItemIcon sx={{ color: '#fdd835', minWidth: '32px' }}>
+                    <ArrowRight />
+                  </ListItemIcon>
+                  <ListItemText primary={stat} />
+                </ListItem>
+              ))}
+            </List>
+          </CardContent>
+        </Card>
+      </Grid>
+    </Grid>
+  </Grid>
+</Box>
+
     {/* Instrctor section */}
     <Box sx={{ padding: '40px', backgroundColor: '#fff' }}>
       <Typography variant="h4" sx={{ fontWeight: 'bold', marginBottom: '24px' }}>
