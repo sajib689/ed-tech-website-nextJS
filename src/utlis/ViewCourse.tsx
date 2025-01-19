@@ -332,13 +332,13 @@ const ViewCourse = ({ id }: { id: string }) => {
         </Grid>
       </Box>
 
-      {/* Instrctor section */}
-      <Box sx={{ padding: "40px", backgroundColor: "#fff" }}>
+      {/* Instructors section */}
+      <Box sx={{ padding: "40px", backgroundColor: "#fff",marginBottom:"100px" }}>
         <Typography
           variant="h4"
           sx={{ fontWeight: "bold", marginBottom: "24px" }}
         >
-          Course Instructors
+          Course Instructor
         </Typography>
 
         <Grid container spacing={4}>
