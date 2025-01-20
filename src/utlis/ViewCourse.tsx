@@ -40,6 +40,7 @@ const ViewCourse = ({ id }: { id: string }) => {
     providerTitle: string;
     duration: string;
     level: string;
+    courseLevel: string;
     statistics: {
       coursesCreated: number;
       workshopsAttended: number;
