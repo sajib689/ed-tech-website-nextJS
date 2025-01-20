@@ -41,26 +41,26 @@ const CourseCard: React.FC<{ course: Course }> = ({ course }) => {
       <CardMedia
         component="img"
         height="140"
-        image={course.providerImage} // You can use a dynamic image URL from the course data
-        alt={course.courseName}
+        image={course?.providerImage} 
+        alt={course?.courseName}
         sx={{ borderRadius: "8px 8px 0 0" }}
       />
 
       {/* Course Details */}
       <CardContent sx={{ padding: "16px" }}>
         <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-          {course.courseName}
+          {course?.courseName}
         </Typography>
         <Box sx={{ display: "flex", alignItems: "center", marginTop: "8px" }}>
           <Avatar
-            alt={course.providerName}
-            src={course.providerImage}
+            alt={course?.providerName}
+            src={course?.providerImage}
             sx={{ marginRight: "8px" }}
           />
           <Box>
-            <Typography variant="body1">{course.providerName}</Typography>
+            <Typography variant="body1">{course?.providerName}</Typography>
             <Typography variant="body2" color="text.secondary">
-              {course.providerTitle}
+              {course?.providerTitle}
             </Typography>
           </Box>
         </Box>
