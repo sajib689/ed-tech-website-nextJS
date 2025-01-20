@@ -27,7 +27,7 @@ const AllCourse: React.FC = () => {
       try {
         const response = await axios.get("http://localhost:5000/api/v1/getcourses");
         setCourses(response.data.data); 
-      } catch (err: unknown) { // Use 'unknown' for error type
+      } catch (err: unknown) { 
         if (axios.isAxiosError(err)) {
           // Axios-specific error handling
           setError(err.response?.data?.message || "Failed to fetch courses");
