@@ -162,7 +162,7 @@ const ViewCourse = ({ id }: { id: string }) => {
                   variant="body1"
                   sx={{ display: "flex", alignItems: "center", gap: "8px" }}
                 >
-                  <BarChart fontSize="small" /> Beginner
+                  <BarChart fontSize="small" /> {course?.courseLevel}
                 </Typography>
                 <Typography
                   variant="body1"
@@ -182,13 +182,13 @@ const ViewCourse = ({ id }: { id: string }) => {
                 variant="h3"
                 sx={{ fontWeight: "bold", marginBottom: "16px" }}
               >
-                {course.courseName}
+                {course?.courseName}
               </Typography>
               <Typography
                 variant="h4"
                 sx={{ color: "#333", fontWeight: "bold", marginBottom: "16px" }}
               >
-                ${course.price}
+                ${course?.price}
               </Typography>
               <Button
                 variant="contained"
