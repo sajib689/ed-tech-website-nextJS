@@ -30,7 +30,7 @@ import {
 
 const ViewCourse = ({ id }: { id: string }) => {
   interface Course {
-    _id: string;
+    id: string;
     courseName: string;
     courseCategory: string;
     courseType: string;
@@ -193,7 +193,7 @@ const ViewCourse = ({ id }: { id: string }) => {
                 ${course?.price}
               </Typography>
               <Button
-              href={`/checkout/${course?._id}`}
+              href={`/checkout/${course?.id}`}
                 variant="contained"
                 sx={{
                   backgroundColor: "#21BF73",
