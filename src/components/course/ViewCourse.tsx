@@ -192,6 +192,7 @@ const ViewCourse = ({ id }: { id: string }) => {
                 ${course?.price}
               </Typography>
               <Button
+              href="/checkout"
                 variant="contained"
                 sx={{
                   backgroundColor: "#21BF73",
