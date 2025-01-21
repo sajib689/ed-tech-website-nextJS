@@ -9,13 +9,15 @@ import {
   Button,
   Divider,
 } from '@mui/material';
-
-const Checkout: React.FC = () => {
+interface CheckoutProps {
+  id: string;
+}
+const Checkout: React.FC<CheckoutProps> = ({id}) => {
   return (
     <Container maxWidth="md" sx={{ mt: 4 }}>
       {/* Page Title */}
       <Typography variant="h4" gutterBottom align="center">
-        Checkout
+        Checkout {id}
       </Typography>
 
       {/* Checkout Form */}
