@@ -14,7 +14,7 @@ import Newsletter from "./Newsletter";
 const Footer = () => {
   return (
     <Box
-      sx={{ backgroundColor: "#B0EACD", color: "#212529", padding: "40px 0" }}
+      sx={{ background: 'linear-gradient(to right, #6a11cb, #2575fc)', color: "white", padding: "40px 0" }}
     >
       <Container maxWidth="lg">
         <Grid container spacing={4}>
@@ -93,7 +93,7 @@ const Footer = () => {
             <Typography variant="body1" align="center" sx={{ marginBottom: 2 }}>
               Thank you for subscribing with us.
             </Typography>
-
+            {/* News Letter */}
             <Newsletter />
 
             <Typography
