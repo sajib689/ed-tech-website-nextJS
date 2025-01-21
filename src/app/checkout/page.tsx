@@ -1,7 +1,10 @@
+import Checkout from "@/components/course/Checkout";
 
 
 export default function page() {
   return (
-    <div>page</div>
+    <div>
+      <Checkout/>
+    </div>
   )
 }
