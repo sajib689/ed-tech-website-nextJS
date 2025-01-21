@@ -194,11 +194,11 @@ const ViewCourse = ({ id }: { id: string }) => {
               <Button
                 variant="contained"
                 sx={{
-                  backgroundColor: "#333",
+                  backgroundColor: "#21BF73",
                   color: "#fff",
                   textTransform: "none",
                   padding: "10px 20px",
-                  "&:hover": { backgroundColor: "#555" },
+                  "&:hover": {  backgroundColor: "#21BF73" },
                 }}
               >
                 Get Course
