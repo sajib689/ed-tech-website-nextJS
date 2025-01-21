@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Box, Typography } from "@mui/material";
-import CourseCard from "@/utlis/CourseCard";
+import CourseCard from "@/components/course/CourseCard";
 import Loader from "@/utlis/Loader";
 
 type Course = {

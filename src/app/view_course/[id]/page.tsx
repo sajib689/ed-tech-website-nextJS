@@ -1,4 +1,4 @@
-import ViewCourse from "@/utlis/ViewCourse";
+import ViewCourse from "@/components/course/ViewCourse";
 
 export default function CoursePage({ params }: { params: { id: string } }) {
   const { id } = params;
