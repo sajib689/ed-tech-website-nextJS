@@ -1,11 +1,11 @@
 import Checkout from "@/components/course/Checkout";
 
 
-export default function page({ params }: { params: { _id: string } }) {
-  const { _id } = params;
+export default function page({ params }: { params: { id: string } }) {
+  const { id } = params;
   return (
     <div>
-      <Checkout id={_id}/>
+      <Checkout id={id}/>
     </div>
   )
 }

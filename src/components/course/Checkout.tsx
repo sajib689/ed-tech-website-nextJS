@@ -13,8 +13,9 @@ interface CheckoutProps {
   id: string;
 }
 const Checkout: React.FC<CheckoutProps> = ({id}) => {
+  console.log(id)
   return (
-    <Container maxWidth="md" sx={{ mt: 4 }}>
+    <Container maxWidth="md" sx={{ mt: '100px' }}>
       {/* Page Title */}
       <Typography variant="h4" gutterBottom align="center">
         Checkout {id}
