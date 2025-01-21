@@ -12,16 +12,117 @@ import {
   Button,
   Divider,
   Avatar,
+  Alert,
+  CircularProgress,
 } from '@mui/material';
 import PaymentIcon from '@mui/icons-material/Payment';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SchoolIcon from '@mui/icons-material/School';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 interface CheckoutProps {
   id: string;
 }
 
 const Checkout: React.FC<CheckoutProps> = ({ id }) => {
+  console.log(id)
+  interface Course {
+    id: string;
+    courseName: string;
+    courseCategory: string;
+    courseType: string;
+    courseImage: string;
+    price: number;
+    providerName: string;
+    providerImage: string;
+    providerTitle: string;
+    duration: string;
+    level: string;
+    courseLevel: string;
+    statistics: {
+      coursesCreated: number;
+      workshopsAttended: number;
+      personsMentored: number;
+      webinarHosted: number;
+    };
+    courseDuration: number;
+    rating: number;
+    whatYouWillLearn: string;
+  }
+
+  const [course, setCourse] = useState<Course | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+  useEffect(() => {
+    const fetchCourse = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/api/v1/getcourse/${id}`
+        );
+        setCourse(response.data.data);
+      } catch (err: unknown) {
+        if (axios.isAxiosError(err)) {
+          setError(err.response?.data?.message || "Failed to fetch the course");
+        } else {
+          setError("An unknown error occurred");
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCourse();
+  }, [id]);
+
+  if (loading) {
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+          bgcolor: "#f4f4f4",
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    );
+  }
+
+  if (error) {
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+          bgcolor: "#f8d7da",
+        }}
+      >
+        <Alert severity="error">{error}</Alert>
+      </Box>
+    );
+  }
+
+  if (!course) {
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+          bgcolor: "#fff",
+        }}
+      >
+        <Typography variant="h6">No course found.</Typography>
+      </Box>
+    );
+  }
+
   return (
     <Container maxWidth="lg" sx={{ mt: '80px', pb: 5 }}>
       {/* Hero Section */}
@@ -49,7 +150,7 @@ const Checkout: React.FC<CheckoutProps> = ({ id }) => {
           </Grid>
           <Grid item xs={12} sm={8}>
             <Typography variant="h4" fontWeight="bold" gutterBottom>
-              Enroll in: Master React in 30 Days
+              {course?.courseName}
             </Typography>
             <Typography variant="subtitle1" gutterBottom>
               Unlock the power of React with hands-on projects and expert guidance.
