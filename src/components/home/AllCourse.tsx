@@ -43,15 +43,16 @@ const AllCourse: React.FC = () => {
     fetchCourses();
   }, []);
   return (
-    <Box sx={{ padding: "16px", marginTop: "40px", marginBottom: "40px" }}>
+    <Box sx={{ padding: "16px", marginTop: "100px", marginBottom: "40px" }}>
       {/* Title */}
       <Typography
         variant="h4"
         sx={{
           fontWeight: "600",
           color: "rgba(0, 0, 0, 0.55)",
-          textAlign: "center",
-          marginBottom: "24px",
+          marginBottom: "50px",
+          marginTop: "24px",
+          marginLeft: "24px",
         }}
       >
         All Courses List

@@ -66,7 +66,7 @@ const ReviewSlider = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "#21BF73",
+        background: "linear-gradient(to right, #6a11cb, #2575fc)",
         padding: "40px",
         color: "white",
         marginTop: "40px",

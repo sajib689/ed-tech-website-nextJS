@@ -151,7 +151,7 @@ const ContactForm = () => {
               variant="contained"
               sx={{
                 gridColumn: "span 2",
-                backgroundColor: "#21BF73",
+                background: "linear-gradient(to right, #6a11cb, #2575fc)",
                 color: "white",
                 fontWeight: "bold",
                 "&:hover": { backgroundColor: "#1aa965" },
@@ -167,7 +167,7 @@ const ContactForm = () => {
       <Grid item xs={12} md={4}>
         <Card
           sx={{
-            backgroundColor: "#21BF73",
+            background: "linear-gradient(to right, #6a11cb, #2575fc)",
             color: "white",
             padding: 3,
             borderRadius: 2,
