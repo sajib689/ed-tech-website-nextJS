@@ -56,6 +56,7 @@ const ViewCourse = ({ id }: { id: string }) => {
   const [course, setCourse] = useState<Course | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  
   useEffect(() => {
     const fetchCourse = async () => {
       try {
@@ -193,7 +194,7 @@ const ViewCourse = ({ id }: { id: string }) => {
                 ${course?.price}
               </Typography>
               <Button
-              href={`/checkout/${course?.id}`}
+              href={`/checkout/${id}`}
                 variant="contained"
                 sx={{
                   backgroundColor: "#21BF73",
