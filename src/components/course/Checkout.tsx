@@ -26,7 +26,7 @@ interface CheckoutProps {
 }
 
 const Checkout: React.FC<CheckoutProps> = ({ id }) => {
-  console.log(id)
+
   interface Course {
     id: string;
     courseName: string;
@@ -124,7 +124,7 @@ const Checkout: React.FC<CheckoutProps> = ({ id }) => {
   }
 
   return (
-    <Container maxWidth="lg" sx={{ mt: '80px', pb: 5 }}>
+    <Container maxWidth="lg" sx={{ mt: '100px', pb: 5 }}>
       {/* Hero Section */}
       <Box
         sx={{
@@ -138,7 +138,7 @@ const Checkout: React.FC<CheckoutProps> = ({ id }) => {
         <Grid container spacing={2} alignItems="center">
           <Grid item xs={12} sm={4}>
             <Avatar
-              src="https://miro.medium.com/v2/resize:fit:1358/1*W7RrtI7JITRMdo8f7iTioQ.jpeg"
+              src={course?.courseImage}
               alt="Course Image"
               variant="square"
               sx={{
@@ -153,11 +153,11 @@ const Checkout: React.FC<CheckoutProps> = ({ id }) => {
               {course?.courseName}
             </Typography>
             <Typography variant="subtitle1" gutterBottom>
-              Unlock the power of React with hands-on projects and expert guidance.
+              {course?.whatYouWillLearn}
             </Typography>
             <Typography variant="body1" mt={1}>
               <SchoolIcon sx={{ verticalAlign: 'middle', mr: 1 }} />
-              Provided by: John Doe
+              Provided by: {course?.providerName}
             </Typography>
           </Grid>
         </Grid>
