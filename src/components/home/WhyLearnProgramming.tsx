@@ -30,21 +30,34 @@ const WhyLearnProgramming = () => {
     >
       {/* Left Section - List */}
       <Box sx={{ flex: 1, paddingRight: 2 }}>
-        <List>
-          {listItems.map((item, index) => (
-            <ListItem key={index}>
-              <ListItemIcon>
-                <CheckCircleIcon
-                  sx={{
-                    color: "linear-gradient(to right, #6a11cb, #2575fc)",
-                   
-                  }}
-                />
-              </ListItemIcon>
-              <ListItemText primary={item} />
-            </ListItem>
-          ))}
-        </List>
+      <List>
+  {listItems.map((item, index) => (
+    <ListItem key={index}>
+      <ListItemIcon>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            background: "linear-gradient(to right, #6a11cb, #2575fc)",
+            borderRadius: "50%",
+            width: "24px",
+            height: "24px",
+          }}
+        >
+          <CheckCircleIcon
+            sx={{
+              color: "white", // Icon color to stand out against the gradient background
+              fontSize: "20px",
+            }}
+          />
+        </Box>
+      </ListItemIcon>
+      <ListItemText primary={item} />
+    </ListItem>
+  ))}
+</List>
+
       </Box>
 
       {/* Right Section - Text */}
