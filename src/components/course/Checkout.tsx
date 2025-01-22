@@ -79,7 +79,7 @@ const Checkout: React.FC<CheckoutProps> = ({ id }) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   if (!authContext) {
-    return <Loader />; // Fallback if AuthContext is not available
+    return <Loader />; 
   }
 
   const { user } = authContext;
