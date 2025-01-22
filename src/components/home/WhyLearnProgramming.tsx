@@ -36,9 +36,8 @@ const WhyLearnProgramming = () => {
               <ListItemIcon>
                 <CheckCircleIcon
                   sx={{
-                    background: "linear-gradient(to right, #6a11cb, #2575fc)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
+                    color: "linear-gradient(to right, #6a11cb, #2575fc)",
+                   
                   }}
                 />
               </ListItemIcon>
@@ -51,7 +50,7 @@ const WhyLearnProgramming = () => {
       {/* Right Section - Text */}
       <Box sx={{ flex: 1, paddingLeft: 2 }}>
         <Typography
-          variant="h5"
+          variant="h4"
           sx={{
             marginBottom: 2,
             background: "linear-gradient(to right, #6a11cb, #2575fc)",
