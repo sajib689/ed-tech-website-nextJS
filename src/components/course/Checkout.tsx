@@ -22,36 +22,38 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "@/context/AuthProvider";
 import Loader from "@/utlis/Loader";
+import useUserByEmail from "@/hooks/useUserByEmail";
 
 interface CheckoutProps {
   id: string;
 }
 
+interface Course {
+  id: string;
+  courseName: string;
+  courseCategory: string;
+  courseType: string;
+  courseImage: string;
+  price: number;
+  providerName: string;
+  providerImage: string;
+  providerTitle: string;
+  duration: string;
+  level: string;
+  courseLevel: string;
+  statistics: {
+    coursesCreated: number;
+    workshopsAttended: number;
+    personsMentored: number;
+    webinarHosted: number;
+  };
+  courseDuration: number;
+  rating: number;
+  whatYouWillLearn: string;
+}
+
 const Checkout: React.FC<CheckoutProps> = ({ id }) => {
-  
-  interface Course {
-    id: string;
-    courseName: string;
-    courseCategory: string;
-    courseType: string;
-    courseImage: string;
-    price: number;
-    providerName: string;
-    providerImage: string;
-    providerTitle: string;
-    duration: string;
-    level: string;
-    courseLevel: string;
-    statistics: {
-      coursesCreated: number;
-      workshopsAttended: number;
-      personsMentored: number;
-      webinarHosted: number;
-    };
-    courseDuration: number;
-    rating: number;
-    whatYouWillLearn: string;
-  }
+  // Fetch course data
   useEffect(() => {
     const fetchCourse = async () => {
       try {
@@ -72,19 +74,22 @@ const Checkout: React.FC<CheckoutProps> = ({ id }) => {
 
     fetchCourse();
   }, [id]);
+  const authContext = useContext(AuthContext);
   const [course, setCourse] = useState<Course | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-   const authContext = useContext(AuthContext);
-  
-    if (!authContext) {
-      return <Loader/>; // Handle missing context
-    }
-  
-    const { user } = authContext;
-  
+  if (!authContext) {
+    return <Loader />; // Fallback if AuthContext is not available
+  }
 
-  if (loading) {
+  const { user } = authContext;
+  const { userData, loadings: userLoading, errors: userError } = useUserByEmail(
+    user?.email || ""
+  );
+
+
+  // Loading state
+  if (loading || userLoading) {
     return (
       <Box
         sx={{
@@ -100,7 +105,8 @@ const Checkout: React.FC<CheckoutProps> = ({ id }) => {
     );
   }
 
-  if (error) {
+  // Error state
+  if (error || userError) {
     return (
       <Box
         sx={{
@@ -111,11 +117,12 @@ const Checkout: React.FC<CheckoutProps> = ({ id }) => {
           bgcolor: "#f8d7da",
         }}
       >
-        <Alert severity="error">{error}</Alert>
+        <Alert severity="error">{error || userError}</Alert>
       </Box>
     );
   }
 
+  // No course found
   if (!course) {
     return (
       <Box
@@ -184,21 +191,26 @@ const Checkout: React.FC<CheckoutProps> = ({ id }) => {
               <Box component="form" noValidate>
                 <TextField
                   label="Full Name"
+                  value={userData?.name || ""}
                   variant="outlined"
                   fullWidth
                   required
                   margin="normal"
+                  disabled
                 />
                 <TextField
                   label="Email Address"
+                  value={userData?.email || ""}
                   variant="outlined"
                   fullWidth
                   required
                   margin="normal"
+                  disabled
                 />
                 <TextField
                   label="Phone Number"
                   variant="outlined"
+                  value={userData?.number || ""}
                   fullWidth
                   required
                   margin="normal"
@@ -219,7 +231,7 @@ const Checkout: React.FC<CheckoutProps> = ({ id }) => {
               <Divider sx={{ my: 2 }} />
               <Box display="flex" justifyContent="space-between" mb={1}>
                 <Typography>Course Price</Typography>
-                <Typography>$49.99</Typography>
+                <Typography>${course?.price || 0}</Typography>
               </Box>
               <Box display="flex" justifyContent="space-between" mb={1}>
                 <Typography>Tax</Typography>
@@ -231,7 +243,7 @@ const Checkout: React.FC<CheckoutProps> = ({ id }) => {
                   Total
                 </Typography>
                 <Typography variant="h6" fontWeight="bold">
-                  $54.99
+                  ${course?.price + 5 || 0}
                 </Typography>
               </Box>
             </CardContent>
