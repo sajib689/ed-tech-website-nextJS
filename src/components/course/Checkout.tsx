@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import {
   Box,
@@ -14,19 +14,21 @@ import {
   Avatar,
   Alert,
   CircularProgress,
-} from '@mui/material';
-import PaymentIcon from '@mui/icons-material/Payment';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import SchoolIcon from '@mui/icons-material/School';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+} from "@mui/material";
+import PaymentIcon from "@mui/icons-material/Payment";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import SchoolIcon from "@mui/icons-material/School";
+import axios from "axios";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "@/context/AuthProvider";
+import Loader from "@/utlis/Loader";
 
 interface CheckoutProps {
   id: string;
 }
 
 const Checkout: React.FC<CheckoutProps> = ({ id }) => {
-
+  
   interface Course {
     id: string;
     courseName: string;
@@ -50,10 +52,6 @@ const Checkout: React.FC<CheckoutProps> = ({ id }) => {
     rating: number;
     whatYouWillLearn: string;
   }
-
-  const [course, setCourse] = useState<Course | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
   useEffect(() => {
     const fetchCourse = async () => {
       try {
@@ -74,6 +72,17 @@ const Checkout: React.FC<CheckoutProps> = ({ id }) => {
 
     fetchCourse();
   }, [id]);
+  const [course, setCourse] = useState<Course | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+   const authContext = useContext(AuthContext);
+  
+    if (!authContext) {
+      return <Loader/>; // Handle missing context
+    }
+  
+    const { user } = authContext;
+  
 
   if (loading) {
     return (
@@ -124,15 +133,15 @@ const Checkout: React.FC<CheckoutProps> = ({ id }) => {
   }
 
   return (
-    <Container maxWidth="lg" sx={{ mt: '100px', pb: 5 }}>
+    <Container maxWidth="lg" sx={{ mt: "100px", pb: 5 }}>
       {/* Hero Section */}
       <Box
         sx={{
           p: 3,
           mb: 4,
-          background: 'linear-gradient(to right, #6a11cb, #2575fc)',
+          background: "linear-gradient(to right, #6a11cb, #2575fc)",
           borderRadius: 2,
-          color: 'white',
+          color: "white",
         }}
       >
         <Grid container spacing={2} alignItems="center">
@@ -142,8 +151,8 @@ const Checkout: React.FC<CheckoutProps> = ({ id }) => {
               alt="Course Image"
               variant="square"
               sx={{
-                width: '100%',
-                height: 'auto',
+                width: "100%",
+                height: "auto",
                 borderRadius: 2,
               }}
             />
@@ -156,7 +165,7 @@ const Checkout: React.FC<CheckoutProps> = ({ id }) => {
               {course?.whatYouWillLearn}
             </Typography>
             <Typography variant="body1" mt={1}>
-              <SchoolIcon sx={{ verticalAlign: 'middle', mr: 1 }} />
+              <SchoolIcon sx={{ verticalAlign: "middle", mr: 1 }} />
               Provided by: {course?.providerName}
             </Typography>
           </Grid>
@@ -169,7 +178,7 @@ const Checkout: React.FC<CheckoutProps> = ({ id }) => {
           <Card elevation={4} sx={{ borderRadius: 3 }}>
             <CardContent>
               <Typography variant="h5" fontWeight="bold" gutterBottom>
-                <PaymentIcon sx={{ mr: 1, verticalAlign: 'middle' }} />
+                <PaymentIcon sx={{ mr: 1, verticalAlign: "middle" }} />
                 Your Information
               </Typography>
               <Box component="form" noValidate>
@@ -204,7 +213,7 @@ const Checkout: React.FC<CheckoutProps> = ({ id }) => {
           <Card elevation={4} sx={{ borderRadius: 3 }}>
             <CardContent>
               <Typography variant="h5" fontWeight="bold" gutterBottom>
-                <ShoppingCartIcon sx={{ mr: 1, verticalAlign: 'middle' }} />
+                <ShoppingCartIcon sx={{ mr: 1, verticalAlign: "middle" }} />
                 Payment Summary
               </Typography>
               <Divider sx={{ my: 2 }} />
@@ -233,8 +242,8 @@ const Checkout: React.FC<CheckoutProps> = ({ id }) => {
                 color="primary"
                 size="large"
                 sx={{
-                  fontWeight: 'bold',
-                  background: 'linear-gradient(to right, #6a11cb, #2575fc)',
+                  fontWeight: "bold",
+                  background: "linear-gradient(to right, #6a11cb, #2575fc)",
                 }}
               >
                 Proceed to Payment
