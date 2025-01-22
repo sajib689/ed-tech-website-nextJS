@@ -82,13 +82,17 @@ const CourseCard: React.FC<{ course: Course }> = ({ course }) => {
           padding: "16px",
         }}
       >
-        <Typography variant="h6" sx={{ fontWeight: "bold", color: "#21BF73" }}>
+        <Typography variant="h6" sx={{ fontWeight: "bold",
+            background: "linear-gradient(to right, #6a11cb, #2575fc)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent", }}>
           ${course.price}
         </Typography>
         <Button
           href={course._id ? `/view_course/${course._id}` : "#"}
           variant="contained"
-          sx={{ backgroundColor: "#21BF73", color: "white" }}
+          sx={{ backgroundColor: "linear-gradient(to right, #6a11cb, #2575fc)",
+            color: "white",fontWeight: "bold" }}
           size="small"
         >
           Enroll Now

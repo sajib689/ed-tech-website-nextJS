@@ -55,7 +55,7 @@ const CourseCard: React.FC<{ course: Course }> = ({ course }) => {
         <Box sx={{ display: "flex", alignItems: "center", marginTop: "8px" }}>
           <Avatar
             src={course?.providerImage}
-            alt={course.providerName}
+            alt={course?.providerName}
             sx={{ marginRight: "8px" }}
           />
           <Box>
@@ -168,8 +168,10 @@ const CourseList: React.FC = () => {
         sx={{
           fontWeight: "600",
           color: "rgba(0, 0, 0, 0.55)",
-          textAlign: "center",
-          marginBottom: "24px",
+          textAlign: "left",
+          marginBottom: "50px",
+          marginTop: "24px",
+          marginLeft: "24px",
         }}
       >
         All Top Courses
