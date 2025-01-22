@@ -2,13 +2,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 interface User {
-    id: string;
-    role: string;
-    name: string;
-    email: string;
-    password: string;
-    number: number;
-    create_At?: Date;
+  id: string;
+  role: string;
+  name: string;
+  email: string;
+  password: string;
+  number: number;
+  create_At?: Date;
 }
 
 interface UseUserByEmailResult {
@@ -18,7 +18,7 @@ interface UseUserByEmailResult {
 }
 
 const useUserByEmail = (email: string): UseUserByEmailResult => {
-  const [userData, setuserData] = useState<User | null>(null);
+  const [userData, setUserData] = useState<User | null>(null);
   const [loadings, setLoadings] = useState<boolean>(false);
   const [errors, setErrors] = useState<string | null>(null);
 
@@ -36,11 +36,15 @@ const useUserByEmail = (email: string): UseUserByEmailResult => {
         const response = await axios.get(
           `http://localhost:5000/api/v1/users/${email}`
         );
-        setuserData(response.data?.data);
-      } catch (err: any) {
-        setErrors(
-          err.response?.data?.message || "An error occurred while fetching user."
-        );
+        setUserData(response.data?.data);
+      } catch (err) {
+        if (axios.isAxiosError(err)) {
+          // Handle Axios-specific error
+          setErrors(err.response?.data?.message || "An error occurred while fetching user.");
+        } else {
+          // Handle non-Axios errors
+          setErrors("An unexpected error occurred.");
+        }
       } finally {
         setLoadings(false);
       }
