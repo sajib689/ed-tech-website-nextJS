@@ -27,7 +27,7 @@ const ContactForm = () => {
         padding: 4,
         marginTop: "40px",
         alignItems: "stretch",
-        marginBottom: "40px",
+        marginBottom: "100px",
       }}
     >
       {/* Contact Form Section */}
