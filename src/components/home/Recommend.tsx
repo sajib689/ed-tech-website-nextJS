@@ -1,8 +1,10 @@
-import React from "react";
+'use client'
 import Image from "next/image";
 import { Grid, Card, CardContent, Typography, Box } from "@mui/material";
 
+
 const Recommend = () => {
+  
   const cards = [
     {
       title: "Git and GitHub",
