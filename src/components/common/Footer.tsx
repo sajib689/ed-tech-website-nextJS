@@ -38,7 +38,7 @@ const Footer = () => {
           <Grid item xs={12} md={3}>
             <Typography
               variant="h5"
-              sx={{ fontWeight: "bold", marginBottom: 2 }}
+              sx={{ fontWeight: "bold", marginBottom: 2,background: 'linear-gradient(to right, #6a11cb, #2575fc)' }}
             >
               Recommended
             </Typography>
