@@ -107,7 +107,9 @@ const Checkout: React.FC<CheckoutProps> = ({ id }) => {
         amount: course.price + 5,
       });
       if (response.data?.url) {
-        window.location.href = response.data.url;
+        window.open(response.data.url, "_blank");
+
+        // window.location.href = response.data.url;
       } else {
         setError("Payment initiation failed. Please try again.");
       }
