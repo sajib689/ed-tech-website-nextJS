@@ -83,11 +83,45 @@ const Checkout: React.FC<CheckoutProps> = ({ id }) => {
   }
 
   const { user } = authContext;
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { userData, loadings: userLoading, errors: userError } = useUserByEmail(
     user?.email || ""
   );
 
-
+  const handlePayment = async () => {
+    if (!userData?.number || !course) {
+      setError("Please complete all fields.");
+      return;
+    }
+  
+    setLoading(true);
+    setError(null);
+  
+    try {
+      const response = await axios.post("http://localhost:5000/init", {
+        id: course.id,
+        courseName: course.courseName,
+        name: userData.name,
+        email: userData.email,
+        phone: userData.number,
+        amount: course.price + 5,
+      });
+      if (response.data?.url) {
+        window.location.href = response.data.url;
+      } else {
+        setError("Payment initiation failed. Please try again.");
+      }
+    } catch (err: unknown) {
+      if (axios.isAxiosError(err)) {
+        setError(err.response?.data?.message || "An error occurred. Please try again.");
+      } else {
+        setError("An unexpected error occurred.");
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+  
   // Loading state
   if (loading || userLoading) {
     return (
@@ -248,18 +282,21 @@ const Checkout: React.FC<CheckoutProps> = ({ id }) => {
               </Box>
             </CardContent>
             <CardActions sx={{ p: 2 }}>
-              <Button
-                variant="contained"
-                fullWidth
-                color="primary"
-                size="large"
-                sx={{
-                  fontWeight: "bold",
-                  background: "linear-gradient(to right, #6a11cb, #2575fc)",
-                }}
-              >
-                Proceed to Payment
-              </Button>
+            <Button
+  variant="contained"
+  fullWidth
+  color="primary"
+  size="large"
+  sx={{
+    fontWeight: "bold",
+    background: "linear-gradient(to right, #6a11cb, #2575fc)",
+  }}
+  onClick={handlePayment}
+  disabled={loading}
+>
+  {loading ? "Processing..." : "Proceed to Payment"}
+</Button>
+
             </CardActions>
           </Card>
         </Grid>
