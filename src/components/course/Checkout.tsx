@@ -98,13 +98,16 @@ const Checkout: React.FC<CheckoutProps> = ({ id }) => {
     setError(null);
   
     try {
-      const response = await axios.post("http://localhost:5000/init", {
+      const response = await axios.post("http://localhost:5000/api/v1/init", {
         id: course.id,
         courseName: course.courseName,
         name: userData.name,
         email: userData.email,
         phone: userData.number,
-        amount: course.price + 5,
+        amount: Number(course.price) + 5,
+        address: "User Address", // Ensure address is included
+        city: "User City", // Ensure city is included
+        country: "User Country", // Ensure country is included
       });
       if (response.data?.url) {
         window.open(response.data.url, "_blank");
