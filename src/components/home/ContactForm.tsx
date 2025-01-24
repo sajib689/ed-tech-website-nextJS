@@ -210,7 +210,7 @@ const ContactForm = () => {
               <IconButton
                 sx={{
                   color: "white",
-                  backgroundColor: "#1aa965",
+                  background: "linear-gradient(to right, #6a11cb, #2575fc)",
                   "&:hover": { backgroundColor: "#188d5e" },
                 }}
                 href="#"
@@ -220,7 +220,7 @@ const ContactForm = () => {
               <IconButton
                 sx={{
                   color: "white",
-                  backgroundColor: "#1aa965",
+                  background: "linear-gradient(to right, #6a11cb, #2575fc)",
                   "&:hover": { backgroundColor: "#188d5e" },
                 }}
                 href="#"
@@ -230,7 +230,7 @@ const ContactForm = () => {
               <IconButton
                 sx={{
                   color: "white",
-                  backgroundColor: "#1aa965",
+                  background: "linear-gradient(to right, #6a11cb, #2575fc)",
                   "&:hover": { backgroundColor: "#188d5e" },
                 }}
                 href="#"
