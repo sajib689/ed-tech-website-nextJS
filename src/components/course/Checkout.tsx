@@ -105,9 +105,9 @@ const Checkout: React.FC<CheckoutProps> = ({ id }) => {
         email: userData.email,
         phone: userData.number,
         amount: Number(course.price) + 5,
-        address: "User Address", // Ensure address is included
-        city: "User City", // Ensure city is included
-        country: "User Country", // Ensure country is included
+        address: "User Address", 
+        city: "User City", 
+        country: "User Country", 
       });
       if (response.data?.url) {
         window.open(response.data.url, "_blank");
