@@ -37,14 +37,16 @@ const ContactForm = () => {
             padding: 3,
             boxShadow: 3,
             borderRadius: 2,
-            backgroundColor: "#f9f9f9",
+            background: "linear-gradient(to right, #6a11cb, #2575fc)",
+            color: "white",
             height: "100%",
           }}
         >
           <Typography
             variant="h4"
             sx={{
-              fontWeight: '600', color: 'rgba(0, 0, 0, 0.55)',
+              fontWeight: "600",
+              color: "white",
               marginBottom: 4,
               padding: "10px",
               backgroundImage: `url('/assets/images/section-title-bg.svg')`,
@@ -70,13 +72,11 @@ const ContactForm = () => {
               variant="outlined"
               size="small"
               sx={{
+                "& .MuiInputBase-input": { color: "white" },
+                "& .MuiInputLabel-root": { color: "white" },
                 "& .MuiOutlinedInput-root": {
-                  "&:hover fieldset": {
-                    border: "none",
-                  },
-                  "&.Mui-focused fieldset": {
-                    border: "none",
-                  },
+                  "&:hover fieldset": { borderColor: "white" },
+                  "&.Mui-focused fieldset": { borderColor: "white" },
                 },
               }}
             />
@@ -86,13 +86,11 @@ const ContactForm = () => {
               variant="outlined"
               size="small"
               sx={{
+                "& .MuiInputBase-input": { color: "white" },
+                "& .MuiInputLabel-root": { color: "white" },
                 "& .MuiOutlinedInput-root": {
-                  "&:hover fieldset": {
-                    border: "none",
-                  },
-                  "&.Mui-focused fieldset": {
-                    border: "none",
-                  },
+                  "&:hover fieldset": { borderColor: "white" },
+                  "&.Mui-focused fieldset": { borderColor: "white" },
                 },
               }}
             />
@@ -102,13 +100,11 @@ const ContactForm = () => {
               variant="outlined"
               size="small"
               sx={{
+                "& .MuiInputBase-input": { color: "white" },
+                "& .MuiInputLabel-root": { color: "white" },
                 "& .MuiOutlinedInput-root": {
-                  "&:hover fieldset": {
-                    border: "none",
-                  },
-                  "&.Mui-focused fieldset": {
-                    border: "none",
-                  },
+                  "&:hover fieldset": { borderColor: "white" },
+                  "&.Mui-focused fieldset": { borderColor: "white" },
                 },
               }}
             />
@@ -118,13 +114,11 @@ const ContactForm = () => {
               variant="outlined"
               size="small"
               sx={{
+                "& .MuiInputBase-input": { color: "white" },
+                "& .MuiInputLabel-root": { color: "white" },
                 "& .MuiOutlinedInput-root": {
-                  "&:hover fieldset": {
-                    border: "none",
-                  },
-                  "&.Mui-focused fieldset": {
-                    border: "none",
-                  },
+                  "&:hover fieldset": { borderColor: "white" },
+                  "&.Mui-focused fieldset": { borderColor: "white" },
                 },
               }}
             />
@@ -136,13 +130,11 @@ const ContactForm = () => {
               variant="outlined"
               sx={{
                 gridColumn: "span 2",
+                "& .MuiInputBase-input": { color: "white" },
+                "& .MuiInputLabel-root": { color: "white" },
                 "& .MuiOutlinedInput-root": {
-                  "&:hover fieldset": {
-                    border: "none",
-                  },
-                  "&.Mui-focused fieldset": {
-                    border: "none",
-                  },
+                  "&:hover fieldset": { borderColor: "white" },
+                  "&.Mui-focused fieldset": { borderColor: "white" },
                 },
               }}
             />
@@ -178,8 +170,13 @@ const ContactForm = () => {
           <CardContent>
             <Typography
               variant="h4"
-              sx={{ fontWeight: "600", marginBottom: 2, backgroundImage: `url('/assets/images/section-title-bg.svg')`,
-                backgroundRepeat: "no-repeat",  }}
+              sx={{
+                fontWeight: "600",
+                color: "white",
+                marginBottom: 2,
+                backgroundImage: `url('/assets/images/section-title-bg.svg')`,
+                backgroundRepeat: "no-repeat",
+              }}
             >
               Information
             </Typography>
@@ -205,7 +202,7 @@ const ContactForm = () => {
             </Box>
             <Typography
               variant="body1"
-              sx={{ fontWeight: "bold", marginBottom: 1 }}
+              sx={{ fontWeight: "bold", color: "white", marginBottom: 1 }}
             >
               Follow Us
             </Typography>
