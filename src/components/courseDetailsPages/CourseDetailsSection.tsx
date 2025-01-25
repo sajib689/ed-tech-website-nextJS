@@ -74,7 +74,7 @@ const CourseDetailsSection = () => {
         >
           <Box sx={{ textAlign: "start" }}>
             <Typography variant="h4" sx={{ mb: 3, fontWeight: "bold" }}>
-            How Will This Course <br/> Work_?
+              How Will This Course <br /> Work_?
             </Typography>
             <Typography variant="body1" sx={{ mb: 4 }}>
               This course guides you from basics to mastering the MERN stack
@@ -83,15 +83,20 @@ const CourseDetailsSection = () => {
             <Button
               variant="contained"
               sx={{
-                backgroundColor: "#21BF73",
+              
                 px: 4,
                 py: 1.5,
                 fontSize: "16px",
                 fontWeight: "bold",
                 borderRadius: "8px",
-                "$:hover": {
-                  backgroundColor: "#1E9E5F"
-                }
+                background: "linear-gradient(to right, #6a11cb, #2575fc)",
+                "&:hover": {
+                  boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.3)",
+                  transform: "scale(1.02)",
+                  transition: "0.3s ease-in-out",
+                  backgroundColor:
+                    "linear-gradient(to right, #6a11cb, #2575fc)",
+                },
               }}
             >
               Enroll Now
@@ -106,11 +111,11 @@ const CourseDetailsSection = () => {
               maxHeight: "500px",
               overflowY: "auto",
               padding: "20px",
-              backgroundColor: "#B0EACD",
+              background: "linear-gradient(to right, #6a11cb, #2575fc)",
               borderRadius: "12px",
               boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.3)",
               scrollbarWidth: "thin",
-              scrollbarColor: "#1E9E5F transparent",
+              scrollbarColor: "#6a11cb transparent",
               "&::-webkit-scrollbar": {
                 width: "8px",
               },
@@ -127,17 +132,19 @@ const CourseDetailsSection = () => {
               <Card
                 key={index}
                 sx={{
-                  backgroundColor: "#1A202C",
+                  background: "linear-gradient(to right, #6a11cb, #2575fc)",
+                  "&:hover": {
+                    boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.3)",
+                    transform: "scale(1.02)",
+                    transition: "0.3s ease-in-out",
+                    backgroundColor:
+                      "linear-gradient(to right, #6a11cb, #2575fc)",
+                  },
                   color: "white",
                   marginBottom: "16px",
                   padding: "20px",
                   borderRadius: "8px",
                   boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)",
-                  "&:hover": {
-                    boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.3)",
-                    transform: "scale(1.02)",
-                    transition: "0.3s ease-in-out",
-                  },
                 }}
               >
                 <CardContent>
