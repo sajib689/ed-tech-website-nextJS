@@ -18,8 +18,8 @@ const WhatYouLearn = () => {
   return (
     <Box
       sx={{
-        background: "#fff",
-        color: "black",
+        
+        color: "white",
         textAlign: "center",
         py: 4,
         px: 2,
@@ -33,7 +33,7 @@ const WhatYouLearn = () => {
         sx={{
           fontWeight: 700,
           mb: 4,
-          fontSize: { xs: "1.5rem", md: "2rem" }, 
+          fontSize: { xs: "1.5rem", md: "2rem" },
         }}
       >
         What you will learn_ from this course?
@@ -44,10 +44,9 @@ const WhatYouLearn = () => {
         sx={{
           display: "flex",
           gap: 2,
-          flexWrap: "wrap", 
+          flexWrap: "wrap",
           justifyContent: "center",
           padding: 2,
-          background: "#fff",
         }}
       >
         {skills.map((skill, index) => (
@@ -55,7 +54,7 @@ const WhatYouLearn = () => {
             key={index}
             sx={{
               padding: "8px 16px",
-              backgroundColor: skill.color,
+              background: `linear-gradient(to right, ${skill.color}, #000000)`,
               borderRadius: "8px",
               display: "flex",
               alignItems: "center",
@@ -63,17 +62,18 @@ const WhatYouLearn = () => {
               minWidth: "100px",
               textAlign: "center",
               boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
-              transition: "transform 0.3s, box-shadow 0.3s", 
+              transition: "transform 0.3s, box-shadow 0.3s",
               "&:hover": {
-                transform: "scale(1.05)", 
-                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.3)",
+                transform: "scale(1.05)",
+                boxShadow: "0 6px 20px rgba(0, 0, 0, 0.3)",
+                background: `linear-gradient(to right, ${skill.color}, #6a11cb)`,
               },
             }}
           >
             <Typography
               variant="subtitle1"
               sx={{
-                color: "#FFFFFF", 
+                color: "#FFFFFF",
                 fontWeight: 600,
                 textTransform: "capitalize",
               }}
