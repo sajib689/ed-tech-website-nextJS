@@ -47,7 +47,7 @@ const SpecialtySection = () => {
       sx={{
         backgroundColor: "#fff",
         py: 8,
-        px: { xs: 2, sm: 4 }, 
+        px: { xs: 2, sm: 4 },
       }}
     >
       <Box sx={{ textAlign: "center", mb: 6 }}>
@@ -60,16 +60,19 @@ const SpecialtySection = () => {
           <Grid item xs={12} sm={6} md={4} key={index}>
             <Paper
               sx={{
-                background: "linear-gradient(to bottom, #1a1a2e, #282856)",
+                background: "linear-gradient(to right, #6a11cb, #2575fc)",
+                "&:hover": {
+                  backgroundColor:
+                    "linear-gradient(to right, #6a11cb, #2575fc)",
+                  transform: "scale(1.05)",
+                },
                 padding: 3,
                 borderRadius: 2,
                 boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.2)",
                 transition: "transform 0.3s ease-in-out",
-                "&:hover": {
-                  transform: "scale(1.05)",
-                },
-                height: 'auto',
-                minHeight: 180, 
+
+                height: "auto",
+                minHeight: 180,
               }}
             >
               <Box
@@ -98,7 +101,7 @@ const SpecialtySection = () => {
                   {item.title}
                 </Typography>
               </Box>
-              <Typography variant="body2" sx={{ color: "#ccc" }}>
+              <Typography variant="body2" sx={{ color: "white" }}>
                 {item.description}
               </Typography>
             </Paper>
