@@ -112,15 +112,9 @@ const NextBatchEnrollment = () => {
       <Button
         variant="contained"
         sx={{
-          background: "#21BF73", 
-          color: "#ffffff",
-          px: 4,
-          py: 1,
-          fontSize: "1rem",
-          fontWeight: 600,
-          textTransform: "none",
+          background: "linear-gradient(to right, #6a11cb, #2575fc)",
           "&:hover": {
-            background: "#1eaa66",
+            backgroundColor: "linear-gradient(to right, #6a11cb, #2575fc)",
           },
         }}
       >
