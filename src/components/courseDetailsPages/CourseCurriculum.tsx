@@ -115,7 +115,10 @@ const CourseCurriculum = () => {
       >
         <Box
           sx={{
-            background: "linear-gradient(to right, #1E9E5F, #34D399, #0F4F31)",
+            background: "linear-gradient(to right, #6a11cb, #2575fc)",
+      "&:hover": {
+        backgroundColor: "linear-gradient(to right, #6a11cb, #2575fc)",
+      },
             padding: "16px",
           }}
         >
