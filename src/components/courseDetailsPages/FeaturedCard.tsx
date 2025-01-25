@@ -50,7 +50,10 @@ const FeatureCard = () => {
           <Grid item xs={12} sm={6} md={4} key={index}>
             <Box
               sx={{
-                backgroundColor: "#211c3d",
+                background: "linear-gradient(to right, #6a11cb, #2575fc)",
+      "&:hover": {
+        backgroundColor: "linear-gradient(to right, #6a11cb, #2575fc)",
+      },
                 borderRadius: "8px",
                 padding: "24px",
                 boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.2)",
@@ -59,6 +62,7 @@ const FeatureCard = () => {
                 alignItems: "start",
                 textAlign: "left",
                 height: "80%",
+                color: "white",
               }}
             >
               <Box
@@ -86,7 +90,7 @@ const FeatureCard = () => {
                 </Typography>
               </Box>
 
-              <Typography variant="body2" sx={{ color: "#d1d5db" }}>
+              <Typography variant="body2" sx={{ color: "white" }}>
                 {feature.description}
               </Typography>
             </Box>
