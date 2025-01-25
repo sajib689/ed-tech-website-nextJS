@@ -48,12 +48,12 @@ const CourseIncluded = () => {
                 borderRadius: "12px",
                 padding: "24px",
                 textAlign: "center",
-                backgroundColor: "#1A152E",
-                transition: "transform 0.3s, background-color 0.3s",
+                background: "linear-gradient(to right, #6a11cb, #2575fc)",
                 "&:hover": {
-                  transform: "scale(1.05)",
-                  backgroundColor: "#1A152E",
+                  backgroundColor:
+                    "linear-gradient(to right, #6a11cb, #2575fc)",
                 },
+                transition: "transform 0.3s, background-color 0.3s",
               }}
             >
               <Box sx={{ mb: 2 }}>{item.icon}</Box>
@@ -70,7 +70,7 @@ const CourseIncluded = () => {
               <Typography
                 variant="body2"
                 sx={{
-                  color: "#4B5563",
+                  color: "white",
                   lineHeight: "1.6",
                   "&:hover": { color: "#FFFFFF" },
                 }}
