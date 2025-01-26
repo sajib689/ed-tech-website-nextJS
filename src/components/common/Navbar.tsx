@@ -27,7 +27,7 @@ const pages: Page[] = [
   { name: "Home", link: "/" },
   { name: "Course Details", link: "/course_details" },
   { name: "Blog", link: "/blog" },
-  { name: "My Classes", link: "/my_classes" },
+  { name: "My Classes", link: "/class_list" },
   { name: "About Us", link: "/about-us" },
 ];
 
