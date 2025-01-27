@@ -10,13 +10,10 @@ const ClassList = () => {
     const [loading, setLoading] = useState(true);
     const authContext = useContext(AuthContext);
 
-  if (!authContext) {
+  if (!authContext || loading) {
     return <Loader/>
   }
-  
-  const { user, logout } = authContext;
-    
-
+  const { user } = authContext;  
     useEffect( () => {
         axios.get(`http://localhost:5000/api/v1/paymenthistory/${user?.email}`)
         .then(res => {
@@ -27,7 +24,7 @@ const ClassList = () => {
     },[user?.email])
     return (
         <div>
-            
+            <h1>{classes.length}</h1>
         </div>
     );
 };

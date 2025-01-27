@@ -3,7 +3,7 @@ import { CircularProgress } from "@mui/material";
 
 const Loader = () => {
     return (
-        <div>
+        <div className="flex justify-center items-center h-screen">
             <CircularProgress disableShrink />
         </div>
     );
