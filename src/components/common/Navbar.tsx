@@ -18,6 +18,7 @@ import logo from "../../../public/assets/images/logo (3).png";
 import { AuthContext } from "@/context/AuthProvider";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Loader from "@/utlis/Loader";
 
 // Define types for pages and settings
 type Page = { name: string; link: string };
@@ -56,14 +57,14 @@ const Navbar = () => {
   const authContext = useContext(AuthContext);
 
   if (!authContext) {
-    return <Typography>Loading...</Typography>; // Handle missing context
+    return <Loader/> 
   }
 
   const { user, logout } = authContext;
 
   const handleLogOut = async () => {
     await logout();
-    router.push("/login"); // Redirect to login after logout
+    router.push("/login"); 
   };
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
