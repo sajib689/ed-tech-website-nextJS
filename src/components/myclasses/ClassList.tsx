@@ -24,7 +24,7 @@ const ClassList = () => {
             setLoading(false);
             console.log(res.data)
         })
-    },[])
+    },[user?.email])
     return (
         <div>
             
