@@ -20,9 +20,9 @@ const ClassList = () => {
     useEffect( () => {
         axios.get(`http://localhost:5000/api/v1/paymenthistory/${user?.email}`)
         .then(res => {
-            setClasses(res.data);
+            setClasses(res.data.payment);
             setLoading(false);
-            console.log(res.data)
+            console.log(res.data.payment)
         })
     },[user?.email])
     return (
