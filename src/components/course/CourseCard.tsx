@@ -25,6 +25,8 @@ const CourseCard: React.FC<{ course: Course }> = ({ course }) => {
   return (
     <Card
       sx={{
+        background: "linear-gradient(135deg, #6a11cb, #2575fc)",
+        color: "white",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
@@ -48,7 +50,7 @@ const CourseCard: React.FC<{ course: Course }> = ({ course }) => {
 
       {/* Course Details */}
       <CardContent sx={{ padding: "16px" }}>
-        <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+        <Typography variant="h6" sx={{ fontWeight: "bold",color: "white",}}>
           {course?.courseName}
         </Typography>
         <Box sx={{ display: "flex", alignItems: "center", marginTop: "8px" }}>
@@ -59,7 +61,7 @@ const CourseCard: React.FC<{ course: Course }> = ({ course }) => {
           />
           <Box>
             <Typography variant="body1">{course?.providerName}</Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" color="white">
               {course?.providerTitle}
             </Typography>
           </Box>
