@@ -257,85 +257,101 @@ const ViewCourse = ({ id }: { id: string }) => {
           </Grid>
 
           {/* Right Section */}
-          <Grid item xs={12} md={6} container spacing={4}>
             {/* Course Format Card */}
-            <Grid item xs={12} md={6}>
-              <Card sx={{ boxShadow: 3, borderRadius: "8px" }}>
-                <CardContent>
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "8px",
-                      marginBottom: "16px",
-                    }}
-                  >
-                    <Computer fontSize="large" /> Course Format
-                  </Typography>
-                  <List>
-                    {[
-                      "Video Tutorials",
-                      "Checking the Task",
-                      "Pulvinar sapien",
-                      "Software",
-                    ].map((item, index) => (
-                      <ListItem key={index} disableGutters>
-                        <ListItemIcon
-                          sx={{ color: "#fdd835", minWidth: "32px" }}
-                        >
-                          <ArrowRight />
-                        </ListItemIcon>
-                        <ListItemText primary={item} />
-                      </ListItem>
-                    ))}
-                  </List>
-                </CardContent>
-              </Card>
-            </Grid>
+            <Grid item xs={12} md={6} container spacing={4}>
+  {/* Course Format Card */}
+  <Grid item xs={12} md={6}>
+    <Card
+      sx={{
+        background: "linear-gradient(to right, #6a11cb, #2575fc)", // Gradient background
+        color: "white", // White text color
+        boxShadow: 3,
+        borderRadius: "8px",
+      }}
+    >
+      <CardContent>
+        <Typography
+          variant="h6"
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
+            marginBottom: "16px",
+          }}
+        >
+          <Computer fontSize="large" /> Course Format
+        </Typography>
+        <List>
+          {[
+            "Video Tutorials",
+            "Checking the Task",
+            "Pulvinar sapien",
+            "Software",
+          ].map((item, index) => (
+            <ListItem key={index} disableGutters>
+              <ListItemIcon
+                sx={{ color: "#fdd835", minWidth: "32px" }}
+              >
+                <ArrowRight />
+              </ListItemIcon>
+              <ListItemText primary={item} />
+            </ListItem>
+          ))}
+        </List>
+      </CardContent>
+    </Card>
+  </Grid>
 
-            {/* Duration Course Card */}
-            <Grid item xs={12} md={6}>
-              <Card sx={{ boxShadow: 3, borderRadius: "8px" }}>
-                <CardContent>
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "8px",
-                      marginBottom: "16px",
-                    }}
-                  >
-                    <CalendarToday fontSize="large" /> Duration Course
-                  </Typography>
-                  <List>
-                    {[
-                      `Courses Created: ${
-                        course?.statistics?.coursesCreated || "N/A"
-                      } Weeks`,
-                      `Workshops Attended: ${
-                        course?.statistics?.workshopsAttended || "N/A"
-                      }`,
-                      `Persons Mentored: ${
-                        course?.statistics?.personsMentored || "N/A"
-                      }`,
-                      `Webinar: ${course?.statistics?.webinarHosted || "N/A"}`,
-                    ].map((stat, index) => (
-                      <ListItem key={index} disableGutters>
-                        <ListItemIcon
-                          sx={{ color: "#fdd835", minWidth: "32px" }}
-                        >
-                          <ArrowRight />
-                        </ListItemIcon>
-                        <ListItemText primary={stat} />
-                      </ListItem>
-                    ))}
-                  </List>
-                </CardContent>
-              </Card>
-            </Grid>
-          </Grid>
+  {/* Duration Course Card */}
+  <Grid item xs={12} md={6}>
+    <Card
+      sx={{
+        background: "linear-gradient(to right, #6a11cb, #2575fc)", // Gradient background
+        color: "white", // White text color
+        boxShadow: 3,
+        borderRadius: "8px",
+      }}
+    >
+      <CardContent>
+        <Typography
+          variant="h6"
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
+            marginBottom: "16px",
+          }}
+        >
+          <CalendarToday fontSize="large" /> Duration Course
+        </Typography>
+        <List>
+          {[
+            `Courses Created: ${
+              course?.statistics?.coursesCreated || "N/A"
+            } Weeks`,
+            `Workshops Attended: ${
+              course?.statistics?.workshopsAttended || "N/A"
+            }`,
+            `Persons Mentored: ${
+              course?.statistics?.personsMentored || "N/A"
+            }`,
+            `Webinar: ${course?.statistics?.webinarHosted || "N/A"}`,
+          ].map((stat, index) => (
+            <ListItem key={index} disableGutters>
+              <ListItemIcon
+                sx={{ color: "#fdd835", minWidth: "32px" }}
+              >
+                <ArrowRight />
+              </ListItemIcon>
+              <ListItemText primary={stat} />
+            </ListItem>
+          ))}
+        </List>
+      </CardContent>
+    </Card>
+  </Grid>
+</Grid>
+
         </Grid>
       </Box>
 
