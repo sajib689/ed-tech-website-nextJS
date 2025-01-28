@@ -65,9 +65,10 @@ const WhyLearnProgramming = () => {
           variant="h4"
           sx={{
             marginBottom: 2,
-            background: "linear-gradient(to right, #6a11cb, #2575fc)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
+            color: '#fff'
+            // background: "linear-gradient(to right, #6a11cb, #2575fc)",
+            // WebkitBackgroundClip: "text",
+            // WebkitTextFillColor: "transparent",
           }}
         >
           Be Prepared for a New Era of Learning
