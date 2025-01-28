@@ -24,7 +24,6 @@ const WhyLearnProgramming = () => {
         display: "flex",
         flexDirection: "row",
         padding: 4,
-        backgroundColor: "#f9f9f9",
         marginTop: "40px",
       }}
     >

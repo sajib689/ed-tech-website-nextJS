@@ -25,6 +25,8 @@ const CourseCard: React.FC<{ course: Course }> = ({ course }) => {
   return (
     <Card
       sx={{
+        background: "linear-gradient(135deg, #6a11cb, #2575fc)",
+        color: "white",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
@@ -67,7 +69,7 @@ const CourseCard: React.FC<{ course: Course }> = ({ course }) => {
         </Box>
         <Typography
           variant="body2"
-          sx={{ marginTop: "8px", color: "text.secondary" }}
+          sx={{ marginTop: "8px", color: "white" }}
         >
           {course.totalEnrolls} learners enrolled
         </Typography>
@@ -84,10 +86,11 @@ const CourseCard: React.FC<{ course: Course }> = ({ course }) => {
         <Typography
           variant="h6"
           sx={{
+            color: "white",
             fontWeight: "bold",
-            background: "linear-gradient(to right, #6a11cb, #2575fc)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
+            // background: "linear-gradient(to right, #6a11cb, #2575fc)",
+            // WebkitBackgroundClip: "text",
+            // WebkitTextFillColor: "transparent",
           }}
         >
           ${course?.price}

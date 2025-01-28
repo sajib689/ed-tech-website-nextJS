@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Footer from '../components/common/Footer';
+import Footer from "../components/common/Footer";
 import Navbar from "@/components/common/Navbar";
 import AuthProvider from "../context/AuthProvider";
 
@@ -27,16 +27,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#FAF8F6]`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         style={{
-          margin: "0 auto"
+          background: "linear-gradient(to right, #6a11cb, #2575fc)",
+          color: "white",
+          margin: "0 auto",
         }}
       >
-       <AuthProvider>
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-       </AuthProvider>
+        <AuthProvider>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );
