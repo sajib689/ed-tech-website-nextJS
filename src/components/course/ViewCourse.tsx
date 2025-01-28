@@ -307,7 +307,7 @@ const ViewCourse = ({ id }: { id: string }) => {
     <Card
       sx={{
         background: "linear-gradient(to right, #6a11cb, #2575fc)", // Gradient background
-        color: "white", // White text color
+        color: "white", 
         boxShadow: 3,
         borderRadius: "8px",
       }}
