@@ -340,7 +340,7 @@ const ViewCourse = ({ id }: { id: string }) => {
       </Box>
 
       {/* Instructors section */}
-      <Box sx={{ padding: "40px", backgroundColor: "#fff",marginBottom:"100px" }}>
+      <Box sx={{ padding: "40px",marginBottom:"100px",  }}>
         <Typography
           variant="h4"
           sx={{ fontWeight: "bold", marginBottom: "24px" }}
@@ -365,12 +365,12 @@ const ViewCourse = ({ id }: { id: string }) => {
 
           {/* Content Section */}
           <Grid item xs={12} md={8}>
-            <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+            <Typography variant="h5" sx={{ fontWeight: "bold",color: "#fff",  }}>
               {course?.providerName}
             </Typography>
             <Typography
               variant="subtitle1"
-              sx={{ color: "gray", marginBottom: "16px" }}
+              sx={{ color: "white", marginBottom: "16px" }}
             >
               {course?.providerTitle} / Mentor
             </Typography>
@@ -401,7 +401,7 @@ const ViewCourse = ({ id }: { id: string }) => {
             {/* Description */}
             <Typography
               variant="body2"
-              sx={{ color: "gray", marginBottom: "24px" }}
+              sx={{ color: "white", marginBottom: "24px" }}
             >
              {course?.whatYouWillLearn}
             </Typography>
@@ -411,33 +411,33 @@ const ViewCourse = ({ id }: { id: string }) => {
               <Grid item xs={6} sm={3}>
                 <Typography
                   variant="h4"
-                  sx={{ fontWeight: "bold", color: "#212121" }}
+                  sx={{ fontWeight: "bold", color: "#fff" }}
                 >
                   45+
                 </Typography>
-                <Typography variant="body2" sx={{ color: "gray" }}>
+                <Typography variant="body2" sx={{ color: "#fff" }}>
                   Persons Mentored
                 </Typography>
               </Grid>
               <Grid item xs={6} sm={3}>
                 <Typography
                   variant="h4"
-                  sx={{ fontWeight: "bold", color: "#212121" }}
+                  sx={{ fontWeight: "bold", color: "#fff" }}
                 >
                   10+
                 </Typography>
-                <Typography variant="body2" sx={{ color: "gray" }}>
+                <Typography variant="body2" sx={{ color: "#fff" }}>
                   Workshops Attended
                 </Typography>
               </Grid>
               <Grid item xs={6} sm={3}>
                 <Typography
                   variant="h4"
-                  sx={{ fontWeight: "bold", color: "#212121" }}
+                  sx={{ fontWeight: "bold", color: "#fff" }}
                 >
                   10+
                 </Typography>
-                <Typography variant="body2" sx={{ color: "gray" }}>
+                <Typography variant="body2" sx={{ color: "#fff" }}>
                   Courses Created
                 </Typography>
               </Grid>
