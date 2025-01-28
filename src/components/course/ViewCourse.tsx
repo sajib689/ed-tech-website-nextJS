@@ -138,10 +138,10 @@ const ViewCourse = ({ id }: { id: string }) => {
       >
         {/* Breadcrumb Navigation */}
         <Breadcrumbs aria-label="breadcrumb" sx={{ marginBottom: "0px" }}>
-          <Link underline="hover" color="inherit" href="/">
+          <Link underline="hover" color="white" href="/">
             Home
           </Link>
-          <Link underline="hover" color="inherit" href="/courses">
+          <Link underline="hover" color="white" href="/courses">
             Courses
           </Link>
           <Typography color="text.primary" bgcolor="yellow">
