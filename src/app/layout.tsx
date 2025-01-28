@@ -28,6 +28,9 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#FAF8F6]`}
+        style={{
+          margin: "0 auto"
+        }}
       >
        <AuthProvider>
         <Navbar />

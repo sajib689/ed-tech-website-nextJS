@@ -4,6 +4,7 @@ import { AuthContext } from "@/context/AuthProvider";
 import Loader from "@/utlis/Loader";
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
+import { Container, Grid, Card, CardMedia, CardContent, Typography } from "@mui/material";
 
 interface ClassItem {
   courseName: string;
@@ -32,25 +33,24 @@ const ClassList = () => {
     if (!user?.email) return;
 
     const fetchData = async () => {
-        setLoading(true);
-        setError(null);
-      
-        try {
-          const [paymentRes, coursesRes] = await Promise.all([
-            axios.get<{ payment: ClassItem[] }>(`http://localhost:5000/api/v1/paymenthistory/${user?.email}`),
-            axios.get<Course[]>(`http://localhost:5000/api/v1/getcourses`),
-          ]);
-      
-          setClasses(paymentRes.data.payment || []);
-          setCourses(Array.isArray(coursesRes.data.data) ? coursesRes.data.data : []);
-        } catch (err: any) {
-          console.error(err);
-          setError(err.response?.data?.message || "Failed to fetch data.");
-        } finally {
-          setLoading(false);
-        }
-      };
-      
+      setLoading(true);
+      setError(null);
+
+      try {
+        const [paymentRes, coursesRes] = await Promise.all([
+          axios.get<{ payment: ClassItem[] }>(`http://localhost:5000/api/v1/paymenthistory/${user?.email}`),
+          axios.get<Course[]>(`http://localhost:5000/api/v1/getcourses`),
+        ]);
+
+        setClasses(paymentRes.data.payment || []);
+        setCourses(Array.isArray(coursesRes.data.data) ? coursesRes.data.data : []);
+      } catch (err: any) {
+        console.error(err);
+        setError(err.response?.data?.message || "Failed to fetch data.");
+      } finally {
+        setLoading(false);
+      }
+    };
 
     fetchData();
   }, [user?.email]);
@@ -65,31 +65,43 @@ const ClassList = () => {
 
   const filteredCourses = courses.filter((course) =>
     classes.some((cls) => cls.courseName === course.courseName));
-  
-console.log(filteredCourses);
+
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">My Enrolled Classes</h1>
+    <Container maxWidth="lg" sx={{ mt: '120px' }}>
+      <Typography variant="h5" gutterBottom>
+        Welcome back {user?.displayName || user?.email}, ready for your next lesson?
+      </Typography>
+      <Typography variant="h4" gutterBottom>
+        My Enrolled Classes
+      </Typography>
+
       {filteredCourses.length === 0 ? (
-        <p className="text-gray-500">No classes found for the enrolled courses.</p>
+        <Typography color="textSecondary">No classes found for the enrolled courses.</Typography>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {filteredCourses.map((course, index) =>
-            course ? (
-              <div key={index} className="p-4 border rounded-lg shadow-md">
-                <img
-                  src={course.courseImage}
+        <Grid container spacing={4}>
+          {filteredCourses.map((course, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <Card>
+                <CardMedia
+                  component="img"
                   alt={course.courseName}
-                  className="w-full h-40 object-cover rounded-t-md"
+                  height="140"
+                  image={course.courseImage}
                 />
-                <h2 className="text-lg font-semibold mt-2">{course.courseName}</h2>
-                <p className="text-sm text-gray-500">{course.courseCategory}</p>
-              </div>
-            ) : null
-          )}
-        </div>
+                <CardContent>
+                  <Typography variant="h6" gutterBottom>
+                    {course.courseName}
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary">
+                    {course.courseCategory}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
       )}
-    </div>
+    </Container>
   );
 };
 
