@@ -62,7 +62,7 @@ const CourseCard: React.FC<{ course: Course }> = ({ course }) => {
           />
           <Box>
             <Typography variant="body1">{course?.providerName}</Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" color="white">
               {course?.providerTitle}
             </Typography>
           </Box>
