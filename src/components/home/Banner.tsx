@@ -1,5 +1,5 @@
 "use client";
-import { Typography, Box } from "@mui/material";
+import { Typography, Box, Button } from "@mui/material";
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -68,6 +68,7 @@ const Banner = () => {
             mt: 2,
             fontSize: { xs: "1rem", sm: "1.25rem" },
             textAlign: { xs: "center", sm: "right" },
+            color: "#000",
           }}
         >
           If you don&apos;t want to do it, &quot;loss&quot;? Hold <br /> onto
@@ -75,6 +76,14 @@ const Banner = () => {
           &quot;boss.&quot; Learn with confidence, <br /> success is in your
           search.
         </Typography>
+        <Button variant="contained"
+          sx={{
+            marginTop: 2,
+            background: "linear-gradient(to right, #6a11cb, #2575fc)",
+            "&:hover": {
+              backgroundColor: "linear-gradient(to right, #6a11cb, #2575fc)",
+            },
+          }}>Go Now</Button>
       </Box>
     </Box>
   );
