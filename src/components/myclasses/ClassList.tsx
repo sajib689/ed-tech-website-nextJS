@@ -68,8 +68,8 @@ const ClassList = () => {
 
   return (
     <Container maxWidth="lg" sx={{ mt: '120px' }}>
-      <Typography variant="h5" gutterBottom>
-        Welcome back {user?.displayName || user?.email}, ready for your next lesson?
+      <Typography variant="h4" gutterBottom>
+        Welcome back {user?.displayName || user?.email},<br/> ready for your next lesson?
       </Typography>
       <Typography variant="h4" gutterBottom>
         My Enrolled Classes
