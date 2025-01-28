@@ -221,47 +221,83 @@ const Checkout: React.FC<CheckoutProps> = ({ id }) => {
       <Grid container spacing={4}>
         {/* User Details */}
         <Grid item xs={12} md={8}>
-          <Card elevation={4} sx={{ borderRadius: 3 }}>
-            <CardContent>
-              <Typography variant="h5" fontWeight="bold" gutterBottom>
-                <PaymentIcon sx={{ mr: 1, verticalAlign: "middle" }} />
-                Your Information
-              </Typography>
-              <Box component="form" noValidate>
-                <TextField
-                  label="Full Name"
-                  value={userData?.name || ""}
-                  variant="outlined"
-                  fullWidth
-                  required
-                  margin="normal"
-                  disabled
-                />
-                <TextField
-                  label="Email Address"
-                  value={userData?.email || ""}
-                  variant="outlined"
-                  fullWidth
-                  required
-                  margin="normal"
-                  disabled
-                />
-                <TextField
-                  label="Phone Number"
-                  variant="outlined"
-                  value={userData?.number || ""}
-                  fullWidth
-                  required
-                  margin="normal"
-                />
-              </Box>
-            </CardContent>
-          </Card>
-        </Grid>
+  <Card
+    elevation={4}
+    sx={{
+      borderRadius: 3,
+      background: "linear-gradient(to right, #6a11cb, #2575fc)", // Gradient background
+      color: "white", // Card text color
+    }}
+  >
+    <CardContent>
+      <Typography variant="h5" fontWeight="bold" gutterBottom>
+        <PaymentIcon sx={{ mr: 1, verticalAlign: "middle" }} />
+        Your Information
+      </Typography>
+      <Box component="form" noValidate>
+        <TextField
+          label="Full Name"
+          value={userData?.name || ""}
+          variant="outlined"
+          fullWidth
+          required
+          margin="normal"
+          disabled
+          InputLabelProps={{
+            style: { color: "white" }, // Label color
+          }}
+          InputProps={{
+            style: {
+              color: "white", // Text color
+              borderColor: "white", // Border color
+            },
+          }}
+        />
+        <TextField
+          label="Email Address"
+          value={userData?.email || ""}
+          variant="outlined"
+          fullWidth
+          required
+          margin="normal"
+          disabled
+          InputLabelProps={{
+            style: { color: "white" }, // Label color
+          }}
+          InputProps={{
+            style: {
+              color: "white", // Text color
+              borderColor: "white", // Border color
+            },
+          }}
+        />
+        <TextField
+          label="Phone Number"
+          variant="outlined"
+          value={userData?.number || ""}
+          fullWidth
+          required
+          margin="normal"
+          InputLabelProps={{
+            style: { color: "white" }, // Label color
+          }}
+          InputProps={{
+            style: {
+              color: "white", // Text color
+              borderColor: "white", // Border color
+            },
+          }}
+        />
+      </Box>
+    </CardContent>
+  </Card>
+</Grid>
+
 
         {/* Payment Summary */}
         <Grid item xs={12} md={4}>
-          <Card elevation={4} sx={{ borderRadius: 3 }}>
+          <Card elevation={4} sx={{ borderRadius: 3, background: "linear-gradient(to right, #6a11cb, #2575fc)", // Gradient background
+        color: "white",  }}>
             <CardContent>
               <Typography variant="h5" fontWeight="bold" gutterBottom>
                 <ShoppingCartIcon sx={{ mr: 1, verticalAlign: "middle" }} />
