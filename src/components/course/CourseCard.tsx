@@ -95,7 +95,7 @@ const CourseCard: React.FC<{ course: Course }> = ({ course }) => {
         <Button
           href={course._id ? `/view_course/${course._id}` : "#"}
           variant="contained"
-          sx={{ backgroundColor: "linear-gradient(to right, #6a11cb, #2575fc)",
+          sx={{ background: "linear-gradient(to right, #6a11cb, #2575fc)",
             color: "white",fontWeight: "bold" }}
           size="small"
         >

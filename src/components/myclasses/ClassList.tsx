@@ -113,17 +113,16 @@ const ClassList = () => {
                   </Typography>
                 </CardContent>
                 <Button
-                  variant="contained"
-                  sx={{
-                    backgroundColor:
-                      "linear-gradient(to right, #6a11cb, #2575fc)",
-                    color: "white",
-                    fontWeight: "bold",
-                  }}
-                  size="large"
-                >
-                  Continue Course
-                </Button>
+      variant="contained"
+      sx={{
+        background: "linear-gradient(to right, #6a11cb, #2575fc)",
+        color: "white",
+        fontWeight: "bold",
+      }}
+      size="small"
+    >
+      Enroll Now
+    </Button>
               </Card>
             </Grid>
           ))}
