@@ -189,7 +189,7 @@ const ViewCourse = ({ id }: { id: string }) => {
               </Typography>
               <Typography
                 variant="h4"
-                sx={{ color: "#333", fontWeight: "bold", marginBottom: "16px" }}
+                sx={{ color: "#fff", fontWeight: "bold", marginBottom: "16px" }}
               >
                 ${course?.price}
               </Typography>
@@ -197,11 +197,12 @@ const ViewCourse = ({ id }: { id: string }) => {
               href={`/checkout/${id}`}
                 variant="contained"
                 sx={{
-                  backgroundColor: "#21BF73",
-                  color: "#fff",
+                  background: "linear-gradient(to right, #6a11cb, #2575fc)",
+                  color: "white",
+                  fontWeight: "bold",
                   textTransform: "none",
                   padding: "10px 20px",
-                  "&:hover": {  backgroundColor: "#21BF73" },
+                  "&:hover": {  background: "linear-gradient(to right, #6a11cb, #2575fc)", },
                 }}
               >
                 Get Course
