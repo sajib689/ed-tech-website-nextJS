@@ -115,7 +115,7 @@ const ClassList = () => {
                 </CardContent>
                 <Button
                   variant="contained"
-                  href={`/course_video/${course?._id}`}
+                  href={`/my_classes/${course?._id}`}
                   sx={{
                     background: "linear-gradient(to right, #6a11cb, #2575fc)",
                     color: "white",
