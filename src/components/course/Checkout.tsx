@@ -242,7 +242,7 @@ const Checkout: React.FC<CheckoutProps> = ({ id }) => {
           fullWidth
           required
           margin="normal"
-          disabled
+          
           InputLabelProps={{
             style: { color: "white" }, // Label color
           }}
@@ -260,7 +260,7 @@ const Checkout: React.FC<CheckoutProps> = ({ id }) => {
           fullWidth
           required
           margin="normal"
-          disabled
+          
           InputLabelProps={{
             style: { color: "white" }, // Label color
           }}
