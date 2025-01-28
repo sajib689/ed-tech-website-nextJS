@@ -19,6 +19,7 @@ interface ClassItem {
 }
 
 interface Course {
+  _id: string;
   courseName: string;
   courseImage: string;
   courseCategory: string;
@@ -114,6 +115,7 @@ const ClassList = () => {
                 </CardContent>
                 <Button
                   variant="contained"
+                  href={`/course_video/${course._id}`}
                   sx={{
                     background: "linear-gradient(to right, #6a11cb, #2575fc)",
                     color: "white",
