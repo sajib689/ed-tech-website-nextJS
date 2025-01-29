@@ -19,6 +19,7 @@ interface ClassItem {
 }
 
 interface Course {
+  _id: string;
   courseName: string;
   courseImage: string;
   courseCategory: string;
@@ -95,25 +96,26 @@ const ClassList = () => {
         </Typography>
       ) : (
         <Grid container spacing={4}>
-          {filteredCourses.map((course, index) => (
+          {filteredCourses?.map((course, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
               <Card>
                 <CardMedia
                   component="img"
-                  alt={course.courseName}
+                  alt={course?.courseName}
                   height="140"
-                  image={course.courseImage}
+                  image={course?.courseImage}
                 />
                 <CardContent>
                   <Typography variant="h6" gutterBottom>
-                    {course.courseName}
+                    {course?.courseName}
                   </Typography>
                   <Typography variant="body2" color="textSecondary">
-                    {course.courseCategory}
+                    {course?.courseCategory}
                   </Typography>
                 </CardContent>
                 <Button
                   variant="contained"
+                  href={`/my_classes/${course?._id}`}
                   sx={{
                     background: "linear-gradient(to right, #6a11cb, #2575fc)",
                     color: "white",
