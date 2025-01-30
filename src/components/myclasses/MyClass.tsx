@@ -95,7 +95,8 @@ const MyClass = ({ id }: { id: string }) => {
           justifyContent: "center",
           alignItems: "center",
           height: "100vh",
-          bgcolor: "#f4f4f4",
+          background: "linear-gradient(to right, #6a11cb, #2575fc)",
+          color: "white",
         }}
       >
         <CircularProgress />
@@ -138,7 +139,8 @@ const MyClass = ({ id }: { id: string }) => {
   return (
     <Box
       sx={{
-        backgroundColor: "#f4f5f7",
+        background: "linear-gradient(to right, #6a11cb, #2575fc)",
+        color: "white",
         minHeight: "100vh",
         padding: 4,
       }}
@@ -147,7 +149,7 @@ const MyClass = ({ id }: { id: string }) => {
         variant="h3"
         align="center"
         sx={{
-          color: "#333",
+          color: "#fff",
           fontWeight: "700",
           marginBottom: 5,
           marginTop: "100px",
