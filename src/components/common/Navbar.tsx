@@ -136,10 +136,10 @@ const Navbar = () => {
               onClose={handleCloseNavMenu}
             >
               {pages.map((page) => (
-                <MenuItem key={page.name} onClick={handleCloseNavMenu}>
+                <MenuItem key={page?.name} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
-                    <Link href={page.link} style={{ textDecoration: "none", color: "inherit" }}>
-                      {page.name}
+                    <Link href={page?.link} style={{ textDecoration: "none", color: "inherit", }}>
+                      {page?.name}
                     </Link>
                   </Typography>
                 </MenuItem>
