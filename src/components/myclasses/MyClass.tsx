@@ -10,10 +10,111 @@ import {
   ListItem,
   ListItemText,
   ListItemIcon,
+  Alert,
+  CircularProgress,
 } from "@mui/material";
 import { PlayCircleOutline, CheckCircleOutline } from "@mui/icons-material";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
-const MyClass = () => {
+const MyClass = ({ id }: { id: string }) => {
+  interface Course {
+    id: string;
+    courseName: string;
+    courseCategory: string;
+    courseType: string;
+    courseImage: string;
+    price: number;
+    providerName: string;
+    providerImage: string;
+    providerTitle: string;
+    duration: string;
+    level: string;
+    courseLevel: string;
+    statistics: {
+      coursesCreated: number;
+      workshopsAttended: number;
+      personsMentored: number;
+      webinarHosted: number;
+    };
+    courseDuration: number;
+    rating: number;
+    whatYouWillLearn: string;
+  }
+
+  const [course, setCourse] = useState<Course | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+  
+  useEffect(() => {
+    const fetchCourse = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/api/v1/getcourse/${id}`
+        );
+        setCourse(response.data.data);
+      } catch (err: unknown) {
+        if (axios.isAxiosError(err)) {
+          setError(err.response?.data?.message || "Failed to fetch the course");
+        } else {
+          setError("An unknown error occurred");
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCourse();
+  }, [id]);
+
+  if (loading) {
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+          bgcolor: "#f4f4f4",
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    );
+  }
+
+  if (error) {
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+          bgcolor: "#f8d7da",
+        }}
+      >
+        <Alert severity="error">{error}</Alert>
+      </Box>
+    );
+  }
+
+  if (!course) {
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+          bgcolor: "#fff",
+        }}
+      >
+        <Typography variant="h6">No course found.</Typography>
+      </Box>
+    );
+  }
+
   const modules = [
     { title: "Introduction to Mathematics", completed: true },
     { title: "Algebra Basics", completed: false },
