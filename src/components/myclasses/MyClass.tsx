@@ -13,39 +13,53 @@ import {
   Alert,
   CircularProgress,
 } from "@mui/material";
-import { PlayCircleOutline, CheckCircleOutline } from "@mui/icons-material";
+import { PlayCircleOutline } from "@mui/icons-material";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const MyClass = ({ id }: { id: string }) => {
-  interface Course {
-    id: string;
-    courseName: string;
-    courseCategory: string;
-    courseType: string;
-    courseImage: string;
-    price: number;
-    providerName: string;
-    providerImage: string;
-    providerTitle: string;
-    duration: string;
-    level: string;
-    courseLevel: string;
-    statistics: {
-      coursesCreated: number;
-      workshopsAttended: number;
-      personsMentored: number;
-      webinarHosted: number;
-    };
-    courseDuration: number;
-    rating: number;
-    whatYouWillLearn: string;
-  }
+interface CourseVideo {
+  id: string;
+  title: string;
+  url: string;
+}
 
+interface Course {
+  id: string;
+  courseName: string;
+  courseCategory: string;
+  courseType: string;
+  courseImage: string;
+  price: number;
+  providerName: string;
+  providerImage: string;
+  providerTitle: string;
+  duration: string;
+  level: string;
+  courseLevel: string;
+  statistics: {
+    coursesCreated: number;
+    workshopsAttended: number;
+    personsMentored: number;
+    webinarHosted: number;
+  };
+  courseDuration: number;
+  rating: number;
+  whatYouWillLearn: string;
+  videoLinks: CourseVideo[];
+}
+
+const getYouTubeId = (url: string) => {
+  const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+  const match = url.match(regex);
+  return match ? match[1] : null;
+};
+
+const MyClass = ({ id }: { id: string }) => {
   const [course, setCourse] = useState<Course | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  
+  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+
   useEffect(() => {
     const fetchCourse = async () => {
       try {
@@ -53,6 +67,11 @@ const MyClass = ({ id }: { id: string }) => {
           `http://localhost:5000/api/v1/getcourse/${id}`
         );
         setCourse(response.data.data);
+
+        // Set the first video as default if videoLinks exist
+        if (response.data.data.videoLinks.length > 0) {
+          setSelectedVideo(response.data.data.videoLinks[0].url);
+        }
       } catch (err: unknown) {
         if (axios.isAxiosError(err)) {
           setError(err.response?.data?.message || "Failed to fetch the course");
@@ -115,14 +134,6 @@ const MyClass = ({ id }: { id: string }) => {
     );
   }
 
-  const modules = [
-    { title: "Introduction to Mathematics", completed: true },
-    { title: "Algebra Basics", completed: false },
-    { title: "Geometry Fundamentals", completed: false },
-    { title: "Advanced Calculus", completed: false },
-    { title: "Statistics and Probability", completed: false },
-  ];
-
   return (
     <Box
       sx={{
@@ -153,15 +164,25 @@ const MyClass = ({ id }: { id: string }) => {
               boxShadow: "0px 8px 15px rgba(0, 0, 0, 0.1)",
             }}
           >
-            <video
-              src="https://www.w3schools.com/html/mov_bbb.mp4"
-              controls
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-              }}
-            />
+            {selectedVideo ? (
+              <iframe
+                width="100%"
+                height="100%"
+                src={`https://www.youtube.com/embed/${getYouTubeId(selectedVideo)}`}
+                frameBorder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                }}
+              />
+            ) : (
+              <Typography variant="h6" align="center" sx={{ padding: 3 }}>
+                Select a video to play
+              </Typography>
+            )}
           </Card>
         </Grid>
 
@@ -187,9 +208,9 @@ const MyClass = ({ id }: { id: string }) => {
                 Class Modules
               </Typography>
               <List>
-                {modules.map((module, index) => (
+                {course?.videoLinks?.map((video) => (
                   <ListItem
-                    key={index}
+                    key={video?.id}
                     disableGutters
                     sx={{
                       display: "flex",
@@ -197,28 +218,25 @@ const MyClass = ({ id }: { id: string }) => {
                       marginBottom: 2,
                       padding: "10px 15px",
                       borderRadius: 2,
-                      backgroundColor: module.completed
-                        ? "rgba(34, 197, 94, 0.1)"
-                        : "rgba(99, 102, 241, 0.1)",
+                      backgroundColor:
+                        selectedVideo === video?.url
+                          ? "rgba(99, 102, 241, 0.2)"
+                          : "rgba(99, 102, 241, 0.1)",
                       "&:hover": {
-                        backgroundColor: module.completed
-                          ? "rgba(34, 197, 94, 0.2)"
-                          : "rgba(99, 102, 241, 0.2)",
+                        backgroundColor: "rgba(99, 102, 241, 0.3)",
+                        cursor: "pointer",
                       },
                     }}
+                    onClick={() => setSelectedVideo(video?.url)}
                   >
                     <ListItemIcon>
-                      {module.completed ? (
-                        <CheckCircleOutline sx={{ color: "#22c55e" }} />
-                      ) : (
-                        <PlayCircleOutline sx={{ color: "#6366f1" }} />
-                      )}
+                      <PlayCircleOutline sx={{ color: "#6366f1" }} />
                     </ListItemIcon>
                     <ListItemText
-                      primary={module.title}
+                      primary={video?.title}
                       primaryTypographyProps={{
-                        fontWeight: module.completed ? "600" : "500",
-                        color: module.completed ? "#22c55e" : "#333",
+                        fontWeight: selectedVideo === video?.url ? "600" : "500",
+                        color: selectedVideo === video?.url ? "#4f46e5" : "#333",
                       }}
                     />
                   </ListItem>
