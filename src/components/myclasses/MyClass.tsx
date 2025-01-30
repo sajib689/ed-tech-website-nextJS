@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import {
   Grid,
   Card,
@@ -49,7 +49,8 @@ interface Course {
 }
 
 const getYouTubeId = (url: string) => {
-  const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+  const regex =
+    /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
   const match = url.match(regex);
   return match ? match[1] : null;
 };
@@ -149,9 +150,11 @@ const MyClass = ({ id }: { id: string }) => {
           color: "#333",
           fontWeight: "700",
           marginBottom: 5,
+          marginTop: "100px",
+          textAlign: "left",
         }}
       >
-        My Class
+        {course?.courseName}
       </Typography>
       <Grid container spacing={4}>
         {/* Video Section */}
@@ -167,14 +170,15 @@ const MyClass = ({ id }: { id: string }) => {
             {selectedVideo ? (
               <iframe
                 width="100%"
-                height="100%"
-                src={`https://www.youtube.com/embed/${getYouTubeId(selectedVideo)}`}
+                height="50%"
+                src={`https://www.youtube.com/embed/${getYouTubeId(
+                  selectedVideo
+                )}`}
                 frameBorder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
                 style={{
                   width: "100%",
-                  height: "100%",
+                  height: "50%",
                   objectFit: "cover",
                 }}
               />
@@ -235,8 +239,10 @@ const MyClass = ({ id }: { id: string }) => {
                     <ListItemText
                       primary={video?.title}
                       primaryTypographyProps={{
-                        fontWeight: selectedVideo === video?.url ? "600" : "500",
-                        color: selectedVideo === video?.url ? "#4f46e5" : "#333",
+                        fontWeight:
+                          selectedVideo === video?.url ? "600" : "500",
+                        color:
+                          selectedVideo === video?.url ? "#4f46e5" : "#333",
                       }}
                     />
                   </ListItem>
