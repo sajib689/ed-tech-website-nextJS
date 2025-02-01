@@ -1,97 +1,133 @@
-"use client";
+import { 
+  Box, Drawer, List, ListItem, Avatar, Typography, LinearProgress, 
+  ListItemIcon, ListItemText, Card, CardContent, Table, TableHead, 
+  TableBody, TableRow, TableCell, IconButton, Grid 
+} from "@mui/material";
+import { Home, CheckCircle, School, Work, Info, BusinessCenter, Delete } from "@mui/icons-material";
 
-import { useContext } from "react";
-import { AuthContext } from "@/context/AuthProvider";
-import useUserByEmail from "@/hooks/useUserByEmail";
-import { useForm } from "react-hook-form";
-import { Container, Card, CardContent, TextField, Button, Typography, CircularProgress, Alert } from "@mui/material";
+const Dashboard = () => {
+  const menuItems = [
+    { text: "My Profile", icon: <Home />, completed: true },
+    { text: "Additional Info", icon: <Info />, completed: true },
+    { text: "Address", icon: <CheckCircle />, completed: true },
+    { text: "Education", icon: <School />, completed: true },
+    { text: "Job Profile", icon: <Work />, completed: true },
+    { text: "Certification", icon: <BusinessCenter />, completed: true },
+  ];
 
-const UserUpdateForm = () => {
-    const authContext = useContext(AuthContext);
-    const userEmail = authContext?.user?.email || ""; 
+  const deviceActivity = [
+    { id: 1, platform: "Desktop Application", date: "15-01-2025 12:40 AM" },
+    { id: 2, platform: "Desktop Application", date: "15-01-2025 12:15 AM" },
+    { id: 3, platform: "Windows 10", date: "08-01-2025 06:41 PM" },
+  ];
 
-    // Fetch user data
-    const { userData, loadings, errors } = useUserByEmail(userEmail);
+  return (
+    <Box sx={{ display: "flex", minHeight: "100vh", backgroundColor: "#1E1531" }}>
+      {/* Sidebar */}
+      <Drawer 
+        variant="permanent"
+        sx={{ width: 250, flexShrink: 0, "& .MuiDrawer-paper": { width: 250, backgroundColor: "#19102C", color: "#fff" } }}
+      >
+        <List sx={{ p: 2, textAlign: "center" }}>
+          <Avatar src="/profile.jpg" sx={{ width: 80, height: 80, mx: "auto", mb: 1 }} />
+          <Typography variant="h6">Md Sajib Hossen</Typography>
+          <Typography variant="body2">sajibbabu751@gmail.com</Typography>
+          <Typography variant="body2">+8801611970979</Typography>
+          <LinearProgress variant="determinate" value={100} sx={{ mt: 2, mb: 2 }} />
+        </List>
 
-    // React Hook Form
-    const { register, handleSubmit, formState: { errors: formErrors }, setValue } = useForm({
-        defaultValues: {
-            name: userData?.name || "",
-            email: userData?.email || "",
-            role: userData?.role || "",
-        }
-    });
+        <List>
+          {menuItems.map((item, index) => (
+            <ListItem button key={index}>
+              <ListItemIcon sx={{ color: "white" }}>{item.icon}</ListItemIcon>
+              <ListItemText primary={item.text} />
+              {item.completed && <CheckCircle sx={{ color: "green" }} />}
+            </ListItem>
+          ))}
+        </List>
+      </Drawer>
 
-    // Handle form submission
-    const onSubmit = async (data: any) => {
-        console.log("Updated User Data:", data);
-        // TODO: Make API request to update user data
-    };
+      {/* Main Content */}
+      <Box sx={{ flexGrow: 1, p: 3 }}>
+        {/* Profile Card */}
+        <Card sx={{ backgroundColor: "#22183C", color: "#fff", p: 3 }}>
+          <CardContent>
+            <Typography variant="h5" fontWeight="bold" color="purple">
+              My Profile
+            </Typography>
 
-    if (loadings) {
-        return (
-            <Container sx={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
-                <CircularProgress />
-            </Container>
-        );
-    }
+            <Table sx={{ mt: 2 }}>
+              <TableBody>
+                <TableRow>
+                  <TableCell sx={{ color: "#fff" }}>Full Name</TableCell>
+                  <TableCell sx={{ color: "#fff" }}>Md Sajib Hossen</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell sx={{ color: "#fff" }}>Email</TableCell>
+                  <TableCell sx={{ color: "#fff" }}>sajibbabu751@gmail.com</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell sx={{ color: "#fff" }}>Student ID</TableCell>
+                  <TableCell sx={{ color: "#fff" }}>WEB6-2281</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell sx={{ color: "#fff" }}>Mobile Number</TableCell>
+                  <TableCell sx={{ color: "#fff" }}>+8801611970979</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
 
-    if (errors) {
-        return (
-            <Container sx={{ mt: 5 }}>
-                <Alert severity="error">Error loading user data: {errors}</Alert>
-            </Container>
-        );
-    }
+            {/* Device Activity Table */}
+            <Typography variant="h6" fontWeight="bold" sx={{ mt: 3, color: "purple" }}>
+              Device Activity
+            </Typography>
 
-    return (
-        <Container maxWidth="sm" sx={{ mt: 5 }}>
-            <Card sx={{ boxShadow: 3, borderRadius: 2 }}>
-                <CardContent>
-                    <Typography variant="h5" fontWeight="bold" gutterBottom>
-                        Update Profile
-                    </Typography>
+            <Table sx={{ mt: 2 }}>
+              <TableHead>
+                <TableRow>
+                  <TableCell sx={{ color: "#fff" }}>Serial</TableCell>
+                  <TableCell sx={{ color: "#fff" }}>Platform</TableCell>
+                  <TableCell sx={{ color: "#fff" }}>Date</TableCell>
+                  <TableCell sx={{ color: "#fff" }}>Action</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {deviceActivity.map((item, index) => (
+                  <TableRow key={index}>
+                    <TableCell sx={{ color: "#fff" }}>{index + 1}</TableCell>
+                    <TableCell sx={{ color: "#fff" }}>{item.platform}</TableCell>
+                    <TableCell sx={{ color: "#fff" }}>{item.date}</TableCell>
+                    <TableCell>
+                      <IconButton color="error">
+                        <Delete />
+                      </IconButton>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </CardContent>
+        </Card>
 
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                        <TextField
-                            fullWidth
-                            label="Name"
-                            margin="normal"
-                            {...register("name", { required: "Name is required" })}
-                            error={!!formErrors.name}
-                            helperText={formErrors.name?.message}
-                        />
-                        
-                        <TextField
-                            fullWidth
-                            label="Email"
-                            margin="normal"
-                            disabled
-                            {...register("email")}
-                        />
-
-                        <TextField
-                            fullWidth
-                            label="Role"
-                            margin="normal"
-                            {...register("role", { required: "Role is required" })}
-                            error={!!formErrors.role}
-                            helperText={formErrors.role?.message}
-                        />
-
-                        <Button 
-                            type="submit" 
-                            variant="contained" 
-                            color="primary" 
-                            sx={{ mt: 2, width: "100%" }}
-                        >
-                            Update Profile
-                        </Button>
-                    </form>
-                </CardContent>
-            </Card>
-        </Container>
-    );
+        {/* Footer */}
+        <Box sx={{ backgroundColor: "#100824", color: "#fff", py: 4, mt: 5 }}>
+          <Grid container spacing={3} justifyContent="center">
+            <Grid item xs={12} md={4}>
+              <Typography variant="h6">Office Address</Typography>
+              <Typography>Level-4, 34, Awal Centre, Banani, Dhaka</Typography>
+              <Typography>Support: web@programming-hero.com</Typography>
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <Typography variant="h6">Useful Links</Typography>
+              <Typography>Blog</Typography>
+              <Typography>Success</Typography>
+              <Typography>About us</Typography>
+            </Grid>
+          </Grid>
+        </Box>
+      </Box>
+    </Box>
+  );
 };
 
-export default UserUpdateForm;
+export default Dashboard;
