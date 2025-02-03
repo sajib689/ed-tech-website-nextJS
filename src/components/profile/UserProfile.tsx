@@ -22,33 +22,18 @@ const Dashboard = () => {
   ];
 
   return (
-    <Box sx={{ display: "flex", minHeight: "100vh", backgroundColor: "#1E1531" }}>
-      {/* Sidebar */}
-      <Drawer 
-        variant="permanent"
-        sx={{ width: 250, flexShrink: 0, "& .MuiDrawer-paper": { width: 250, backgroundColor: "#19102C", color: "#fff" } }}
-      >
-        <List sx={{ p: 2, textAlign: "center" }}>
+    <Box sx={{ display: "flex", minHeight: "100vh", background: 'linear-gradient(to right, #6a11cb, #2575fc)', color: "white", padding: "40px 0",marginTop: "100px" }}>
+    
+
+      {/* Main Content */}
+      <Box sx={{ flexGrow: 1, p: 3 }}>
+      <List sx={{ p: 2, textAlign: "center" }}>
           <Avatar src="/profile.jpg" sx={{ width: 80, height: 80, mx: "auto", mb: 1 }} />
           <Typography variant="h6">Md Sajib Hossen</Typography>
           <Typography variant="body2">sajibbabu751@gmail.com</Typography>
           <Typography variant="body2">+8801611970979</Typography>
           <LinearProgress variant="determinate" value={100} sx={{ mt: 2, mb: 2 }} />
         </List>
-
-        <List>
-          {menuItems.map((item, index) => (
-            <ListItem button key={index}>
-              <ListItemIcon sx={{ color: "white" }}>{item.icon}</ListItemIcon>
-              <ListItemText primary={item.text} />
-              {item.completed && <CheckCircle sx={{ color: "green" }} />}
-            </ListItem>
-          ))}
-        </List>
-      </Drawer>
-
-      {/* Main Content */}
-      <Box sx={{ flexGrow: 1, p: 3 }}>
         {/* Profile Card */}
         <Card sx={{ backgroundColor: "#22183C", color: "#fff", p: 3 }}>
           <CardContent>
