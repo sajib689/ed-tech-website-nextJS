@@ -170,7 +170,7 @@ const CourseList: React.FC = () => {
         variant="h4"
         sx={{
           fontWeight: "600",
-          color: "rgba(0, 0, 0, 0.55)",
+          color: "#fff",
           textAlign: "left",
           marginBottom: "50px",
           marginTop: "24px",
