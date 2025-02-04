@@ -49,7 +49,7 @@ const AllCourse: React.FC = () => {
         variant="h4"
         sx={{
           fontWeight: "600",
-          color: "rgba(0, 0, 0, 0.55)",
+          color: "white",
           marginBottom: "50px",
           marginTop: "24px",
           marginLeft: "24px",
