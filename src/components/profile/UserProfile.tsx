@@ -110,7 +110,7 @@ const Dashboard = () => {
                   <TableCell sx={{ color: "#FF6F61" }}>Device</TableCell>
                   <TableCell sx={{ color: "#FF6F61" }}>Platform</TableCell>
                   <TableCell sx={{ color: "#FF6F61" }}>Date</TableCell>
-                  <TableCell sx={{ color: "#FF6F61" }}>Action</TableCell>
+                  
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -126,11 +126,7 @@ const Dashboard = () => {
                     <TableCell sx={{ color: "#fff" }}>
                       {item?.date || "N/A"}
                     </TableCell>
-                    <TableCell>
-                      <IconButton color="error">
-                        <Delete />
-                      </IconButton>
-                    </TableCell>
+                   
                   </TableRow>
                 ))}
               </TableBody>
