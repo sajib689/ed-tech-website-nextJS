@@ -29,7 +29,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         style={{
-          background: "linear-gradient(to right, #6a11cb, #2575fc)",
+          background: "#1e1e1e",
           color: "white",
           margin: "0 auto",
         }}
