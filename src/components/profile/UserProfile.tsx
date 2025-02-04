@@ -55,6 +55,7 @@ const Dashboard = () => {
         minHeight: "100vh",
         padding: "40px 0",
         marginTop: "70px",
+          background: "#1e1e1e"
       }}
     >
       {/* Main Content */}
@@ -90,7 +91,7 @@ const Dashboard = () => {
         <Card
           sx={{
             p: 3,
-            background: "linear-gradient(to right, #6a11cb, #2575fc)",
+            background: "#1e1e1e",
           }}
         >
           <CardContent>
