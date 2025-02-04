@@ -1,7 +1,6 @@
-import { 
-  Box, Drawer, List, ListItem, Avatar, Typography, LinearProgress, 
-  ListItemIcon, ListItemText, Card, CardContent, Table, TableHead, 
-  TableBody, TableRow, TableCell, IconButton, Grid 
+import {
+  Box, List, Avatar, Typography, LinearProgress, Card, CardContent, Table, TableHead,
+  TableBody, TableRow, TableCell, IconButton
 } from "@mui/material";
 import { Home, CheckCircle, School, Work, Info, BusinessCenter, Delete } from "@mui/icons-material";
 
@@ -22,36 +21,32 @@ const Dashboard = () => {
   ];
 
   return (
-    <Box sx={{ display: "flex", minHeight: "100vh", background: 'linear-gradient(to right, #6a11cb, #2575fc)', color: "white", padding: "40px 0",marginTop: "70px" }}>
-    
-
+    <Box sx={{ display: "flex", minHeight: "100vh",  padding: "40px 0", marginTop: "70px" }}>
       {/* Main Content */}
       <Box sx={{ flexGrow: 1, p: 3 }}>
-      <List sx={{ p: 2, textAlign: "center" }}>
+        <List sx={{ p: 2, textAlign: "center" }}>
           <Avatar src="/profile.jpg" sx={{ width: 80, height: 80, mx: "auto", mb: 1 }} />
-          <Typography variant="body2">Student Id: WEB6-4243</Typography>
-          <Typography variant="h6">Md Sajib Hossen</Typography>
-          <Typography variant="body2">sajibbabu751@gmail.com</Typography>
-          <Typography variant="body2">+8801611970979</Typography>
-          <LinearProgress variant="determinate" value={100} sx={{ mt: 2, mb: 2 }} />
+          <Typography variant="body2" sx={{ color: "#fff" }}>Student Id: WEB6-4243</Typography>
+          <Typography variant="h6" sx={{ color: "#fff" }}>Md Sajib Hossen</Typography>
+          <Typography variant="body2" sx={{ color: "#fff" }}>sajibbabu751@gmail.com</Typography>
+          <Typography variant="body2" sx={{ color: "#fff" }}>+8801611970979</Typography>
+          <LinearProgress variant="determinate" value={100} sx={{ mt: 2, mb: 2, backgroundColor: "#444" }} />
         </List>
-        {/* Profile Card */}
-        <Card sx={{  color: "#fff", p: 3 }}>
+    
+        <Card sx={{ p: 3,  background: 'linear-gradient(to right, #6a11cb, #2575fc)', }}>
           <CardContent>
-          
-
             {/* Device Activity Table */}
-            <Typography variant="h6" fontWeight="bold" sx={{ mt: 3, color: "purple" }}>
+            <Typography variant="h6" fontWeight="bold" sx={{ mt: 3, color: "#FF6F61" }}>
               Device Activity
             </Typography>
 
             <Table sx={{ mt: 2 }}>
               <TableHead>
                 <TableRow>
-                  <TableCell sx={{ color: "#fff" }}>Serial</TableCell>
-                  <TableCell sx={{ color: "#fff" }}>Platform</TableCell>
-                  <TableCell sx={{ color: "#fff" }}>Date</TableCell>
-                  <TableCell sx={{ color: "#fff" }}>Action</TableCell>
+                  <TableCell sx={{ color: "#FF6F61" }}>Serial</TableCell>
+                  <TableCell sx={{ color: "#FF6F61" }}>Platform</TableCell>
+                  <TableCell sx={{ color: "#FF6F61" }}>Date</TableCell>
+                  <TableCell sx={{ color: "#FF6F61" }}>Action</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -71,7 +66,6 @@ const Dashboard = () => {
             </Table>
           </CardContent>
         </Card>
-
       </Box>
     </Box>
   );
