@@ -16,13 +16,9 @@ import {
   IconButton,
 } from "@mui/material";
 import {
-  Home,
-  CheckCircle,
-  School,
-  Work,
-  Info,
-  BusinessCenter,
+ 
   Delete,
+  Edit,
 } from "@mui/icons-material";
 import Loader from "@/utlis/Loader";
 import { useContext, useEffect, useState } from "react";
@@ -90,6 +86,10 @@ const Dashboard = () => {
             sx={{ mt: 2, mb: 2, backgroundColor: "#444" }}
           />
         </List>
+        {/* Edit Button */}
+        <IconButton color="primary">
+          <Edit />
+        </IconButton>
 
         <Card
           sx={{
@@ -126,6 +126,9 @@ const Dashboard = () => {
                     </TableCell>
                     <TableCell sx={{ color: "#fff" }}>
                       {item?.device.family || "N/A"}
+                    </TableCell>
+                    <TableCell sx={{ color: "#fff" }}>
+                      {item?.date || "N/A"}
                     </TableCell>
                     <TableCell>
                       <IconButton color="error">
