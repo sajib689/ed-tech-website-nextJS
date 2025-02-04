@@ -46,7 +46,6 @@ const Dashboard = () => {
   }
 
   const { user } = authContext;
-  console.log(deviceInfo);
 
   return (
     <Box
