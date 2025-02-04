@@ -1,6 +1,7 @@
 "use client";
 
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+
 import {
   Box,
   TextField,
@@ -13,15 +14,31 @@ import GoogleIcon from "@mui/icons-material/Google";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { AuthContext } from "@/context/AuthProvider";
 import Link from "next/link";
-
+import { io } from "socket.io-client";
+import Loader from "@/utlis/Loader";
+const socket = io("http://localhost:5000")
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [deviceInfo, setDeviceInfo] = useState(null);
+
+  useEffect( () => {
+    const handleDeviceInfo = (data: any) => {
+      setDeviceInfo(data);
+    };
+
+    socket.on("deviceInfo", handleDeviceInfo);
+
+    return () => {
+      socket.off("deviceInfo", handleDeviceInfo);
+    };
+  },[])
+ 
   const authContext = useContext(AuthContext);
 
   // Handle case where context might be null
   if (!authContext) {
-    return <Typography>Loading...</Typography>; 
+    return <Loader/>; 
   }
 
   const { signWithForm , signWithGoogle, signWithGithub} = authContext;
@@ -60,6 +77,7 @@ const Login = () => {
         marginTop: "60px",
       }}
     >
+      
       <Box
         component="form"
         onSubmit={handleSubmit}

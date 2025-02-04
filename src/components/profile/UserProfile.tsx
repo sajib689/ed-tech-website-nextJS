@@ -1,10 +1,36 @@
+'use client'
 import {
   Box, List, Avatar, Typography, LinearProgress, Card, CardContent, Table, TableHead,
   TableBody, TableRow, TableCell, IconButton
 } from "@mui/material";
 import { Home, CheckCircle, School, Work, Info, BusinessCenter, Delete } from "@mui/icons-material";
-
+import Loader from "@/utlis/Loader";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "@/context/AuthProvider";
+import { io } from "socket.io-client";
+const socket = io("http://localhost:5000")
 const Dashboard = () => {
+  const [deviceInfo, setDeviceInfo] = useState(null);
+  
+    useEffect( () => {
+      const handleDeviceInfo = (data: any) => {
+        setDeviceInfo(data);
+      };
+  
+      socket.on("deviceInfo", handleDeviceInfo);
+  
+      return () => {
+        socket.off("deviceInfo", handleDeviceInfo);
+      };
+    },[])
+  const authContext = useContext(AuthContext);
+
+  if (!authContext) {
+    return <Loader/> 
+  }
+
+  const { user } = authContext;
+  
   const menuItems = [
     { text: "My Profile", icon: <Home />, completed: true },
     { text: "Additional Info", icon: <Info />, completed: true },
@@ -27,9 +53,9 @@ const Dashboard = () => {
         <List sx={{ p: 2, textAlign: "center" }}>
           <Avatar src="/profile.jpg" sx={{ width: 80, height: 80, mx: "auto", mb: 1 }} />
           <Typography variant="body2" sx={{ color: "#fff" }}>Student Id: WEB6-4243</Typography>
-          <Typography variant="h6" sx={{ color: "#fff" }}>Md Sajib Hossen</Typography>
-          <Typography variant="body2" sx={{ color: "#fff" }}>sajibbabu751@gmail.com</Typography>
-          <Typography variant="body2" sx={{ color: "#fff" }}>+8801611970979</Typography>
+          <Typography variant="h6" sx={{ color: "#fff" }}>{user?.name}</Typography>
+          <Typography variant="body2" sx={{ color: "#fff" }}>{user?.email}</Typography>
+          <Typography variant="body2" sx={{ color: "#fff" }}>{user?.number}</Typography>
           <LinearProgress variant="determinate" value={100} sx={{ mt: 2, mb: 2, backgroundColor: "#444" }} />
         </List>
     
@@ -37,7 +63,7 @@ const Dashboard = () => {
           <CardContent>
             {/* Device Activity Table */}
             <Typography variant="h6" fontWeight="bold" sx={{ mt: 3, color: "#FF6F61" }}>
-              Device Activity
+              Device Activity: {deviceInfo?.userAgent}
             </Typography>
 
             <Table sx={{ mt: 2 }}>
