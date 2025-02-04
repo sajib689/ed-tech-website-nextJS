@@ -22,45 +22,23 @@ const Dashboard = () => {
   ];
 
   return (
-    <Box sx={{ display: "flex", minHeight: "100vh", background: 'linear-gradient(to right, #6a11cb, #2575fc)', color: "white", padding: "40px 0",marginTop: "100px" }}>
+    <Box sx={{ display: "flex", minHeight: "100vh", background: 'linear-gradient(to right, #6a11cb, #2575fc)', color: "white", padding: "40px 0",marginTop: "70px" }}>
     
 
       {/* Main Content */}
       <Box sx={{ flexGrow: 1, p: 3 }}>
       <List sx={{ p: 2, textAlign: "center" }}>
           <Avatar src="/profile.jpg" sx={{ width: 80, height: 80, mx: "auto", mb: 1 }} />
+          <Typography variant="body2">Student Id: WEB6-4243</Typography>
           <Typography variant="h6">Md Sajib Hossen</Typography>
           <Typography variant="body2">sajibbabu751@gmail.com</Typography>
           <Typography variant="body2">+8801611970979</Typography>
           <LinearProgress variant="determinate" value={100} sx={{ mt: 2, mb: 2 }} />
         </List>
         {/* Profile Card */}
-        <Card sx={{ backgroundColor: "#22183C", color: "#fff", p: 3 }}>
+        <Card sx={{  color: "#fff", p: 3 }}>
           <CardContent>
-            <Typography variant="h5" fontWeight="bold" color="purple">
-              My Profile
-            </Typography>
-
-            <Table sx={{ mt: 2 }}>
-              <TableBody>
-                <TableRow>
-                  <TableCell sx={{ color: "#fff" }}>Full Name</TableCell>
-                  <TableCell sx={{ color: "#fff" }}>Md Sajib Hossen</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell sx={{ color: "#fff" }}>Email</TableCell>
-                  <TableCell sx={{ color: "#fff" }}>sajibbabu751@gmail.com</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell sx={{ color: "#fff" }}>Student ID</TableCell>
-                  <TableCell sx={{ color: "#fff" }}>WEB6-2281</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell sx={{ color: "#fff" }}>Mobile Number</TableCell>
-                  <TableCell sx={{ color: "#fff" }}>+8801611970979</TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
+          
 
             {/* Device Activity Table */}
             <Typography variant="h6" fontWeight="bold" sx={{ mt: 3, color: "purple" }}>
@@ -94,22 +72,6 @@ const Dashboard = () => {
           </CardContent>
         </Card>
 
-        {/* Footer */}
-        <Box sx={{ backgroundColor: "#100824", color: "#fff", py: 4, mt: 5 }}>
-          <Grid container spacing={3} justifyContent="center">
-            <Grid item xs={12} md={4}>
-              <Typography variant="h6">Office Address</Typography>
-              <Typography>Level-4, 34, Awal Centre, Banani, Dhaka</Typography>
-              <Typography>Support: web@programming-hero.com</Typography>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Typography variant="h6">Useful Links</Typography>
-              <Typography>Blog</Typography>
-              <Typography>Success</Typography>
-              <Typography>About us</Typography>
-            </Grid>
-          </Grid>
-        </Box>
       </Box>
     </Box>
   );
