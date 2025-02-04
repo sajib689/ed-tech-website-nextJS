@@ -15,11 +15,7 @@ import {
   TableCell,
   IconButton,
 } from "@mui/material";
-import {
- 
-  Delete,
-  Edit,
-} from "@mui/icons-material";
+import { Delete, Edit } from "@mui/icons-material";
 import Loader from "@/utlis/Loader";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "@/context/AuthProvider";
@@ -80,16 +76,16 @@ const Dashboard = () => {
           <Typography variant="body2" sx={{ color: "#fff" }}>
             {user?.number}
           </Typography>
+          {/* Edit Button */}
+          <IconButton sx={{ color: "#fff" }}>
+            <Edit />
+          </IconButton>
           <LinearProgress
             variant="determinate"
             value={100}
             sx={{ mt: 2, mb: 2, backgroundColor: "#444" }}
           />
         </List>
-        {/* Edit Button */}
-        <IconButton color="primary">
-          <Edit />
-        </IconButton>
 
         <Card
           sx={{
