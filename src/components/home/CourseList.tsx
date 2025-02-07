@@ -40,7 +40,7 @@ const CourseCard: React.FC<{ course: Course }> = ({ course }) => {
         },
       }}
     >
-      {/* Course Image */}
+      {/* Course Image Here*/}
       <CardMedia
         component="img"
         height="140"
