@@ -49,7 +49,7 @@ const CourseCard: React.FC<{ course: Course }> = ({ course }) => {
         sx={{ borderRadius: "8px 8px 0 0" }}
       />
 
-      {/* Course Details */}
+      {/* Course Details Section*/}
       <CardContent sx={{ padding: "16px" }}>
         <Typography variant="h6" sx={{ fontWeight: "bold" }}>
           {course?.courseName}
