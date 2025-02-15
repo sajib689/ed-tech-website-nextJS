@@ -36,7 +36,8 @@ const settings: Setting[] = [
   { name: "Profile", link: "/profile" },
   { name: "Account", link: "/account" },
   { name: "Dashboard", link: "/dashboard" },
-  { name: "Logout" }, // Logout handled via handleLogOut
+  { name: "Admin Dashboard", link: "/adminDashboard" },
+  { name: "Logout" }, 
 ];
 
 const Navbar = () => {
@@ -44,7 +45,7 @@ const Navbar = () => {
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
   const [scrolled, setScrolled] = useState(false);
 
-  const router = useRouter(); // Use router for navigation
+  const router = useRouter(); 
 
   useEffect(() => {
     const handleScroll = () => {
@@ -87,8 +88,8 @@ const Navbar = () => {
     <AppBar
       position="fixed"
       sx={{
-        backgroundColor: scrolled ? "#fff" : "transparent",
-        boxShadow: scrolled ? "0px 2px 4px rgba(0, 0, 0, 0.1)" : "none",
+        backgroundColor: scrolled ? "#121212" : "transparent",
+        boxShadow: scrolled ? "0px 2px 4px #fff" : "none",
         transition: "background-color 0.3s ease, box-shadow 0.3s ease",
       }}
     >
@@ -106,9 +107,9 @@ const Navbar = () => {
               fontFamily: "monospace",
               fontWeight: 800,
               letterSpacing: ".3rem",
-              color: "rgba(0, 0, 0, 0.55)",
+              color: "#fff",
               textDecoration: "none",
-              "&:hover": { color: "#21BF73" },
+              "&:hover": { color: "#fff" },
             }}
           >
             <Image src={logo} alt="logo" width={120} height={90} />
@@ -122,7 +123,7 @@ const Navbar = () => {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              color="#fff"
             >
               <MenuIcon />
             </IconButton>
@@ -138,7 +139,7 @@ const Navbar = () => {
               {pages.map((page) => (
                 <MenuItem key={page?.name} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
-                    <Link href={page?.link} style={{ textDecoration: "none", color: "inherit", }}>
+                    <Link href={page?.link} style={{ textDecoration: "none", color: "#fff", }}>
                       {page?.name}
                     </Link>
                   </Typography>
@@ -161,10 +162,10 @@ const Navbar = () => {
                 href={page.link}
                 sx={{
                   my: 2,
-                  color: "rgba(0, 0, 0, 0.55)",
+                  color: "#fff",
                   display: "block",
                   fontWeight: 700,
-                  "&:hover": { color: "#21BF73" },
+                  "&:hover": { color: "#fff" },
                 }}
               >
                 {page.name}
