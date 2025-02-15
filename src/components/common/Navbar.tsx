@@ -36,7 +36,8 @@ const settings: Setting[] = [
   { name: "Profile", link: "/profile" },
   { name: "Account", link: "/account" },
   { name: "Dashboard", link: "/dashboard" },
-  { name: "Logout" }, // Logout handled via handleLogOut
+  { name: "Admin Dashboard", link: "/adminDashboard" },
+  { name: "Logout" }, 
 ];
 
 const Navbar = () => {
