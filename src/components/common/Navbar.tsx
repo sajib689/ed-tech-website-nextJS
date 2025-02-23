@@ -44,9 +44,10 @@ const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
   const [scrolled, setScrolled] = useState(false);
-
+  const [admin, setAdmin] = useState([])
+  const [users, setUsers] = useState([])
   const router = useRouter(); 
-
+ 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -54,6 +55,24 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  useEffect( () => {
+    fetch(`http://localhost:5000/api/v1/users?role=admin`)
+    .then(res => {
+      setAdmin(res.data)
+    })
+    .catch(err => {
+      console.log(err.message)
+    })
+  },[])
+  useEffect( () => {
+    fetch(`http://localhost:5000/api/v1/userss`)
+    .then(res => {
+      setUsers(res.data)
+    })
+    .catch(err => {
+      console.log(err.message)
+    })
+  },[])
 
   const authContext = useContext(AuthContext);
 
