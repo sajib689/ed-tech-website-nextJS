@@ -35,7 +35,7 @@ const ClassList = () => {
   if (!authContext) {
     return <Loader />;
   }
-
+// user data
   const { user } = authContext;
 
   useEffect(() => {
