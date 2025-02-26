@@ -36,7 +36,7 @@ const settings: Setting[] = [
   { name: "Profile", link: "/profile" },
   { name: "Account", link: "/account" },
   { name: "Dashboard", link: "/dashboard" },
-  { name: "Admin Dashboard", link: "/adminDashboard" },
+  { name: "Admin Dashboard", link: "/admin" },
   { name: "Logout" }, 
 ];
 
